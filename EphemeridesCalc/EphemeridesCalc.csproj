@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calendar.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="PlanetData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
