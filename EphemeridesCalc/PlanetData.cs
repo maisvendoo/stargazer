@@ -13,6 +13,7 @@ public struct TPlanetState
 {
     public double theta;    // True anomaly
     public double r;        // Radius-vector
+    public double h;        // Altitude
     public double beta;     // Ecliptic latitude
     public double lambda;   // Ecliptic longtitude
 }

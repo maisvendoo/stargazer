@@ -42,7 +42,8 @@ namespace EphemeridesCalc
             planet_state.theta = get_angle(sin_V, cos_V);
 
             // Planet radius-vector lenght calculation
-            planet_state.r = orbit_data.a * (1 - orbit_data.e * Math.Cos(E)) - 261600000.0;
+            planet_state.r = orbit_data.a * (1 - orbit_data.e * Math.Cos(E));
+            planet_state.h = planet_state.r - 261600000.0;
 
             // Ecliptic coordinates calculation
             planet_state.beta = Math.Asin(Math.Sin(orbit_data.i * RAD) * Math.Sin(orbit_data.omega*RAD + planet_state.theta));
@@ -51,6 +52,11 @@ namespace EphemeridesCalc
             double omega = orbit_data.omega * RAD;
             double i = orbit_data.i * RAD;
             double V = planet_state.theta;
+
+            double sin_lambda = (sin(Omega) * cos(V + omega) + cos(Omega) * cos(i) * sin(V + omega)) / cos(planet_state.beta);
+            double cos_lambda = (cos(Omega) * cos(V + omega) - sin(Omega) * cos(i) * sin(V + omega)) / cos(planet_state.beta);
+
+            planet_state.lambda = get_angle(sin_lambda, cos_lambda);
         }
 
 
