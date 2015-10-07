@@ -25,6 +25,7 @@
       <period>9203544.61750141</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -43,6 +44,7 @@
       <period>138984.376574476</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -61,6 +63,7 @@
       <period>1077310.52101881</period>
       <argPe>38</argPe>
       <LAN>78</LAN>
+      <inclination>6</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -79,6 +82,7 @@
       <period>2215754.21968432</period>
       <argPe>15</argPe>
       <LAN>70</LAN>
+      <inclination>7</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -97,6 +101,7 @@
       <period>5657995.14648303</period>
       <argPe>0</argPe>
       <LAN>15</LAN>
+      <inclination>2.09999990463257</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -115,6 +120,7 @@
       <period>17315400.1425698</period>
       <argPe>0</argPe>
       <LAN>135.5</LAN>
+      <inclination>0.0599999986588955</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -133,6 +139,7 @@
       <period>65517.8621348081</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0.200000002980232</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -151,6 +158,7 @@
       <period>104661432.107989</period>
       <argPe>0</argPe>
       <LAN>52</LAN>
+      <inclination>1.30400002002716</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -169,6 +177,7 @@
       <period>52980.8790593796</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -187,6 +196,7 @@
       <period>105962.088893924</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -205,6 +215,7 @@
       <period>544507.428516654</period>
       <argPe>25</argPe>
       <LAN>10</LAN>
+      <inclination>15</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -223,6 +234,7 @@
       <period>211926.35802123</period>
       <argPe>0</argPe>
       <LAN>0</LAN>
+      <inclination>0.025000000372529</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -241,6 +253,7 @@
       <period>388587.376847929</period>
       <argPe>10</argPe>
       <LAN>80</LAN>
+      <inclination>12</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -259,6 +272,7 @@
       <period>901902.623531173</period>
       <argPe>15</argPe>
       <LAN>2</LAN>
+      <inclination>4.25</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -277,6 +291,7 @@
       <period>47893063.1385932</period>
       <argPe>90</argPe>
       <LAN>280</LAN>
+      <inclination>5</inclination>
     </Orbit>
   </Body>
   <Body>
@@ -295,6 +310,7 @@
       <period>156992048.397359</period>
       <argPe>260</argPe>
       <LAN>50</LAN>
+      <inclination>6.15</inclination>
     </Orbit>
   </Body>
 </KerbalSystem>

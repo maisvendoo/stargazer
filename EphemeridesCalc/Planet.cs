@@ -10,7 +10,7 @@ namespace EphemeridesCalc
         private const double KEPLER_EQ_ERROR = 1e-11;
         
         private const double muK = 1.1723328e18;
-        private const double RAD = Math.PI / 180.0;
+        public const double RAD = Math.PI / 180.0;
 
         private const int NEWTON = 0;
         private const int SIMPLE_ITER = 1;        
@@ -30,6 +30,8 @@ namespace EphemeridesCalc
             // Eccentric anomaly calculation (Kepler equation solve)
             double E = get_eccentric_anomaly(M, orbit_data.e, NEWTON);
 
+            planet_state.E = Trunc2PiN(E);
+
             // Half of true anomaly tangens calculation
             double tgV2 = Math.Tan(E / 2)*Math.Sqrt((1 + orbit_data.e)/(1 - orbit_data.e));
 
@@ -41,7 +43,7 @@ namespace EphemeridesCalc
 
             // Planet radius-vector lenght calculation
             planet_state.r = orbit_data.a * (1 - orbit_data.e * Math.Cos(E));
-            planet_state.h = planet_state.r - 261600000.0;
+            planet_state.h = planet_state.r - orbit_data.RefRadius;
 
             // Ecliptic coordinates calculation
             planet_state.beta = Math.Asin(Math.Sin(orbit_data.i * RAD) * Math.Sin(orbit_data.omega*RAD + planet_state.theta));

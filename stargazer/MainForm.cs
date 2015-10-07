@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Collections;
+using System.Drawing;
 
 using EphemeridesCalc;
 
@@ -189,16 +190,16 @@ namespace stargazer
         //------------------------------------------------------------
         //
         //------------------------------------------------------------
-        private TBodyData get_body_index()
+        private TBodyData get_body_index(string name)
         {
             int idx = 0;
             
-            while ((idx < BodiesList.Items.Count) && (BodiesList.SelectedItem != bodies.ElementAt(idx).name))
+            while ((idx < BodiesList.Items.Count) && (name != bodies.ElementAt(idx).name))
             {
                 idx++;
             }
 
-            if (idx == BodiesList.Items.Count)
+            if (idx > BodiesList.Items.Count)
                 idx = -1;
 
             return bodies.ElementAt(idx);
@@ -211,7 +212,33 @@ namespace stargazer
         //-----------------------------------------------------------
         private void buttonEphCalc_Click(object sender, EventArgs e)
         {
-            TBodyData body_data = get_body_index();            
+            TBodyData body_data = get_body_index(BodiesList.Text.ToString());   
+            TBodyData ref_body_data = get_body_index(body_data.refBody);
+
+            body_data.orbit.RefRadius = ref_body_data.radius;
+
+            TBodyState body_state = new TBodyState();
+            CPlanet body = new CPlanet();
+
+            double t = calendar.date_to_sec(int.Parse(textYear.Text.ToString()),
+                                            int.Parse(comboDay.Text.ToString()),
+                                            int.Parse(comboHour.Text.ToString()),
+                                            int.Parse(comboMin.Text.ToString()),
+                                            int.Parse(comboSec.Text.ToString()));
+
+            body.get_planet_state(body_data.orbit, t, ref body_state);
+
+            labelTrueAnomaly.Text = Math.Round(body_state.theta / CPlanet.RAD, 2).ToString() + " deg";
+            labelRadiusVector.Text = Math.Round(body_state.r, 0).ToString() + " m";
+            labelAltitude.Text = Math.Round(body_state.h, 0).ToString() + " m";
+            labelEccAnomaly.Text = Math.Round(body_state.E, 4).ToString() + " rad";
+            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 2).ToString() + " deg";
+            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 2).ToString() + " deg";
+        }
+
+        private void BodiesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BodiesList.Text = BodiesList.SelectedItem.ToString();           
         }
     }   
 }
