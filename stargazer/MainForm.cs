@@ -232,13 +232,123 @@ namespace stargazer
             labelRadiusVector.Text = Math.Round(body_state.r, 0).ToString() + " m";
             labelAltitude.Text = Math.Round(body_state.h, 0).ToString() + " m";
             labelEccAnomaly.Text = Math.Round(body_state.E, 4).ToString() + " rad";
-            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 2).ToString() + " deg";
-            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 2).ToString() + " deg";
+            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 3).ToString() + " deg";
+            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 3).ToString() + " deg";
+
+            DrawPlanet(panelBodyPos, body_data, body_state);
         }
 
+
+
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
         private void BodiesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             BodiesList.Text = BodiesList.SelectedItem.ToString();           
+        }
+
+
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
+        private void DrawPlanet(Panel panel, TBodyData body_data, TBodyState body_state)
+        {
+            int width = panel.Width;
+            int height = panel.Height;
+
+            float x0 = width / 2;
+            float y0 = height / 2;
+
+            float x = 0;
+            float y = 0;
+
+            Graphics graph = panel.CreateGraphics();
+
+            graph.Clear(Color.Black);
+
+            Pen myPen = new Pen(Color.LightGray, 2.0F);           
+
+            // Draw trajectory
+            double scale = 0;
+            int Delta = 25;
+            float delta = 5.0F;
+
+            double ra = body_data.orbit.a / (1 - body_data.orbit.e); 
+
+            if (width > height)
+                scale = (height / 2 - Delta) / ra;
+            else
+                scale = (width / 2 - Delta) / ra;
+
+            double V = 0;
+            double dV = 5.0;
+
+            Vector3D pos = new Vector3D();
+            CPlanet body = new CPlanet();            
+
+            while (V <= 360.0)
+            {
+                body.get_coords(body_data.orbit, V*CPlanet.RAD, ref pos);
+
+                float x1 = x0 + Convert.ToSingle(scale * pos.x);
+                float y1 = y0 - Convert.ToSingle(scale * pos.y);
+
+                V += dV;
+
+                body.get_coords(body_data.orbit, V*CPlanet.RAD, ref pos);
+
+                float x2 = x0 + Convert.ToSingle(scale * pos.x);
+                float y2 = y0 - Convert.ToSingle(scale * pos.y);
+
+                if (pos.z >= 0) 
+                    myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                else
+                    myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+                graph.DrawLine(myPen, x1, y1, x2, y2);
+            }
+
+            // Draw planet position
+            body.get_coords(body_data.orbit, body_state.theta, ref pos);
+
+            x = x0 + Convert.ToSingle(scale * pos.x);
+            y = y0 - Convert.ToSingle(scale * pos.y);
+
+            myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+
+            graph.DrawLine(myPen, x0, y0, x, y);
+
+            // Title
+            SolidBrush brush = new SolidBrush(Color.LightGray);
+            Font font = new Font("Courier New", 10);
+            string title = body_data.name + " position UT: " + 
+                           textYear.Text + "y " + 
+                           comboDay.Text + "d " + 
+                           comboHour.Text + "h " +
+                           comboMin.Text + "m " + 
+                           comboSec.Text + "s";
+            graph.DrawString(title, font, brush, delta, delta);
+            graph.DrawString("Lat. " + Math.Round(body_state.beta / CPlanet.RAD, 3).ToString(), font, brush, delta, delta + font.Height);
+            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CPlanet.RAD, 3).ToString(), font, brush, delta, delta + 2*font.Height); 
+            
+            // Draw Ref Body
+            myPen.Color = Color.Yellow;
+
+            float sunRadius = 10.0F;
+
+            brush.Color = Color.Yellow;
+
+            graph.FillEllipse(brush, x0 - sunRadius, y0 - sunRadius, 2*sunRadius, 2*sunRadius);
+
+            // Draw Planet
+            float radius = 5.0F;
+
+            brush.Color = Color.Green;
+
+            graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
         }
     }   
 }

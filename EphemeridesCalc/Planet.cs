@@ -5,6 +5,12 @@ using System.Text;
 
 namespace EphemeridesCalc
 {
+    public struct TEclipticCoords
+    {
+        public double beta;
+        public double lambda;
+    }
+    
     public class CPlanet
     {
         private const double KEPLER_EQ_ERROR = 1e-11;
@@ -46,19 +52,52 @@ namespace EphemeridesCalc
             planet_state.h = planet_state.r - orbit_data.RefRadius;
 
             // Ecliptic coordinates calculation
-            planet_state.beta = Math.Asin(Math.Sin(orbit_data.i * RAD) * Math.Sin(orbit_data.omega*RAD + planet_state.theta));
+            TEclipticCoords ecoords = new TEclipticCoords();
 
+            get_ecliptic_coords(orbit_data, planet_state.theta, ref ecoords);
+
+            planet_state.beta = ecoords.beta;
+            planet_state.lambda = ecoords.lambda;            
+        }
+
+
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
+        public void get_ecliptic_coords(TOrbitData orbit_data, double theta, ref TEclipticCoords ecoords)
+        {
             double Omega = orbit_data.Omega * RAD;
             double omega = orbit_data.omega * RAD;
             double i = orbit_data.i * RAD;
-            double V = planet_state.theta;
+            double V = theta;
 
-            double sin_lambda = (sin(Omega) * cos(V + omega) + cos(Omega) * cos(i) * sin(V + omega)) / cos(planet_state.beta);
-            double cos_lambda = (cos(Omega) * cos(V + omega) - sin(Omega) * cos(i) * sin(V + omega)) / cos(planet_state.beta);
+            ecoords.beta = Math.Asin(sin(i)*sin(omega + V));
 
-            planet_state.lambda = get_angle(sin_lambda, cos_lambda);
+            double sin_lambda = (sin(Omega) * cos(V + omega) + cos(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
+            double cos_lambda = (cos(Omega) * cos(V + omega) - sin(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
+
+            ecoords.lambda = get_angle(sin_lambda, cos_lambda);
         }
 
+
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
+        public void get_coords(TOrbitData orbit_data, double theta, ref Vector3D coords)
+        {
+            double p = orbit_data.a * (1 - orbit_data.e * orbit_data.e);
+            double r = p / (1 + orbit_data.e * cos(theta));
+
+            TEclipticCoords ecoords = new TEclipticCoords();
+
+            get_ecliptic_coords(orbit_data, theta, ref ecoords);
+
+            coords.x = r * cos(ecoords.beta) * cos(ecoords.lambda);
+            coords.y = r * cos(ecoords.beta) * sin(ecoords.lambda);
+            coords.z = r * sin(ecoords.beta);
+        }
 
 
         //-----------------------------------------------------------

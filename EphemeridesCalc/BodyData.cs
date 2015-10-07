@@ -18,7 +18,7 @@ public struct TBodyState
     public double r;        // Radius-vector
     public double h;        // Altitude
     public double beta;     // Ecliptic latitude
-    public double lambda;   // Ecliptic longtitude
+    public double lambda;   // Ecliptic longtitude    
 }
 
 public struct TBodyData
@@ -31,4 +31,11 @@ public struct TBodyData
     public double radius;
     public double gravParameter;
     public double rotationPeriod;
+}
+
+public struct Vector3D
+{
+    public double x;
+    public double y;
+    public double z;
 }

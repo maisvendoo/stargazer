@@ -63,9 +63,11 @@
             this.labelLat = new System.Windows.Forms.Label();
             this.labelLon = new System.Windows.Forms.Label();
             this.panelBodyPos = new System.Windows.Forms.Panel();
+            this.labelDarwTitle = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.groupCalcResults.SuspendLayout();
+            this.panelBodyPos.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -410,10 +412,20 @@
             // 
             // panelBodyPos
             // 
+            this.panelBodyPos.Controls.Add(this.labelDarwTitle);
             this.panelBodyPos.Location = new System.Drawing.Point(335, 142);
             this.panelBodyPos.Name = "panelBodyPos";
             this.panelBodyPos.Size = new System.Drawing.Size(437, 357);
             this.panelBodyPos.TabIndex = 16;
+            // 
+            // labelDarwTitle
+            // 
+            this.labelDarwTitle.AutoSize = true;
+            this.labelDarwTitle.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDarwTitle.Location = new System.Drawing.Point(5, 5);
+            this.labelDarwTitle.Name = "labelDarwTitle";
+            this.labelDarwTitle.Size = new System.Drawing.Size(0, 15);
+            this.labelDarwTitle.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -433,6 +445,8 @@
             this.panelEphemeride.PerformLayout();
             this.groupCalcResults.ResumeLayout(false);
             this.groupCalcResults.PerformLayout();
+            this.panelBodyPos.ResumeLayout(false);
+            this.panelBodyPos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,6 +489,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panelBodyPos;
+        private System.Windows.Forms.Label labelDarwTitle;
 
     }
 }
