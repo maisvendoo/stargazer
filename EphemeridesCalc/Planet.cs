@@ -13,19 +13,17 @@ namespace EphemeridesCalc
         private const double RAD = Math.PI / 180.0;
 
         private const int NEWTON = 0;
-        private const int SIMPLE_ITER = 1;
-
-        private int kepler_solver_method;
+        private const int SIMPLE_ITER = 1;        
         
         //-----------------------------------------------------------
         //  Planet state calculation (position and velocity)
         //-----------------------------------------------------------
         public void get_planet_state(TOrbitData orbit_data, 
                                      double t,
-                                     ref TPlanetState planet_state)
+                                     ref TBodyState planet_state)
         {
             // Middle anomaly calculation
-            double n = Math.Sqrt(muK / orbit_data.a) / orbit_data.a;
+            double n = 2 * Math.PI / orbit_data.period;
 
             double M = n * (t - orbit_data.t0) + orbit_data.M0;
             

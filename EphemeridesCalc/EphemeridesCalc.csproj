@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Calendar.cs" />
     <Compile Include="Planet.cs" />
-    <Compile Include="PlanetData.cs" />
+    <Compile Include="BodyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

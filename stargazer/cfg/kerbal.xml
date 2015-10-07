@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <KerbalSystem>
-  <Sun>
+  <Body>
+    <name>Sun</name>
     <id>0</id>
     <RefBody>Sun</RefBody>
     <mass>1.75656696858329E+28</mass>
     <gravParameter>1.17233279483249E+18</gravParameter>
     <radius>261600000</radius>
     <rotationPeriod>432000</rotationPeriod>
-  </Sun>
-  <Kerbin>
+  </Body>
+  <Body>
+    <name>Kerbin</name>
     <id>1</id>
     <RefBody>Sun</RefBody>
     <mass>5.29157926281091E+22</mass>
@@ -24,8 +26,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Kerbin>
-  <Mun>
+  </Body>
+  <Body>
+    <name>Mun</name>
     <id>2</id>
     <RefBody>Kerbin</RefBody>
     <mass>9.76002360215474E+20</mass>
@@ -41,8 +44,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Mun>
-  <Minmus>
+  </Body>
+  <Body>
+    <name>Minmus</name>
     <id>3</id>
     <RefBody>Kerbin</RefBody>
     <mass>2.64578967083079E+19</mass>
@@ -58,8 +62,9 @@
       <argPe>38</argPe>
       <LAN>78</LAN>
     </Orbit>
-  </Minmus>
-  <Moho>
+  </Body>
+  <Body>
+    <name>Moho</name>
     <id>4</id>
     <RefBody>Sun</RefBody>
     <mass>2.52636168196748E+21</mass>
@@ -75,8 +80,9 @@
       <argPe>15</argPe>
       <LAN>70</LAN>
     </Orbit>
-  </Moho>
-  <Eve>
+  </Body>
+  <Body>
+    <name>Eve</name>
     <id>5</id>
     <RefBody>Sun</RefBody>
     <mass>1.22441268043315E+23</mass>
@@ -92,8 +98,9 @@
       <argPe>0</argPe>
       <LAN>15</LAN>
     </Orbit>
-  </Eve>
-  <Duna>
+  </Body>
+  <Body>
+    <name>Duna</name>
     <id>6</id>
     <RefBody>Sun</RefBody>
     <mass>4.51548115036107E+21</mass>
@@ -109,8 +116,9 @@
       <argPe>0</argPe>
       <LAN>135.5</LAN>
     </Orbit>
-  </Duna>
-  <Ike>
+  </Body>
+  <Body>
+    <name>Ike</name>
     <id>7</id>
     <RefBody>Duna</RefBody>
     <mass>2.78219487161283E+20</mass>
@@ -126,8 +134,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Ike>
-  <Jool>
+  </Body>
+  <Body>
+    <name>Jool</name>
     <id>8</id>
     <RefBody>Sun</RefBody>
     <mass>4.23326347332927E+24</mass>
@@ -143,8 +152,9 @@
       <argPe>0</argPe>
       <LAN>52</LAN>
     </Orbit>
-  </Jool>
-  <Laythe>
+  </Body>
+  <Body>
+    <name>Laythe</name>
     <id>9</id>
     <RefBody>Jool</RefBody>
     <mass>2.9397663009231E+22</mass>
@@ -160,8 +170,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Laythe>
-  <Vall>
+  </Body>
+  <Body>
+    <name>Vall</name>
     <id>10</id>
     <RefBody>Jool</RefBody>
     <mass>3.10880280901635E+21</mass>
@@ -177,8 +188,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Vall>
-  <Bop>
+  </Body>
+  <Body>
+    <name>Bop</name>
     <id>11</id>
     <RefBody>Jool</RefBody>
     <mass>3.72615364760999E+19</mass>
@@ -194,8 +206,9 @@
       <argPe>25</argPe>
       <LAN>10</LAN>
     </Orbit>
-  </Bop>
-  <Tylo>
+  </Body>
+  <Body>
+    <name>Tylo</name>
     <id>12</id>
     <RefBody>Jool</RefBody>
     <mass>4.23326347332927E+22</mass>
@@ -211,8 +224,9 @@
       <argPe>0</argPe>
       <LAN>0</LAN>
     </Orbit>
-  </Tylo>
-  <Gilly>
+  </Body>
+  <Body>
+    <name>Gilly</name>
     <id>13</id>
     <RefBody>Eve</RefBody>
     <mass>1.24205121587E+17</mass>
@@ -228,8 +242,9 @@
       <argPe>10</argPe>
       <LAN>80</LAN>
     </Orbit>
-  </Gilly>
-  <Pol>
+  </Body>
+  <Body>
+    <name>Pol</name>
     <id>14</id>
     <RefBody>Jool</RefBody>
     <mass>1.08136362001798E+19</mass>
@@ -245,8 +260,9 @@
       <argPe>15</argPe>
       <LAN>2</LAN>
     </Orbit>
-  </Pol>
-  <Dres>
+  </Body>
+  <Body>
+    <name>Dres</name>
     <id>15</id>
     <RefBody>Sun</RefBody>
     <mass>3.21913224453102E+20</mass>
@@ -262,8 +278,9 @@
       <argPe>90</argPe>
       <LAN>280</LAN>
     </Orbit>
-  </Dres>
-  <Eeloo>
+  </Body>
+  <Body>
+    <name>Eeloo</name>
     <id>16</id>
     <RefBody>Sun</RefBody>
     <mass>1.11493578853835E+21</mass>
@@ -279,5 +296,5 @@
       <argPe>260</argPe>
       <LAN>50</LAN>
     </Orbit>
-  </Eeloo>
+  </Body>
 </KerbalSystem>
