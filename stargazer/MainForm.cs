@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEBUG
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ using System.Drawing;
 
 using EphemeridesCalc;
 
+
 namespace stargazer
 {
     public partial class MainForm : Form
@@ -22,7 +25,7 @@ namespace stargazer
 
             bodies = new List<TBodyData>();
 
-            ReadSystemConfig("../../cfg/kerbal.xml");
+            ReadSystemConfig("../cfg/kerbal.xml");
 
             // Bodies list init
             for (int i = 0; i < bodies.Count; i++)
