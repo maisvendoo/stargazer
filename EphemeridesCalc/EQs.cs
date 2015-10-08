@@ -10,7 +10,7 @@ namespace EphemeridesCalc
         public delegate double[] FuncDelegate(double[] x);
         public delegate Matrix JacobyDelegate(double[] x);
 
-        private const int NEWTON_ITER_MAX = 1000;
+        private const int NEWTON_ITER_MAX = 100000;
 
         //---------------------------------------------------------------------
         //      Gauss method solver
@@ -90,6 +90,10 @@ namespace EphemeridesCalc
         }
 
 
+
+        //---------------------------------------------------------------------
+        //      Check Newton solver error
+        //---------------------------------------------------------------------
         private bool is_error(double[] dx, double[] error)
         {
             bool err = false;

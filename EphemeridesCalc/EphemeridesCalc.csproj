@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Calendar.cs" />
     <Compile Include="EQs.cs" />
+    <Compile Include="Lambert.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Body.cs" />
     <Compile Include="BodyData.cs" />

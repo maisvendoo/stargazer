@@ -63,21 +63,35 @@ namespace stargazer
 
             comboSec.SelectedIndex = 0; 
           
-            double[] x = new double[2]{0.1, 0.1};
+            /*double[] x = new double[2]{0.1, 0.1};
             double eps = 1e-10;
             double[] err = new double[2] { eps, eps };
 
             EQs solver = new EQs();
 
-            bool flag = solver.newton_solver(f, J, err, ref x);
+            bool flag = solver.newton_solver(f, J, err, ref x);*/
+
+            Vector3D x1 = new Vector3D(-16686440278.257832,
+                                       10455549272.727764,
+                                       438292.1620045379);
+
+            Vector3D x2 = new Vector3D(-19329921828.521965,
+                                       -5780498744.688673,
+                                       18505520.820509948);
+
+            double dt = CCalendar.Hours * CCalendar.Mins * CCalendar.Secs * 100;
+
+            Lambert lambert = new Lambert();
+
+            lambert.get_orbit(x1, x2, dt, bodies[0].gravParameter);
         }
 
-        private double[] f(double[] x)
+        /*private double[] f(double[] x)
         {
             double[] y = new double[2];
 
-            y[0] = x[0]*x[0] + x[1]*x[1] - 29;
-            y[1] = Math.Pow(x[0], 3) + x[1] - 13;
+            y[0] = x[0]*x[0] + x[1]*x[1] - 13;
+            y[1] = Math.Pow(x[0], 3) + x[1] - 11;
 
             return y;
         }
@@ -90,7 +104,7 @@ namespace stargazer
             j.M[1, 0] = 3 * x[0] * x[0]; j.M[1, 1] = 1;
 
             return j;
-        }
+        }*/
 
         private List<TBodyData> bodies;
         private CCalendar calendar;

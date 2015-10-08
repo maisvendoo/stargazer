@@ -27,7 +27,29 @@ public struct Vector3D
         return result;
     }
 
+    public static Vector3D operator +(Vector3D a, Vector3D b)
+    {
+        Vector3D result = new Vector3D(0, 0, 0);
+
+        result.x = a.x + b.x;
+        result.y = a.y + b.y;
+        result.z = a.z + b.z;
+
+        return result;
+    }
+
     public Vector3D Sub(Vector3D a, Vector3D b)
+    {
+        Vector3D result = new Vector3D(0, 0, 0);
+
+        result.x = a.x - b.x;
+        result.y = a.y - b.y;
+        result.z = a.z - b.z;
+
+        return result;
+    }
+
+    public static Vector3D operator -(Vector3D a, Vector3D b)
     {
         Vector3D result = new Vector3D(0, 0, 0);
 
@@ -92,6 +114,17 @@ public struct Vector3D
     }
 
     public Vector3D CrossProduct(Vector3D a, Vector3D b)
+    {
+        Vector3D c = new Vector3D(0, 0, 0);
+
+        c.x = a.y * b.z - a.z * b.y;
+        c.y = a.z * b.x - a.x * b.z;
+        c.z = a.x * b.y - a.y * b.z;
+
+        return c;
+    }
+
+    public static Vector3D operator &(Vector3D a, Vector3D b)
     {
         Vector3D c = new Vector3D(0, 0, 0);
 
