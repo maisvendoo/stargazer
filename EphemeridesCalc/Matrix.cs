@@ -1,41 +1,66 @@
-﻿public class SquareMatrix
+﻿public class Matrix
 {
-    public double[,] create(int n)
+    public double[,] M;
+    
+    public int rows;
+    public int columns;
+
+    //-------------------------------------------------------------------------
+    //      Matrix constructor
+    //-------------------------------------------------------------------------
+    public Matrix(int n, int m)
     {
-        double[,] m = new double[n, n];
+        M = new double[n, m];
 
-        for (int i = 0; i < n; i++)
-            for (int j = 0; i < n; j++)
-                m[i, j] = 0;
+        rows = n;
+        columns = m;
 
-        return m;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                M[i, j] = 0;
+            }
+        }
     }
 
-    public double[,] Add(double[,] a, double[,] b)
+    public static Matrix operator +(Matrix a, Matrix b)
     {
-        if (a.Rank != b.Rank)
-            return null;
+        Matrix c = new Matrix(a.rows, a.columns);
 
-        double[,] result = new double[a.Rank,a.Rank];
+        for (int i = 0; i < a.rows; i++)
+        {
+            for (int j = 0; j < a.columns; j++)
+                c.M[i, j]= a.M[i, j] + b.M[i, j];
+        }
 
-        for (int i = 0; i < a.Rank; i++)
-            for (int j = 0; i < a.Rank; j++)
-                result[i, j] = a[i,j] + b[i,j];
- 
-        return result;
+        return c;
     }
 
-    public double[,] Sub(double[,] a, double[,] b)
+    public static Matrix operator -(Matrix a, Matrix b)
     {
-        if (a.Rank != b.Rank)
-            return null;
+        Matrix c = new Matrix(a.rows, a.columns);
 
-        double[,] result = new double[a.Rank, a.Rank];
+        for (int i = 0; i < a.rows; i++)
+        {
+            for (int j = 0; j < a.columns; j++)
+                c.M[i, j] = a.M[i, j] - b.M[i, j];
+        }
 
-        for (int i = 0; i < a.Rank; i++)
-            for (int j = 0; i < a.Rank; j++)
-                result[i, j] = a[i, j] - b[i, j];
+        return c;
+    }
 
-        return result;
+
+    public static Matrix operator *(Matrix a, double lambda)
+    {
+        Matrix c = new Matrix(a.rows, a.columns);
+
+        for (int i = 0; i < a.rows; i++)
+        {
+            for (int j = 0; j < a.columns; j++)
+                c.M[i, j] = a.M[i, j]*lambda;
+        }
+
+        return c;
     }
 }

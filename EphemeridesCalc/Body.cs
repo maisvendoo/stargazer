@@ -11,7 +11,7 @@ namespace EphemeridesCalc
         public double lambda;
     }
     
-    public class CPlanet
+    public class CBody
     {
         private const double KEPLER_EQ_ERROR = 1e-11;
         
@@ -24,9 +24,9 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //  Planet state calculation (position and velocity)
         //-----------------------------------------------------------
-        public void get_planet_state(TOrbitData orbit_data, 
+        public void get_body_state(TOrbitData orbit_data, 
                                      double t,
-                                     ref TBodyState planet_state)
+                                     ref TBodyState body_state)
         {
             // Middle anomaly calculation
             double n = 2 * Math.PI / orbit_data.period;
@@ -36,7 +36,7 @@ namespace EphemeridesCalc
             // Eccentric anomaly calculation (Kepler equation solve)
             double E = get_eccentric_anomaly(M, orbit_data.e, NEWTON);
 
-            planet_state.E = Trunc2PiN(E);
+            body_state.E = Trunc2PiN(E);
 
             // Half of true anomaly tangens calculation
             double tgV2 = Math.Tan(E / 2)*Math.Sqrt((1 + orbit_data.e)/(1 - orbit_data.e));
@@ -45,19 +45,19 @@ namespace EphemeridesCalc
             double sin_V = Math.Sqrt(1 - orbit_data.e * orbit_data.e) * Math.Sin(E) / (1 - orbit_data.e * Math.Cos(E));
             double cos_V = (Math.Cos(E) - orbit_data.e) / (1 - orbit_data.e * Math.Cos(E));
 
-            planet_state.theta = get_angle(sin_V, cos_V);
+            body_state.theta = get_angle(sin_V, cos_V);
 
             // Planet radius-vector lenght calculation
-            planet_state.r = orbit_data.a * (1 - orbit_data.e * Math.Cos(E));
-            planet_state.h = planet_state.r - orbit_data.RefRadius;
+            body_state.r = orbit_data.a * (1 - orbit_data.e * Math.Cos(E));
+            body_state.h = body_state.r - orbit_data.RefRadius;
 
             // Ecliptic coordinates calculation
             TEclipticCoords ecoords = new TEclipticCoords();
 
-            get_ecliptic_coords(orbit_data, planet_state.theta, ref ecoords);
+            get_ecliptic_coords(orbit_data, body_state.theta, ref ecoords);
 
-            planet_state.beta = ecoords.beta;
-            planet_state.lambda = ecoords.lambda;            
+            body_state.beta = ecoords.beta;
+            body_state.lambda = ecoords.lambda;            
         }
 
 

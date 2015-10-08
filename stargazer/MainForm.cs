@@ -61,7 +61,35 @@ namespace stargazer
                 comboSec.Items.Add(i.ToString());
             }
 
-            comboSec.SelectedIndex = 0;
+            comboSec.SelectedIndex = 0; 
+          
+            double[] x = new double[2]{0.1, 0.1};
+            double eps = 1e-10;
+            double[] err = new double[2] { eps, eps };
+
+            EQs solver = new EQs();
+
+            bool flag = solver.newton_solver(f, J, err, ref x);
+        }
+
+        private double[] f(double[] x)
+        {
+            double[] y = new double[2];
+
+            y[0] = x[0]*x[0] + x[1]*x[1] - 29;
+            y[1] = Math.Pow(x[0], 3) + x[1] - 13;
+
+            return y;
+        }
+
+        private Matrix J(double[] x)
+        {
+            Matrix j = new Matrix(2, 2);
+
+            j.M[0, 0] = 2 * x[0]; j.M[0, 1] = 2 * x[1];
+            j.M[1, 0] = 3 * x[0] * x[0]; j.M[1, 1] = 1;
+
+            return j;
         }
 
         private List<TBodyData> bodies;
@@ -218,7 +246,7 @@ namespace stargazer
             body_data.orbit.RefRadius = ref_body_data.radius;
 
             TBodyState body_state = new TBodyState();
-            CPlanet body = new CPlanet();
+            CBody body = new CBody();
 
             double t = calendar.date_to_sec(int.Parse(textYear.Text.ToString()),
                                             int.Parse(comboDay.Text.ToString()),
@@ -226,14 +254,14 @@ namespace stargazer
                                             int.Parse(comboMin.Text.ToString()),
                                             int.Parse(comboSec.Text.ToString()));
 
-            body.get_planet_state(body_data.orbit, t, ref body_state);
+            body.get_body_state(body_data.orbit, t, ref body_state);
 
-            labelTrueAnomaly.Text = Math.Round(body_state.theta / CPlanet.RAD, 4).ToString() + " deg";
+            labelTrueAnomaly.Text = Math.Round(body_state.theta / CBody.RAD, 4).ToString() + " deg";
             labelRadiusVector.Text = Math.Round(body_state.r, 0).ToString() + " m";
             labelAltitude.Text = Math.Round(body_state.h, 0).ToString() + " m";
             labelEccAnomaly.Text = Math.Round(body_state.E, 4).ToString() + " rad";
-            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 4).ToString() + " deg";
-            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 4).ToString() + " deg";
+            labelLat.Text = Math.Round(body_state.beta / CBody.RAD, 4).ToString() + " deg";
+            labelLon.Text = Math.Round(body_state.lambda / CBody.RAD, 4).ToString() + " deg";
 
             DrawPlanet(panelBodyPos, body_data, body_state);
         }
@@ -287,18 +315,18 @@ namespace stargazer
             double dV = 5.0;
 
             Vector3D pos = new Vector3D();
-            CPlanet body = new CPlanet();            
+            CBody body = new CBody();            
 
             while (V <= 360.0)
             {
-                body.get_coords(body_data.orbit, V*CPlanet.RAD, ref pos);
+                body.get_coords(body_data.orbit, V*CBody.RAD, ref pos);
 
                 float x1 = x0 + Convert.ToSingle(scale * pos.x);
                 float y1 = y0 - Convert.ToSingle(scale * pos.y);
 
                 V += dV;
 
-                body.get_coords(body_data.orbit, V*CPlanet.RAD, ref pos);
+                body.get_coords(body_data.orbit, V*CBody.RAD, ref pos);
 
                 float x2 = x0 + Convert.ToSingle(scale * pos.x);
                 float y2 = y0 - Convert.ToSingle(scale * pos.y);
@@ -331,8 +359,8 @@ namespace stargazer
                            comboMin.Text + "m " + 
                            comboSec.Text + "s";
             graph.DrawString(title, font, brush, delta, delta);
-            graph.DrawString("Lat. " + Math.Round(body_state.beta / CPlanet.RAD, 4).ToString(), font, brush, delta, delta + font.Height);
-            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CPlanet.RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
+            graph.DrawString("Lat. " + Math.Round(body_state.beta / CBody.RAD, 4).ToString(), font, brush, delta, delta + font.Height);
+            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CBody.RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
             
             // Draw Ref Body
             myPen.Color = Color.Yellow;

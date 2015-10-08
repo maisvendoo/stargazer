@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
+    <Compile Include="EQs.cs" />
     <Compile Include="Matrix.cs" />
-    <Compile Include="Planet.cs" />
+    <Compile Include="Body.cs" />
     <Compile Include="BodyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector3D.cs" />
