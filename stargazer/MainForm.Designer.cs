@@ -35,6 +35,21 @@
             this.itemEphemeride = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
+            this.panelBodyPos = new System.Windows.Forms.Panel();
+            this.labelDarwTitle = new System.Windows.Forms.Label();
+            this.groupCalcResults = new System.Windows.Forms.GroupBox();
+            this.labelLon = new System.Windows.Forms.Label();
+            this.labelLat = new System.Windows.Forms.Label();
+            this.labelEccAnomaly = new System.Windows.Forms.Label();
+            this.labelAltitude = new System.Windows.Forms.Label();
+            this.labelRadiusVector = new System.Windows.Forms.Label();
+            this.labelTrueAnomaly = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.buttonEphCalc = new System.Windows.Forms.Button();
             this.textYear = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,25 +64,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.groupCalcResults = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.labelTrueAnomaly = new System.Windows.Forms.Label();
-            this.labelRadiusVector = new System.Windows.Forms.Label();
-            this.labelAltitude = new System.Windows.Forms.Label();
-            this.labelEccAnomaly = new System.Windows.Forms.Label();
-            this.labelLat = new System.Windows.Forms.Label();
-            this.labelLon = new System.Windows.Forms.Label();
-            this.panelBodyPos = new System.Windows.Forms.Panel();
-            this.labelDarwTitle = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
-            this.groupCalcResults.SuspendLayout();
             this.panelBodyPos.SuspendLayout();
+            this.groupCalcResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -141,6 +141,165 @@
             this.panelEphemeride.Name = "panelEphemeride";
             this.panelEphemeride.Size = new System.Drawing.Size(784, 516);
             this.panelEphemeride.TabIndex = 2;
+            // 
+            // panelBodyPos
+            // 
+            this.panelBodyPos.Controls.Add(this.labelDarwTitle);
+            this.panelBodyPos.Location = new System.Drawing.Point(335, 142);
+            this.panelBodyPos.Name = "panelBodyPos";
+            this.panelBodyPos.Size = new System.Drawing.Size(437, 357);
+            this.panelBodyPos.TabIndex = 16;
+            // 
+            // labelDarwTitle
+            // 
+            this.labelDarwTitle.AutoSize = true;
+            this.labelDarwTitle.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDarwTitle.Location = new System.Drawing.Point(5, 5);
+            this.labelDarwTitle.Name = "labelDarwTitle";
+            this.labelDarwTitle.Size = new System.Drawing.Size(0, 15);
+            this.labelDarwTitle.TabIndex = 0;
+            // 
+            // groupCalcResults
+            // 
+            this.groupCalcResults.Controls.Add(this.labelLon);
+            this.groupCalcResults.Controls.Add(this.labelLat);
+            this.groupCalcResults.Controls.Add(this.labelEccAnomaly);
+            this.groupCalcResults.Controls.Add(this.labelAltitude);
+            this.groupCalcResults.Controls.Add(this.labelRadiusVector);
+            this.groupCalcResults.Controls.Add(this.labelTrueAnomaly);
+            this.groupCalcResults.Controls.Add(this.label12);
+            this.groupCalcResults.Controls.Add(this.label11);
+            this.groupCalcResults.Controls.Add(this.label10);
+            this.groupCalcResults.Controls.Add(this.label9);
+            this.groupCalcResults.Controls.Add(this.label8);
+            this.groupCalcResults.Controls.Add(this.label7);
+            this.groupCalcResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupCalcResults.Location = new System.Drawing.Point(12, 132);
+            this.groupCalcResults.Name = "groupCalcResults";
+            this.groupCalcResults.Size = new System.Drawing.Size(310, 367);
+            this.groupCalcResults.TabIndex = 15;
+            this.groupCalcResults.TabStop = false;
+            this.groupCalcResults.Text = "Body position";
+            // 
+            // labelLon
+            // 
+            this.labelLon.AutoSize = true;
+            this.labelLon.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLon.Location = new System.Drawing.Point(190, 269);
+            this.labelLon.Name = "labelLon";
+            this.labelLon.Size = new System.Drawing.Size(16, 16);
+            this.labelLon.TabIndex = 11;
+            this.labelLon.Text = "0";
+            // 
+            // labelLat
+            // 
+            this.labelLat.AutoSize = true;
+            this.labelLat.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLat.Location = new System.Drawing.Point(190, 230);
+            this.labelLat.Name = "labelLat";
+            this.labelLat.Size = new System.Drawing.Size(16, 16);
+            this.labelLat.TabIndex = 10;
+            this.labelLat.Text = "0";
+            // 
+            // labelEccAnomaly
+            // 
+            this.labelEccAnomaly.AutoSize = true;
+            this.labelEccAnomaly.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEccAnomaly.Location = new System.Drawing.Point(190, 177);
+            this.labelEccAnomaly.Name = "labelEccAnomaly";
+            this.labelEccAnomaly.Size = new System.Drawing.Size(16, 16);
+            this.labelEccAnomaly.TabIndex = 9;
+            this.labelEccAnomaly.Text = "0";
+            // 
+            // labelAltitude
+            // 
+            this.labelAltitude.AutoSize = true;
+            this.labelAltitude.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAltitude.Location = new System.Drawing.Point(190, 141);
+            this.labelAltitude.Name = "labelAltitude";
+            this.labelAltitude.Size = new System.Drawing.Size(16, 16);
+            this.labelAltitude.TabIndex = 8;
+            this.labelAltitude.Text = "0";
+            // 
+            // labelRadiusVector
+            // 
+            this.labelRadiusVector.AutoSize = true;
+            this.labelRadiusVector.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRadiusVector.Location = new System.Drawing.Point(190, 85);
+            this.labelRadiusVector.Name = "labelRadiusVector";
+            this.labelRadiusVector.Size = new System.Drawing.Size(16, 16);
+            this.labelRadiusVector.TabIndex = 7;
+            this.labelRadiusVector.Text = "0";
+            // 
+            // labelTrueAnomaly
+            // 
+            this.labelTrueAnomaly.AutoSize = true;
+            this.labelTrueAnomaly.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTrueAnomaly.Location = new System.Drawing.Point(190, 44);
+            this.labelTrueAnomaly.Name = "labelTrueAnomaly";
+            this.labelTrueAnomaly.Size = new System.Drawing.Size(16, 16);
+            this.labelTrueAnomaly.TabIndex = 6;
+            this.labelTrueAnomaly.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(21, 269);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(168, 16);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Ecliptic longtitude:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(21, 230);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(152, 16);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Ecliptic latitude:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(21, 141);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 16);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Altitude:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(21, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 16);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Radius-vector:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(21, 177);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(152, 16);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Eccentric anomaly:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(21, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 16);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "True anomaly:";
             // 
             // buttonEphCalc
             // 
@@ -268,165 +427,6 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
-            // groupCalcResults
-            // 
-            this.groupCalcResults.Controls.Add(this.labelLon);
-            this.groupCalcResults.Controls.Add(this.labelLat);
-            this.groupCalcResults.Controls.Add(this.labelEccAnomaly);
-            this.groupCalcResults.Controls.Add(this.labelAltitude);
-            this.groupCalcResults.Controls.Add(this.labelRadiusVector);
-            this.groupCalcResults.Controls.Add(this.labelTrueAnomaly);
-            this.groupCalcResults.Controls.Add(this.label12);
-            this.groupCalcResults.Controls.Add(this.label11);
-            this.groupCalcResults.Controls.Add(this.label10);
-            this.groupCalcResults.Controls.Add(this.label9);
-            this.groupCalcResults.Controls.Add(this.label8);
-            this.groupCalcResults.Controls.Add(this.label7);
-            this.groupCalcResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupCalcResults.Location = new System.Drawing.Point(12, 132);
-            this.groupCalcResults.Name = "groupCalcResults";
-            this.groupCalcResults.Size = new System.Drawing.Size(310, 367);
-            this.groupCalcResults.TabIndex = 15;
-            this.groupCalcResults.TabStop = false;
-            this.groupCalcResults.Text = "Body position";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(21, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 16);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "True anomaly:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(21, 177);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 16);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Eccentric anomaly:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(21, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 16);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Radius-vector:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(21, 141);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 16);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Altitude:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(21, 230);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 16);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Ecliptic latitude:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(21, 269);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(115, 16);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Ecliptic longtitude:";
-            // 
-            // labelTrueAnomaly
-            // 
-            this.labelTrueAnomaly.AutoSize = true;
-            this.labelTrueAnomaly.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTrueAnomaly.Location = new System.Drawing.Point(156, 44);
-            this.labelTrueAnomaly.Name = "labelTrueAnomaly";
-            this.labelTrueAnomaly.Size = new System.Drawing.Size(15, 16);
-            this.labelTrueAnomaly.TabIndex = 6;
-            this.labelTrueAnomaly.Text = "0";
-            // 
-            // labelRadiusVector
-            // 
-            this.labelRadiusVector.AutoSize = true;
-            this.labelRadiusVector.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelRadiusVector.Location = new System.Drawing.Point(156, 85);
-            this.labelRadiusVector.Name = "labelRadiusVector";
-            this.labelRadiusVector.Size = new System.Drawing.Size(15, 16);
-            this.labelRadiusVector.TabIndex = 7;
-            this.labelRadiusVector.Text = "0";
-            // 
-            // labelAltitude
-            // 
-            this.labelAltitude.AutoSize = true;
-            this.labelAltitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAltitude.Location = new System.Drawing.Point(156, 141);
-            this.labelAltitude.Name = "labelAltitude";
-            this.labelAltitude.Size = new System.Drawing.Size(15, 16);
-            this.labelAltitude.TabIndex = 8;
-            this.labelAltitude.Text = "0";
-            // 
-            // labelEccAnomaly
-            // 
-            this.labelEccAnomaly.AutoSize = true;
-            this.labelEccAnomaly.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEccAnomaly.Location = new System.Drawing.Point(156, 177);
-            this.labelEccAnomaly.Name = "labelEccAnomaly";
-            this.labelEccAnomaly.Size = new System.Drawing.Size(15, 16);
-            this.labelEccAnomaly.TabIndex = 9;
-            this.labelEccAnomaly.Text = "0";
-            // 
-            // labelLat
-            // 
-            this.labelLat.AutoSize = true;
-            this.labelLat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLat.Location = new System.Drawing.Point(156, 230);
-            this.labelLat.Name = "labelLat";
-            this.labelLat.Size = new System.Drawing.Size(15, 16);
-            this.labelLat.TabIndex = 10;
-            this.labelLat.Text = "0";
-            // 
-            // labelLon
-            // 
-            this.labelLon.AutoSize = true;
-            this.labelLon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLon.Location = new System.Drawing.Point(156, 269);
-            this.labelLon.Name = "labelLon";
-            this.labelLon.Size = new System.Drawing.Size(15, 16);
-            this.labelLon.TabIndex = 11;
-            this.labelLon.Text = "0";
-            // 
-            // panelBodyPos
-            // 
-            this.panelBodyPos.Controls.Add(this.labelDarwTitle);
-            this.panelBodyPos.Location = new System.Drawing.Point(335, 142);
-            this.panelBodyPos.Name = "panelBodyPos";
-            this.panelBodyPos.Size = new System.Drawing.Size(437, 357);
-            this.panelBodyPos.TabIndex = 16;
-            // 
-            // labelDarwTitle
-            // 
-            this.labelDarwTitle.AutoSize = true;
-            this.labelDarwTitle.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDarwTitle.Location = new System.Drawing.Point(5, 5);
-            this.labelDarwTitle.Name = "labelDarwTitle";
-            this.labelDarwTitle.Size = new System.Drawing.Size(0, 15);
-            this.labelDarwTitle.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +435,7 @@
             this.Controls.Add(this.panelEphemeride);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.mainMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenu;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -443,10 +444,10 @@
             this.mainMenu.PerformLayout();
             this.panelEphemeride.ResumeLayout(false);
             this.panelEphemeride.PerformLayout();
-            this.groupCalcResults.ResumeLayout(false);
-            this.groupCalcResults.PerformLayout();
             this.panelBodyPos.ResumeLayout(false);
             this.panelBodyPos.PerformLayout();
+            this.groupCalcResults.ResumeLayout(false);
+            this.groupCalcResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

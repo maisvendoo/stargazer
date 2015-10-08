@@ -32,10 +32,3 @@ public struct TBodyData
     public double gravParameter;
     public double rotationPeriod;
 }
-
-public struct Vector3D
-{
-    public double x;
-    public double y;
-    public double z;
-}
