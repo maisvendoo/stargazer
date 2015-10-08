@@ -7,16 +7,16 @@ namespace EphemeridesCalc
 {
     public struct TEclipticCoords
     {
-        public double beta;
-        public double lambda;
+        public double  beta;
+        public double  lambda;
     }
     
     public class CBody
     {
-        private const double KEPLER_EQ_ERROR = 1e-11;
+        private const double  KEPLER_EQ_ERROR = 1e-11;
         
-        private const double muK = 1.1723328e18;
-        public const double RAD = Math.PI / 180.0;
+        private const double  muK = 1.1723328e18;
+        public const double  RAD = Math.PI / 180.0;
 
         private const int NEWTON = 0;
         private const int SIMPLE_ITER = 1;        
@@ -25,25 +25,25 @@ namespace EphemeridesCalc
         //  Planet state calculation (position and velocity)
         //-----------------------------------------------------------
         public void get_body_state(TOrbitData orbit_data, 
-                                     double t,
+                                     double  t,
                                      ref TBodyState body_state)
         {
             // Middle anomaly calculation
-            double n = 2 * Math.PI / orbit_data.period;
+            double  n = 2 * Math.PI / orbit_data.period;
 
-            double M = n * (t - orbit_data.t0) + orbit_data.M0;
+            double  M = n * (t - orbit_data.t0) + orbit_data.M0;
             
             // Eccentric anomaly calculation (Kepler equation solve)
-            double E = get_eccentric_anomaly(M, orbit_data.e, NEWTON);
+            double  E = get_eccentric_anomaly(M, orbit_data.e, NEWTON);
 
             body_state.E = Trunc2PiN(E);
 
             // Half of true anomaly tangens calculation
-            double tgV2 = Math.Tan(E / 2)*Math.Sqrt((1 + orbit_data.e)/(1 - orbit_data.e));
+            double  tgV2 = Math.Tan(E / 2)*Math.Sqrt((1 + orbit_data.e)/(1 - orbit_data.e));
 
             // True anomaly calculation
-            double sin_V = Math.Sqrt(1 - orbit_data.e * orbit_data.e) * Math.Sin(E) / (1 - orbit_data.e * Math.Cos(E));
-            double cos_V = (Math.Cos(E) - orbit_data.e) / (1 - orbit_data.e * Math.Cos(E));
+            double  sin_V = Math.Sqrt(1 - orbit_data.e * orbit_data.e) * Math.Sin(E) / (1 - orbit_data.e * Math.Cos(E));
+            double  cos_V = (Math.Cos(E) - orbit_data.e) / (1 - orbit_data.e * Math.Cos(E));
 
             body_state.theta = get_angle(sin_V, cos_V);
 
@@ -65,17 +65,17 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        public void get_ecliptic_coords(TOrbitData orbit_data, double theta, ref TEclipticCoords ecoords)
+        public void get_ecliptic_coords(TOrbitData orbit_data, double  theta, ref TEclipticCoords ecoords)
         {
-            double Omega = orbit_data.Omega * RAD;
-            double omega = orbit_data.omega * RAD;
-            double i = orbit_data.i * RAD;
-            double V = theta;
+            double  Omega = orbit_data.Omega * RAD;
+            double  omega = orbit_data.omega * RAD;
+            double  i = orbit_data.i * RAD;
+            double  V = theta;
 
             ecoords.beta = Math.Asin(sin(i)*sin(omega + V));
 
-            double sin_lambda = (sin(Omega) * cos(V + omega) + cos(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
-            double cos_lambda = (cos(Omega) * cos(V + omega) - sin(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
+            double  sin_lambda = (sin(Omega) * cos(V + omega) + cos(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
+            double  cos_lambda = (cos(Omega) * cos(V + omega) - sin(Omega) * cos(i) * sin(V + omega)) / cos(ecoords.beta);
 
             ecoords.lambda = get_angle(sin_lambda, cos_lambda);
         }
@@ -85,10 +85,10 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        public void get_coords(TOrbitData orbit_data, double theta, ref Vector3D coords)
+        public void get_coords(TOrbitData orbit_data, double  theta, ref Vector3D coords)
         {
-            double p = orbit_data.a * (1 - orbit_data.e * orbit_data.e);
-            double r = p / (1 + orbit_data.e * cos(theta));
+            double  p = orbit_data.a * (1 - orbit_data.e * orbit_data.e);
+            double  r = p / (1 + orbit_data.e * cos(theta));
 
             TEclipticCoords ecoords = new TEclipticCoords();
 
@@ -103,11 +103,11 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //  Kepler equation solver
         //-----------------------------------------------------------
-        private double get_eccentric_anomaly(double M, double e, int method)
+        private double  get_eccentric_anomaly(double  M, double  e, int method)
         {
-            double En_1 = M;
-            double En = M;
-            double eps = KEPLER_EQ_ERROR;
+            double  En_1 = M;
+            double  En = M;
+            double  eps = KEPLER_EQ_ERROR;
 
             do
             {
@@ -138,9 +138,9 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //  Get angle by sinus and cosinus
         //-----------------------------------------------------------
-        private double get_angle(double sin_x, double cos_x)
+        private double  get_angle(double  sin_x, double  cos_x)
         {
-            double x = 0;
+            double  x = 0;
 
             if (sin_x >= 0)
             {
@@ -159,7 +159,7 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        private double Trunc2PiN(double x)
+        private double  Trunc2PiN(double  x)
         {
             int N = Convert.ToInt32(Math.Truncate(x / 2 / Math.PI));
 
@@ -171,7 +171,7 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        private double sin(double x)
+        private double  sin(double  x)
         {
             return Math.Sin(x);
         }
@@ -179,7 +179,7 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        private double cos(double x)
+        private double  cos(double  x)
         {
             return Math.Cos(x);
         }
@@ -187,7 +187,7 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        private double tg(double x)
+        private double  tg(double  x)
         {
             return Math.Tan(x);
         }

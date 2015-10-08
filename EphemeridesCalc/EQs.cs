@@ -7,19 +7,19 @@ namespace EphemeridesCalc
 {
     public class EQs
     {
-        public delegate double[] FuncDelegate(double[] x);
-        public delegate Matrix JacobyDelegate(double[] x);
+        public delegate double [] FuncDelegate(double [] x);
+        public delegate Matrix JacobyDelegate(double [] x);
 
         private const int NEWTON_ITER_MAX = 100000;
 
         //---------------------------------------------------------------------
         //      Gauss method solver
         //---------------------------------------------------------------------
-        public double[] gauss_solver(Matrix A, double[] b)
+        public double [] gauss_solver(Matrix A, double [] b)
         {
             int n = A.rows;
-            double[] x = new double[n];
-            double c = 0;
+            double [] x = new double [n];
+            double  c = 0;
 
             // Forward (A to uptriangle form)
             for (int i = 0; i < n - 1; i++)
@@ -38,7 +38,7 @@ namespace EphemeridesCalc
             // Backward (roots found)
             for (int i = n - 1; i >= 0; i--)
             {
-                double sum = b[i];
+                double  sum = b[i];
 
                 for (int j = n - 1; j >= i + 1; j--)
                     sum -= A.M[i, j] * x[j];
@@ -54,10 +54,10 @@ namespace EphemeridesCalc
         //---------------------------------------------------------------------
         //      Newton method solver
         //---------------------------------------------------------------------
-        public bool newton_solver(FuncDelegate func, JacobyDelegate J, double[] error, ref double[] x)
+        public bool newton_solver(FuncDelegate func, JacobyDelegate J, double [] error, ref double [] x)
         {
-            double[] dx;
-            double[] f;
+            double [] dx;
+            double [] f;
             int iter_count = 0;
             bool is_solved = true;
             
@@ -65,7 +65,7 @@ namespace EphemeridesCalc
             {
                 Matrix A = J(x);
                 f = func(x);
-                double[] b = new double[x.Length];
+                double [] b = new double [x.Length];
 
                 for (int i = 0; i < x.Length; i++)
                 {
@@ -94,7 +94,7 @@ namespace EphemeridesCalc
         //---------------------------------------------------------------------
         //      Check Newton solver error
         //---------------------------------------------------------------------
-        private bool is_error(double[] dx, double[] error)
+        private bool is_error(double [] dx, double [] error)
         {
             bool err = false;
             int n = dx.Length;

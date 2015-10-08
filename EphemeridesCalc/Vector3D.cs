@@ -5,11 +5,11 @@
 //-------------------------------------------------------------------
 public struct Vector3D
 {
-    public double x;
-    public double y;
-    public double z;
+    public double  x;
+    public double  y;
+    public double  z;
 
-    public Vector3D(double x, double y, double z)
+    public Vector3D(double  x, double  y, double  z)
     {
         this.x = x;
         this.y = y;
@@ -60,7 +60,7 @@ public struct Vector3D
         return result;
     }
 
-    public double lenght()
+    public double  lenght()
     {
         return Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
     }
@@ -69,7 +69,7 @@ public struct Vector3D
     {
         Vector3D ort = new Vector3D(0, 0, 0);
 
-        double len = this.lenght();
+        double  len = this.lenght();
 
         if (len != 0)
         {
@@ -81,22 +81,22 @@ public struct Vector3D
         return ort;
     }
 
-    public double DotProduct(Vector3D a, Vector3D b)
+    public double  DotProduct(Vector3D a, Vector3D b)
     {
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
-    public static double operator *(Vector3D a, Vector3D b)
+    public static double  operator *(Vector3D a, Vector3D b)
     {
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
-    public double GetAngle(Vector3D a)
+    public double  GetAngle(Vector3D a)
     {
         return Math.Acos( DotProduct(a, this)/a.lenght()/this.lenght() );
     }
 
-    public Vector3D Mul(Vector3D a, double lambda)
+    public Vector3D Mul(Vector3D a, double  lambda)
     {
         Vector3D result = new Vector3D(0, 0, 0);
 
@@ -107,7 +107,7 @@ public struct Vector3D
         return result;
     }
 
-    public Vector3D Div(Vector3D a, double lambda)
+    public Vector3D Div(Vector3D a, double  lambda)
     {
         Vector3D result = new Vector3D(0, 0, 0);
 

@@ -63,9 +63,9 @@ namespace stargazer
 
             comboSec.SelectedIndex = 0; 
           
-            /*double[] x = new double[2]{0.1, 0.1};
-            double eps = 1e-10;
-            double[] err = new double[2] { eps, eps };
+            /*double [] x = new double [2]{0.1, 0.1};
+            double  eps = 1e-10;
+            double [] err = new double [2] { eps, eps };
 
             EQs solver = new EQs();
 
@@ -75,8 +75,8 @@ namespace stargazer
 
             Vector3D x2 = new Vector3D();
 
-            double t1 = calendar.date_to_sec(2, 1, 0, 0, 0);
-            double t2 = calendar.date_to_sec(2, 100, 0, 0, 0);
+            double  t1 = calendar.date_to_sec(2, 1, 0, 0, 0);
+            double  t2 = calendar.date_to_sec(2, 100, 0, 0, 0);
 
             CBody body = new CBody();
             TBodyState state = new TBodyState();
@@ -94,9 +94,9 @@ namespace stargazer
             lambert.get_orbit(x1, x2, t1, t2, bodies[0].gravParameter);
         }
 
-        /*private double[] f(double[] x)
+        /*private double [] f(double [] x)
         {
-            double[] y = new double[2];
+            double [] y = new double [2];
 
             y[0] = x[0]*x[0] + x[1]*x[1] - 13;
             y[1] = Math.Pow(x[0], 3) + x[1] - 11;
@@ -104,7 +104,7 @@ namespace stargazer
             return y;
         }
 
-        private Matrix J(double[] x)
+        private Matrix J(double [] x)
         {
             Matrix j = new Matrix(2, 2);
 
@@ -153,22 +153,22 @@ namespace stargazer
 
                     if (subnode.Name == "mass")
                     {
-                        body.mass = double.Parse(subnode.InnerText);
+                        body.mass = double .Parse(subnode.InnerText);
                     }
 
                     if (subnode.Name == "radius")
                     {
-                        body.radius = double.Parse(subnode.InnerText);
+                        body.radius = double .Parse(subnode.InnerText);
                     }
 
                     if (subnode.Name == "gravParameter")
                     {
-                        body.gravParameter = double.Parse(subnode.InnerText);
+                        body.gravParameter = double .Parse(subnode.InnerText);
                     }
 
                     if (subnode.Name == "rotationPeriod")
                     {
-                        body.rotationPeriod = double.Parse(subnode.InnerText);
+                        body.rotationPeriod = double .Parse(subnode.InnerText);
                     }
 
                     if (subnode.Name == "Orbit")
@@ -180,42 +180,42 @@ namespace stargazer
                         {
                             if (orb_param.Name == "semiMajorAxis")
                             {
-                                body.orbit.a = double.Parse(orb_param.InnerText);
+                                body.orbit.a = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "eccentricity")
                             {
-                                body.orbit.e = double.Parse(orb_param.InnerText);
+                                body.orbit.e = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "epoch")
                             {
-                                body.orbit.t0 = double.Parse(orb_param.InnerText);
+                                body.orbit.t0 = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "meanAnomalyAtEpoch")
                             {
-                                body.orbit.M0 = double.Parse(orb_param.InnerText);
+                                body.orbit.M0 = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "period")
                             {
-                                body.orbit.period = double.Parse(orb_param.InnerText);
+                                body.orbit.period = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "argPe")
                             {
-                                body.orbit.omega = double.Parse(orb_param.InnerText);
+                                body.orbit.omega = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "LAN")
                             {
-                                body.orbit.Omega = double.Parse(orb_param.InnerText);
+                                body.orbit.Omega = double .Parse(orb_param.InnerText);
                             }
 
                             if (orb_param.Name == "inclination")
                             {
-                                body.orbit.i = double.Parse(orb_param.InnerText);
+                                body.orbit.i = double .Parse(orb_param.InnerText);
                             }
                         }
                     }
@@ -270,7 +270,7 @@ namespace stargazer
             TBodyState body_state = new TBodyState();
             CBody body = new CBody();
 
-            double t = calendar.date_to_sec(int.Parse(textYear.Text.ToString()),
+            double  t = calendar.date_to_sec(int.Parse(textYear.Text.ToString()),
                                             int.Parse(comboDay.Text.ToString()),
                                             int.Parse(comboHour.Text.ToString()),
                                             int.Parse(comboMin.Text.ToString()),
@@ -322,19 +322,19 @@ namespace stargazer
             Pen myPen = new Pen(Color.LightGray, 2.0F);           
 
             // Draw trajectory
-            double scale = 0;
+            double  scale = 0;
             int Delta = 25;
             float delta = 5.0F;
 
-            double ra = body_data.orbit.a / (1 - body_data.orbit.e); 
+            double  ra = body_data.orbit.a / (1 - body_data.orbit.e); 
 
             if (width > height)
                 scale = (height / 2 - Delta) / ra;
             else
                 scale = (width / 2 - Delta) / ra;
 
-            double V = 0;
-            double dV = 5.0;
+            double  V = 0;
+            double  dV = 5.0;
 
             Vector3D pos = new Vector3D();
             CBody body = new CBody();            

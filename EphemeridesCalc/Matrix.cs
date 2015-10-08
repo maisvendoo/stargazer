@@ -1,6 +1,6 @@
 ﻿public class Matrix
 {
-    public double[,] M;
+    public double [,] M;
     
     public int rows;
     public int columns;
@@ -10,7 +10,7 @@
     //-------------------------------------------------------------------------
     public Matrix(int n, int m)
     {
-        M = new double[n, m];
+        M = new double [n, m];
 
         rows = n;
         columns = m;
@@ -51,7 +51,7 @@
     }
 
 
-    public static Matrix operator *(Matrix a, double lambda)
+    public static Matrix operator *(Matrix a, double  lambda)
     {
         Matrix c = new Matrix(a.rows, a.columns);
 
