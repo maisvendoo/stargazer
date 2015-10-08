@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Collections;
-using System.Drawing;
 
 using EphemeridesCalc;
 
@@ -229,12 +228,12 @@ namespace stargazer
 
             body.get_planet_state(body_data.orbit, t, ref body_state);
 
-            labelTrueAnomaly.Text = Math.Round(body_state.theta / CPlanet.RAD, 2).ToString() + " deg";
+            labelTrueAnomaly.Text = Math.Round(body_state.theta / CPlanet.RAD, 4).ToString() + " deg";
             labelRadiusVector.Text = Math.Round(body_state.r, 0).ToString() + " m";
             labelAltitude.Text = Math.Round(body_state.h, 0).ToString() + " m";
             labelEccAnomaly.Text = Math.Round(body_state.E, 4).ToString() + " rad";
-            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 3).ToString() + " deg";
-            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 3).ToString() + " deg";
+            labelLat.Text = Math.Round(body_state.beta / CPlanet.RAD, 4).ToString() + " deg";
+            labelLon.Text = Math.Round(body_state.lambda / CPlanet.RAD, 4).ToString() + " deg";
 
             DrawPlanet(panelBodyPos, body_data, body_state);
         }
@@ -332,8 +331,8 @@ namespace stargazer
                            comboMin.Text + "m " + 
                            comboSec.Text + "s";
             graph.DrawString(title, font, brush, delta, delta);
-            graph.DrawString("Lat. " + Math.Round(body_state.beta / CPlanet.RAD, 3).ToString(), font, brush, delta, delta + font.Height);
-            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CPlanet.RAD, 3).ToString(), font, brush, delta, delta + 2*font.Height); 
+            graph.DrawString("Lat. " + Math.Round(body_state.beta / CPlanet.RAD, 4).ToString(), font, brush, delta, delta + font.Height);
+            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CPlanet.RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
             
             // Draw Ref Body
             myPen.Color = Color.Yellow;
