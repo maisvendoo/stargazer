@@ -86,9 +86,14 @@ public struct Vector3D
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
-    public double GetAngle(Vector3D a, Vector3D b)
+    public static double operator *(Vector3D a, Vector3D b)
     {
-        return Math.Acos( DotProduct(a, b)/a.lenght()/b.lenght() );
+        return a.x * b.x + a.y * b.y + a.z * b.z;
+    }
+
+    public double GetAngle(Vector3D a)
+    {
+        return Math.Acos( DotProduct(a, this)/a.lenght()/this.lenght() );
     }
 
     public Vector3D Mul(Vector3D a, double lambda)

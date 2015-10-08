@@ -71,19 +71,27 @@ namespace stargazer
 
             bool flag = solver.newton_solver(f, J, err, ref x);*/
 
-            Vector3D x1 = new Vector3D(-16686440278.257832,
-                                       10455549272.727764,
-                                       438292.1620045379);
+            Vector3D x1 = new Vector3D();
 
-            Vector3D x2 = new Vector3D(-19329921828.521965,
-                                       -5780498744.688673,
-                                       18505520.820509948);
+            Vector3D x2 = new Vector3D();
 
-            double dt = CCalendar.Hours * CCalendar.Mins * CCalendar.Secs * 100;
+            double t1 = calendar.date_to_sec(2, 1, 0, 0, 0);
+            double t2 = calendar.date_to_sec(2, 100, 0, 0, 0);
+
+            CBody body = new CBody();
+            TBodyState state = new TBodyState();
+
+            int num = 6;
+
+            body.get_body_state(bodies[num].orbit, t1, ref state);
+            body.get_coords(bodies[num].orbit, state.theta, ref x1);
+
+            body.get_body_state(bodies[num].orbit, t2, ref state);
+            body.get_coords(bodies[num].orbit, state.theta, ref x2);
 
             Lambert lambert = new Lambert();
 
-            lambert.get_orbit(x1, x2, dt, bodies[0].gravParameter);
+            lambert.get_orbit(x1, x2, t1, t2, bodies[0].gravParameter);
         }
 
         /*private double[] f(double[] x)
