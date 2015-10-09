@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Collections;
+using System.Globalization;
 
 using EphemeridesCalc;
 
@@ -153,22 +154,22 @@ namespace stargazer
 
                     if (subnode.Name == "mass")
                     {
-                        body.mass = double .Parse(subnode.InnerText);
+                        body.mass = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "radius")
                     {
-                        body.radius = double .Parse(subnode.InnerText);
+                        body.radius = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "gravParameter")
                     {
-                        body.gravParameter = double .Parse(subnode.InnerText);
+                        body.gravParameter = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "rotationPeriod")
                     {
-                        body.rotationPeriod = double .Parse(subnode.InnerText);
+                        body.rotationPeriod = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "Orbit")
@@ -180,42 +181,42 @@ namespace stargazer
                         {
                             if (orb_param.Name == "semiMajorAxis")
                             {
-                                body.orbit.a = double .Parse(orb_param.InnerText);
+                                body.orbit.a = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "eccentricity")
                             {
-                                body.orbit.e = double .Parse(orb_param.InnerText);
+                                body.orbit.e = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "epoch")
                             {
-                                body.orbit.t0 = double .Parse(orb_param.InnerText);
+                                body.orbit.t0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "meanAnomalyAtEpoch")
                             {
-                                body.orbit.M0 = double .Parse(orb_param.InnerText);
+                                body.orbit.M0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "period")
                             {
-                                body.orbit.period = double .Parse(orb_param.InnerText);
+                                body.orbit.period = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "argPe")
                             {
-                                body.orbit.omega = double .Parse(orb_param.InnerText);
+                                body.orbit.omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "LAN")
                             {
-                                body.orbit.Omega = double .Parse(orb_param.InnerText);
+                                body.orbit.Omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "inclination")
                             {
-                                body.orbit.i = double .Parse(orb_param.InnerText);
+                                body.orbit.i = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
                         }
                     }
