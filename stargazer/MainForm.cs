@@ -310,14 +310,16 @@ namespace stargazer
             float delta = 5.0F;                    
 
             BodyData data = new BodyData();
+            
             Bodies[body_idx].get_data(ref data);
-
-            double  ra = data.orbit.a / (1 - data.orbit.e); 
+            
+            double  ra = data.orbit.a / (1 - data.orbit.e);
+            double r_max = ra;            
 
             if (width > height)
-                scale = (height / 2 - Delta) / ra;
+                scale = (height / 2 - Delta) / r_max;
             else
-                scale = (width / 2 - Delta) / ra;
+                scale = (width / 2 - Delta) / r_max;
 
             double  V = 0;
             double  dV = 5.0;
@@ -326,6 +328,7 @@ namespace stargazer
 
             Vector3D pos;
 
+            // Draw planet orbit
             while (V <= 360.0)
             {
                 pos = Bodies[body_idx].get_cartesian_pos(V * RAD);

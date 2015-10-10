@@ -23,6 +23,19 @@ namespace EphemeridesCalc
                 return -x;
         }
 
+        public static decimal sign(decimal x)
+        {
+            if (x == 0)
+                return 0;
+            else
+            {
+                if (x > 0)
+                    return 1;
+                else
+                    return -1;
+            }
+        }
+
 
 
         //---------------------------------------------------------------------
@@ -268,9 +281,9 @@ namespace EphemeridesCalc
         //-----------------------------------------------------------
         public static decimal Trunc2PiN(decimal x)
         {
-            int N = Convert.ToInt32(Decimal.Truncate(x / 2 / DMath.PI));
+            int N = Convert.ToInt32(Decimal.Truncate(abs(x) / 2 / DMath.PI));
 
-            return x - N * 2 * DMath.PI;
+            return (abs(x) - N * 2 * DMath.PI)*sign(x);
         }
     }
 }
