@@ -15,18 +15,7 @@ public struct Vector3D
         this.y = y;
         this.z = z;
     }
-
-    public Vector3D Add(Vector3D a, Vector3D b)
-    {
-        Vector3D result = new Vector3D(0, 0, 0);
-
-        result.x = a.x + b.x;
-        result.y = a.y + b.y;
-        result.z = a.z + b.z;
-
-        return result;
-    }
-
+        
     public static Vector3D operator +(Vector3D a, Vector3D b)
     {
         Vector3D result = new Vector3D(0, 0, 0);
@@ -37,18 +26,7 @@ public struct Vector3D
 
         return result;
     }
-
-    public Vector3D Sub(Vector3D a, Vector3D b)
-    {
-        Vector3D result = new Vector3D(0, 0, 0);
-
-        result.x = a.x - b.x;
-        result.y = a.y - b.y;
-        result.z = a.z - b.z;
-
-        return result;
-    }
-
+    
     public static Vector3D operator -(Vector3D a, Vector3D b)
     {
         Vector3D result = new Vector3D(0, 0, 0);
@@ -65,7 +43,7 @@ public struct Vector3D
         return Math.Sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
     }
 
-    public Vector3D get_ort()
+    public Vector3D ort()
     {
         Vector3D ort = new Vector3D(0, 0, 0);
 
@@ -91,7 +69,7 @@ public struct Vector3D
         return a.x * b.x + a.y * b.y + a.z * b.z;
     }
 
-    public double  GetAngle(Vector3D a)
+    public double  angle(Vector3D a)
     {
         return Math.Acos( DotProduct(a, this)/a.lenght()/this.lenght() );
     }

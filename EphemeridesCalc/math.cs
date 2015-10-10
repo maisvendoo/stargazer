@@ -7,7 +7,9 @@ namespace EphemeridesCalc
 {
     class  math
     {
-        public static double  Arg(double  sin_x, double  cos_x)
+        public const double RAD = Math.PI / 180.0;
+        
+        public static double  arg(double  sin_x, double  cos_x)
         {
             if (sin_x >= 0)
             {

@@ -12,7 +12,6 @@ using System.Globalization;
 
 using EphemeridesCalc;
 
-
 namespace stargazer
 {
     public partial class MainForm : Form
@@ -21,102 +20,78 @@ namespace stargazer
         {
             InitializeComponent();
 
-            bodies = new List<TBodyData>();
+            bodies = new List<TBodyData>();       
+            Bodies = new List<CelestialBody>();
 
             ReadSystemConfig("../cfg/kerbal.xml");
 
             // Bodies list init
-            for (int i = 0; i < bodies.Count; i++)
+            for (int i = 0; i < Bodies.Count; i++)
             {
-                if (bodies.ElementAt(i).name != "Sun")
-                    BodiesList.Items.Add(bodies.ElementAt(i).name);
+                BodyData data = new BodyData();
+                Bodies[i].get_data(ref data);
+
+                if (data.name != "Sun")
+                    BodiesList.Items.Add(data.name);
             }
 
-            BodiesList.SelectedIndex = 0;
+            BodiesList.SelectedIndex = 0;            
 
-            calendar = new CCalendar();
-
-            for (int i = 1; i <= CCalendar.Days; i++)
+            for (int i = 1; i <= KCalendar.Days; i++)
             {
                 comboDay.Items.Add(i.ToString());
             }
 
             comboDay.SelectedIndex = 0;
 
-            for (int i = 0; i < CCalendar.Hours; i++)
+            for (int i = 0; i < KCalendar.Hours; i++)
             {
                 comboHour.Items.Add(i.ToString());
             }
 
             comboHour.SelectedIndex = 0;
 
-            for (int i = 0; i < CCalendar.Mins; i++)
+            for (int i = 0; i < KCalendar.Mins; i++)
             {
                 comboMin.Items.Add(i.ToString());
             }
 
             comboMin.SelectedIndex = 0;
 
-            for (int i = 0; i < CCalendar.Secs; i++)
+            for (int i = 0; i < KCalendar.Secs; i++)
             {
                 comboSec.Items.Add(i.ToString());
             }
 
-            comboSec.SelectedIndex = 0; 
-          
-            /*double [] x = new double [2]{0.1, 0.1};
-            double  eps = 1e-10;
-            double [] err = new double [2] { eps, eps };
+            comboSec.SelectedIndex = 0;
 
-            EQs solver = new EQs();
+            int num = 16;
 
-            bool flag = solver.newton_solver(f, J, err, ref x);*/
+            OrbitPos pos = new OrbitPos();
 
-            Vector3D x1 = new Vector3D();
+            double t1 = KCalendar.date_to_sec(2, 1, 0, 0, 0);
+            double t2 = KCalendar.date_to_sec(4, 1, 0, 0, 0);
 
-            Vector3D x2 = new Vector3D();
+            Bodies[num].get_position(t1, ref pos);
+            Vector3D x1 = Bodies[num].get_cartesian_pos(pos.theta);
 
-            double  t1 = calendar.date_to_sec(2, 1, 0, 0, 0);
-            double  t2 = calendar.date_to_sec(2, 100, 0, 0, 0);
+            Bodies[num].get_position(t2, ref pos);
+            Vector3D x2 = Bodies[num].get_cartesian_pos(pos.theta);
 
-            CBody body = new CBody();
-            TBodyState state = new TBodyState();
+            BodyData body_data = new BodyData();
 
-            int num = 6;
+            Bodies[0].get_data(ref body_data);
 
-            body.get_body_state(bodies[num].orbit, t1, ref state);
-            body.get_coords(bodies[num].orbit, state.theta, ref x1);
+            Orbit orbit = new Orbit();
 
-            body.get_body_state(bodies[num].orbit, t2, ref state);
-            body.get_coords(bodies[num].orbit, state.theta, ref x2);
-
-            Lambert lambert = new Lambert();
-
-            lambert.get_orbit(x1, x2, t1, t2, bodies[0].gravParameter);
-        }
-
-        /*private double [] f(double [] x)
-        {
-            double [] y = new double [2];
-
-            y[0] = x[0]*x[0] + x[1]*x[1] - 13;
-            y[1] = Math.Pow(x[0], 3) + x[1] - 11;
-
-            return y;
-        }
-
-        private Matrix J(double [] x)
-        {
-            Matrix j = new Matrix(2, 2);
-
-            j.M[0, 0] = 2 * x[0]; j.M[0, 1] = 2 * x[1];
-            j.M[1, 0] = 3 * x[0] * x[0]; j.M[1, 1] = 1;
-
-            return j;
-        }*/
+            bool flag = Lambert.get_orbit(x1, x2, t1, t2, body_data.gravParameter, ref orbit);
+        }        
 
         private List<TBodyData> bodies;
-        private CCalendar calendar;
+        //private CCalendar calendar;
+        private List<CelestialBody> Bodies;
+
+        private const double RAD = Math.PI / 180.0; 
 
         //---------------------------------------------------------------
         //
@@ -131,7 +106,7 @@ namespace stargazer
             foreach (XmlNode node in nodes)
             {
                 // Body data structure
-                TBodyData body = new TBodyData();
+                BodyData data = new BodyData();
 
                 // Read all "Body" nodes
                 foreach (XmlNode subnode in node.ChildNodes)
@@ -139,90 +114,92 @@ namespace stargazer
                     // Read body parameters
                     if (subnode.Name == "name")
                     {
-                        body.name = subnode.InnerText;
+                        data.name = subnode.InnerText;
                     }
 
                     if (subnode.Name == "id")
                     {
-                        body.id = int.Parse(subnode.InnerText);
+                        data.id = int.Parse(subnode.InnerText);
                     }
 
                     if (subnode.Name == "RefBody")
                     {
-                        body.refBody = subnode.InnerText;
+                        data.refBody = subnode.InnerText;
                     }
 
                     if (subnode.Name == "mass")
                     {
-                        body.mass = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                        data.mass = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "radius")
                     {
-                        body.radius = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                        data.radius = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "gravParameter")
                     {
-                        body.gravParameter = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                        data.gravParameter = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "rotationPeriod")
                     {
-                        body.rotationPeriod = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                        data.rotationPeriod = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
                     if (subnode.Name == "Orbit")
                     {
-                        body.orbit = new TOrbitData();
+                        data.orbit = new Orbit();
 
                         // Read body orbit parameters
                         foreach (XmlNode orb_param in subnode.ChildNodes)
                         {
                             if (orb_param.Name == "semiMajorAxis")
                             {
-                                body.orbit.a = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.a = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "eccentricity")
                             {
-                                body.orbit.e = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.e = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "epoch")
                             {
-                                body.orbit.t0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.t0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "meanAnomalyAtEpoch")
                             {
-                                body.orbit.M0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.M0 = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "period")
                             {
-                                body.orbit.period = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.period = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "argPe")
                             {
-                                body.orbit.omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "LAN")
                             {
-                                body.orbit.Omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.Omega = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
 
                             if (orb_param.Name == "inclination")
                             {
-                                body.orbit.i = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
+                                data.orbit.i = double.Parse(orb_param.InnerText, CultureInfo.InvariantCulture);
                             }
                         }
                     }
                 }
 
-                bodies.Add(body);
+                CelestialBody Body = new CelestialBody();
+                Body.set_data(data);
+                Bodies.Add(Body);
             }
         }
 
@@ -241,52 +218,57 @@ namespace stargazer
         //------------------------------------------------------------
         //
         //------------------------------------------------------------
-        private TBodyData get_body_index(string name)
+        private int get_body_index(string name)
         {
             int idx = 0;
-            
-            while ((idx < BodiesList.Items.Count) && (name != bodies.ElementAt(idx).name))
+            BodyData data = new BodyData();
+
+            do
             {
+                Bodies.ElementAt(idx).get_data(ref data);
                 idx++;
-            }
 
-            if (idx > BodiesList.Items.Count)
-                idx = -1;
+            } while ((idx-1 <= Bodies.Count) && (data.name != name));
 
-            return bodies.ElementAt(idx);
+            if (idx-1 > BodiesList.Items.Count)
+                return -1;
+
+            return idx - 1;
         }
-
-
 
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
         private void buttonEphCalc_Click(object sender, EventArgs e)
         {
-            TBodyData body_data = get_body_index(BodiesList.Text.ToString());   
-            TBodyData ref_body_data = get_body_index(body_data.refBody);
+            int body_idx = get_body_index(BodiesList.Text.ToString());
 
-            body_data.orbit.RefRadius = ref_body_data.radius;
+            if (body_idx == -1)
+            {
+                MessageBox.Show("There are no " + BodiesList.Text.ToString() + " in data base");
+                return;
+            }
 
-            TBodyState body_state = new TBodyState();
-            CBody body = new CBody();
-
-            double  t = calendar.date_to_sec(int.Parse(textYear.Text.ToString()),
+            double  t = KCalendar.date_to_sec(int.Parse(textYear.Text.ToString()),
                                             int.Parse(comboDay.Text.ToString()),
                                             int.Parse(comboHour.Text.ToString()),
                                             int.Parse(comboMin.Text.ToString()),
                                             int.Parse(comboSec.Text.ToString()));
 
-            body.get_body_state(body_data.orbit, t, ref body_state);
+            OrbitPos pos = new OrbitPos();
+            EclipticPos ecoords = new EclipticPos();
+            
+            Bodies.ElementAt(body_idx).get_position(t, ref pos);
+            Bodies.ElementAt(body_idx).get_ecliptic_coords(pos.theta, ref ecoords);            
 
-            labelTrueAnomaly.Text = Math.Round(body_state.theta / CBody.RAD, 4).ToString() + " deg";
-            labelRadiusVector.Text = Math.Round(body_state.r, 0).ToString() + " m";
-            labelAltitude.Text = Math.Round(body_state.h, 0).ToString() + " m";
-            labelEccAnomaly.Text = Math.Round(body_state.E, 4).ToString() + " rad";
-            labelLat.Text = Math.Round(body_state.beta / CBody.RAD, 4).ToString() + " deg";
-            labelLon.Text = Math.Round(body_state.lambda / CBody.RAD, 4).ToString() + " deg";
+            labelTrueAnomaly.Text = Math.Round(pos.theta / RAD, 4).ToString() + " deg";
+            labelRadiusVector.Text = Math.Round(pos.r, 0).ToString() + " m";
+            labelEccAnomaly.Text = Math.Round(pos.E, 4).ToString() + " rad";
+            labelLat.Text = Math.Round(ecoords.beta / RAD, 4).ToString() + " deg";
+            labelLon.Text = Math.Round(ecoords.lambda / RAD, 4).ToString() + " deg";
 
-            DrawPlanet(panelBodyPos, body_data, body_state);
+                     
+            DrawPlanet(panelBodyPos, pos.theta, body_idx);
         }
 
 
@@ -305,7 +287,7 @@ namespace stargazer
         //-----------------------------------------------------------
         //
         //-----------------------------------------------------------
-        private void DrawPlanet(Panel panel, TBodyData body_data, TBodyState body_state)
+        private void DrawPlanet(Panel panel, double theta, int body_idx)
         {
             int width = panel.Width;
             int height = panel.Height;
@@ -325,9 +307,12 @@ namespace stargazer
             // Draw trajectory
             double  scale = 0;
             int Delta = 25;
-            float delta = 5.0F;
+            float delta = 5.0F;                    
 
-            double  ra = body_data.orbit.a / (1 - body_data.orbit.e); 
+            BodyData data = new BodyData();
+            Bodies[body_idx].get_data(ref data);
+
+            double  ra = data.orbit.a / (1 - data.orbit.e); 
 
             if (width > height)
                 scale = (height / 2 - Delta) / ra;
@@ -336,20 +321,21 @@ namespace stargazer
 
             double  V = 0;
             double  dV = 5.0;
+                        
+            CBody body = new CBody();
 
-            Vector3D pos = new Vector3D();
-            CBody body = new CBody();            
+            Vector3D pos;
 
             while (V <= 360.0)
             {
-                body.get_coords(body_data.orbit, V*CBody.RAD, ref pos);
+                pos = Bodies[body_idx].get_cartesian_pos(V * RAD);
 
                 float x1 = x0 + Convert.ToSingle(scale * pos.x);
                 float y1 = y0 - Convert.ToSingle(scale * pos.y);
 
                 V += dV;
 
-                body.get_coords(body_data.orbit, V*CBody.RAD, ref pos);
+                pos = Bodies[body_idx].get_cartesian_pos(V * RAD);
 
                 float x2 = x0 + Convert.ToSingle(scale * pos.x);
                 float y2 = y0 - Convert.ToSingle(scale * pos.y);
@@ -363,7 +349,7 @@ namespace stargazer
             }
 
             // Draw planet position
-            body.get_coords(body_data.orbit, body_state.theta, ref pos);
+            pos = Bodies[body_idx].get_cartesian_pos(theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
             y = y0 - Convert.ToSingle(scale * pos.y);
@@ -375,15 +361,20 @@ namespace stargazer
             // Title
             SolidBrush brush = new SolidBrush(Color.LightGray);
             Font font = new Font("Courier New", 10);
-            string title = body_data.name + " position UT: " + 
+            string title = data.name + " position UT: " + 
                            textYear.Text + "y " + 
                            comboDay.Text + "d " + 
                            comboHour.Text + "h " +
                            comboMin.Text + "m " + 
                            comboSec.Text + "s";
             graph.DrawString(title, font, brush, delta, delta);
-            graph.DrawString("Lat. " + Math.Round(body_state.beta / CBody.RAD, 4).ToString(), font, brush, delta, delta + font.Height);
-            graph.DrawString("Lon. " + Math.Round(body_state.lambda / CBody.RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
+
+            EclipticPos epos = new EclipticPos();
+
+            Bodies[body_idx].get_ecliptic_coords(theta, ref epos);
+
+            graph.DrawString("Lat. " + Math.Round(epos.beta / RAD, 4).ToString(), font, brush, delta, delta + font.Height);
+            graph.DrawString("Lon. " + Math.Round(epos.lambda / RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
             
             // Draw Ref Body
             myPen.Color = Color.Yellow;

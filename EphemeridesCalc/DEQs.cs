@@ -5,21 +5,21 @@ using System.Text;
 
 namespace EphemeridesCalc
 {
-    public class EQs
+    class DEQs
     {
-        public delegate double [] FuncDelegate(double [] x);
-        public delegate Matrix JacobyDelegate(double [] x);
+        public delegate decimal[] FuncDelegate(decimal[] x);
+        public delegate DMatrix JacobyDelegate(decimal[] x);
 
         private const int NEWTON_ITER_MAX = 100000;
 
         //---------------------------------------------------------------------
         //      Gauss method solver
         //---------------------------------------------------------------------
-        public static double [] gauss_solver(Matrix A, double [] b)
+        public static decimal[] gauss_solver(DMatrix A, decimal[] b)
         {
             int n = A.rows;
-            double [] x = new double [n];
-            double  c = 0;
+            decimal[] x = new decimal[n];
+            decimal c = 0;
 
             // Forward (A to uptriangle form)
             for (int i = 0; i < n - 1; i++)
@@ -38,7 +38,7 @@ namespace EphemeridesCalc
             // Backward (roots found)
             for (int i = n - 1; i >= 0; i--)
             {
-                double  sum = b[i];
+                decimal sum = b[i];
 
                 for (int j = n - 1; j >= i + 1; j--)
                     sum -= A.M[i, j] * x[j];
@@ -54,18 +54,18 @@ namespace EphemeridesCalc
         //---------------------------------------------------------------------
         //      Newton method solver
         //---------------------------------------------------------------------
-        public static bool newton_solver(FuncDelegate func, JacobyDelegate J, double [] error, ref double [] x)
+        public static bool newton_solver(FuncDelegate func, JacobyDelegate J, decimal[] error, ref decimal[] x)
         {
-            double [] dx;
-            double [] f;
+            decimal[] dx;
+            decimal[] f;
             int iter_count = 0;
             bool is_solved = true;
-            
+
             do
             {
-                Matrix A = J(x);
+                DMatrix A = J(x);
                 f = func(x);
-                double [] b = new double [x.Length];
+                decimal[] b = new decimal[x.Length];
 
                 for (int i = 0; i < x.Length; i++)
                 {
@@ -77,11 +77,11 @@ namespace EphemeridesCalc
                 for (int i = 0; i < x.Length; i++)
                     x[i] = x[i] + dx[i];
 
-                f = func(x);                
+                f = func(x);
 
                 iter_count++;
 
-            } while ( (is_error(f, error)) && (iter_count <= NEWTON_ITER_MAX)) ;
+            } while ((is_error(f, error)) && (iter_count <= NEWTON_ITER_MAX));
 
             if (iter_count > NEWTON_ITER_MAX)
                 is_solved = false;
@@ -94,14 +94,14 @@ namespace EphemeridesCalc
         //---------------------------------------------------------------------
         //      Check Newton solver error
         //---------------------------------------------------------------------
-        private static bool is_error(double [] dx, double [] error)
+        private static bool is_error(decimal[] dx, decimal[] error)
         {
             bool err = false;
             int n = dx.Length;
 
             for (int i = 0; i < n; i++)
             {
-                if (Math.Abs(dx[i]) >= error[i])
+                if (DMath.abs(dx[i]) >= error[i])
                     err = true;
             }
 

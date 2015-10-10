@@ -7,99 +7,125 @@ namespace EphemeridesCalc
 {
     public class Lambert
     {
-        private double  r1;
-        private double  r2;
-        private double  s;
-        private double  tau;
+        private static double  r1;
+        private static double  r2;
+        private static double  s;
+        private static double  tau;
         
-        public TOrbitData get_orbit(Vector3D x1, Vector3D x2, double  t1, double  t2, double  mu)
+        //---------------------------------------------------------------------
+        //      Get orbit by two positions x1 = r(t1), x2 = r(t2)
+        //      r = r(t) - body radius-vector
+        //---------------------------------------------------------------------
+        public static bool get_orbit(Vector3D x1, 
+                                     Vector3D x2, 
+                                     double  t1, 
+                                     double  t2, 
+                                     double  mu, 
+                                     ref Orbit orbit)
         {
-            TOrbitData orbit = new TOrbitData();                        
-
+            // Radius-vectors lenght calculation
             r1 = x1.lenght();
             r2 = x2.lenght();
 
-            double  dV = x1.GetAngle(x2);
+            // Thue anomalies difference calculation
+            double  dV = x1.angle(x2);
 
+            // Distance calculation
             Vector3D dx = x1 - x2;
             s = dx.lenght();            
 
+            // Lambert theorem parameter 
             tau = Math.Sqrt(mu) * (t2 - t1);
 
+            // Newton solver input data
             double [] x = new double [3]{dV, dV, r1};
             double  eps = 1e-5;
             double [] err = new double [3] { eps, eps, eps };
 
-            EQs solver = new EQs();
-
-            bool flag = solver.newton_solver(f, Jacoby, err, ref x);
-
+            // Solve Lambert equations
+            if (!EQs.newton_solver(f, Jacoby, err, ref x))
+                return false;
+            
             orbit.a = x[2];
+            
+            // Eccentricity calculation
             double  L = (x[0] - x[1])/2;
-
             double  R = (r1 + r2) / 4 / orbit.a;
             double  P = (r2 - r1) / 2 / orbit.a / Math.Sin(L);
             double  Q = (1 - 2 * R) / Math.Cos(L);
-
+            
             orbit.e = Math.Sqrt(P * P + Q * Q);
 
-            /*double  sin_K = P / orbit.e;
+            // Eccentric anomalies calculation
+            double  sin_K = P / orbit.e;
             double  cos_K = Q / orbit.e;
 
-            double  K = mth.Arg(sin_K, cos_K);*/
-            double  K = Math.Atan(P / Q);
+            double  K = math.arg(sin_K, cos_K);         
 
             double  E1 = K - L;
             double  E2 = K + L;
 
+            // Mean anomalies calculation
             double  M1 = E1 - orbit.e * Math.Sin(E1);
             double  M2 = E2 - orbit.e * Math.Sin(E2);
 
+            // Mean anomaly at epoch calculation
             double  n = (M2 - M1) / (t2 - t1);
             double  n_test = Math.Sqrt(mu / orbit.a) / orbit.a;
 
             orbit.M0 = M1 - n * t1;            
 
+            // True anomalies calculation
             double  sin_V1 = Math.Sqrt(1 - orbit.e * orbit.e) * Math.Sin(E1) / (1 - orbit.e * Math.Cos(E1));
             double  cos_V1 = (Math.Cos(E1) - orbit.e) / (1 - orbit.e * Math.Cos(E1));
-            double  V1 = math.Arg(sin_V1, cos_V1);
+            double  V1 = math.arg(sin_V1, cos_V1);
 
-            double  V1_deg = V1 / CBody.RAD;
+            double  V1_deg = V1 / math.RAD;
 
             double  sin_V2 = Math.Sqrt(1 - orbit.e * orbit.e) * Math.Sin(E2) / (1 - orbit.e * Math.Cos(E2));
             double  cos_V2 = (Math.Cos(E2) - orbit.e) / (1 - orbit.e * Math.Cos(E2));
-            double  V2 = math.Arg(sin_V2, cos_V2);
+            double  V2 = math.arg(sin_V2, cos_V2);
 
-            double  V2_deg = V2 / CBody.RAD;
+            double  V2_deg = V2 / math.RAD;
 
-            Vector3D en = (x1 & x2).get_ort();
+            // Orbit orientation calculation (high accuracity!!!)
+            
+            // Radius-vectors orts
+            DVector3D ex1 = new DVector3D(Convert.ToDecimal(x1.ort().x), Convert.ToDecimal(x1.ort().y), Convert.ToDecimal(x1.ort().z));
+            DVector3D ex2 = new DVector3D(Convert.ToDecimal(x2.ort().x), Convert.ToDecimal(x2.ort().y), Convert.ToDecimal(x2.ort().z));
 
-            orbit.i = Math.Acos(en.z);
+            // Orbit plane normal
+            DVector3D en = (ex1 & ex2).ort();           
 
-            double  i_deg = orbit.i / CBody.RAD;
+            // Orbit inclination
+            decimal i = DMath.acos(en.z);
+            orbit.i = Convert.ToDouble(i) / math.RAD;
 
-            double  sin_O = en.x / Math.Sin(orbit.i);
-            double  cos_O = -en.y / Math.Sin(orbit.i);
+            // Accenting node longtitude
+            decimal  sin_Omega = en.x / DMath.sin(i);
+            decimal  cos_Omega = -en.y / DMath.sin(i);
 
-            orbit.Omega = math.Arg(sin_O, cos_O);
+            decimal Omega = DMath.arg(sin_Omega, cos_Omega);
 
-            double  Omega_deg = orbit.Omega / CBody.RAD;
+            orbit.Omega = Convert.ToDouble(Omega) / math.RAD;
 
-            Vector3D er = x1.get_ort();
+            // Argument of latitude
+            decimal sin_u = ex1.z / DMath.sin(i);
+            decimal cos_u = (ex1.x + sin_Omega * en.z * sin_u) / cos_Omega;
 
-            double  sin_u = er.z / Math.Sin(orbit.i);
-            double  cos_u = (er.x + sin_O * en.z * sin_u) / cos_O;
+            decimal u = DMath.arg(sin_u, cos_u);
 
-            double  u = math.Arg(sin_u, cos_u);
+            // Argument of periapsis
+            orbit.omega = (Convert.ToDouble(u) - V1) / math.RAD;            
 
-            orbit.omega = u - V1;
-
-            double  omega_deg = orbit.omega / CBody.RAD;            
-
-            return orbit;
+            return true;
         }
 
-        private Matrix Jacoby(double [] x)
+        
+        //---------------------------------------------------------------------
+        //      Jacoby matrix of Lambert equation system
+        //---------------------------------------------------------------------
+        private static Matrix Jacoby(double [] x)
         {
             Matrix J = new Matrix(x.Length, x.Length);
 
@@ -118,7 +144,11 @@ namespace EphemeridesCalc
             return J;
         }
 
-        private double [] f(double [] x)
+
+        //---------------------------------------------------------------------
+        //      Lambert equation system
+        //---------------------------------------------------------------------
+        private static double [] f(double [] x)
         {
             double [] y = new double [x.Length];
 

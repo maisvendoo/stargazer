@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
+    <Compile Include="CelestialBody.cs" />
+    <Compile Include="DEQs.cs" />
+    <Compile Include="DMath.cs" />
+    <Compile Include="DMatrix.cs" />
+    <Compile Include="DVector3D.cs" />
     <Compile Include="EQs.cs" />
     <Compile Include="Lambert.cs" />
     <Compile Include="math.cs" />
