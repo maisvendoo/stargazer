@@ -8,6 +8,19 @@ namespace EphemeridesCalc
     class  math
     {
         public const double RAD = Math.PI / 180.0;
+
+        public static double sign(double x)
+        {
+            if (x == 0)
+                return 0;
+            else
+            {
+                if (x > 0)
+                    return 1;
+                else
+                    return -1;
+            }
+        }
         
         public static double  arg(double  sin_x, double  cos_x)
         {
@@ -65,6 +78,16 @@ namespace EphemeridesCalc
             }
 
             return Convert.ToDouble(sum);
+        }
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
+        public static double Trunc2PiN(double x)
+        {
+            int N = Convert.ToInt32(Math.Truncate(Math.Abs(x) / 2 / Math.PI));
+
+            return (Math.Abs(x) - N * 2 * Math.PI)*sign(x);
         }
     }    
 }

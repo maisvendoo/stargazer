@@ -65,12 +65,12 @@ namespace stargazer
 
             comboSec.SelectedIndex = 0;
 
-            int num = 16;
+            int num = 6;
 
             OrbitPos pos = new OrbitPos();
 
             double t1 = KCalendar.date_to_sec(2, 1, 0, 0, 0);
-            double t2 = KCalendar.date_to_sec(4, 1, 0, 0, 0);
+            double t2 = KCalendar.date_to_sec(2, 101, 0, 0, 0);
 
             Bodies[num].get_position(t1, ref pos);
             Vector3D x1 = Bodies[num].get_cartesian_pos(pos.theta);

@@ -116,7 +116,7 @@ namespace EphemeridesCalc
             // Eccentric anomaly calculation (Kepler equation solve)
             double E = get_eccentric_anomaly(M, data.orbit.e, NEWTON);
 
-            pos.E = Trunc2PiN(E);
+            pos.E = math.Trunc2PiN(E);
             pos.r = data.orbit.a * (1 - data.orbit.e * Math.Cos(E));
 
             // True anomaly calculation
@@ -203,16 +203,6 @@ namespace EphemeridesCalc
             double z = r * Math.Sin(epos.beta);
 
             return new Vector3D(x, y, z);
-        }
-
-        //-----------------------------------------------------------
-        //
-        //-----------------------------------------------------------
-        public static double Trunc2PiN(double x)
-        {
-            int N = Convert.ToInt32(Math.Truncate(x / 2 / Math.PI));
-
-            return x - N * 2 * Math.PI;
-        }
+        }        
     }
 }

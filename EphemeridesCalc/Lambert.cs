@@ -73,7 +73,10 @@ namespace EphemeridesCalc
             double  n = (M2 - M1) / (t2 - t1);
             double  n_test = Math.Sqrt(mu / orbit.a) / orbit.a;
 
-            orbit.M0 = M1 - n * t1;            
+            orbit.M0 = math.Trunc2PiN(M1 - n * t1);
+
+            if (orbit.M0 < 0)
+                orbit.M0 = 2 * Math.PI + orbit.M0;
 
             // True anomalies calculation
             double  sin_V1 = Math.Sqrt(1 - orbit.e * orbit.e) * Math.Sin(E1) / (1 - orbit.e * Math.Cos(E1));
