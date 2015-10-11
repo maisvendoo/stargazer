@@ -5,12 +5,23 @@ using System.Text;
 
 namespace Astronomy
 {
+    public struct Transfer
+    {
+        public Orbit orbit;
+        public double arivTime;
+        public double depTime;
+        public KDate arivDate;
+        public KDate depDate;
+        public double destLambda;
+        public double transTime;
+    }
+
     public class Lambert
     {
         private static double  r1;
         private static double  r2;
         private static double  s;
-        private static double  tau;
+        private static double  tau;        
         
         //---------------------------------------------------------------------
         //      Get orbit by two positions x1 = r(t1), x2 = r(t2)
@@ -39,7 +50,7 @@ namespace Astronomy
 
             // Newton solver input data
             double [] x = new double [3]{dV, dV, r1};
-            double  eps = 1e-5;
+            double  eps = 1e-3;
             double [] err = new double [3] { eps, eps, eps };
 
             // Solve Lambert equations
@@ -160,6 +171,290 @@ namespace Astronomy
             y[2] = r1 + r2 - s - 2 * x[2] * (1 - Math.Cos(x[1]));
 
             return y;
+        }
+
+
+
+        //----------------------------------------------------------------------
+        //
+        //----------------------------------------------------------------------
+        private static double get_dest_theta(CelestialBody body, double destLambda)
+        {
+            double v0 = 0;
+            double v = v0;
+            double vk = 2 * Math.PI;
+            int N = 100;
+            double dv = (vk - v0) / N;
+
+            double g0 = g(body, destLambda, v0);
+            double g1;
+
+            do
+            {
+                v += dv;
+                g1 = g(body, destLambda, v);
+
+            } while ((v <= vk) && (g0 * g1 > 0));
+
+            if (v > vk)
+                return -1;
+
+            double theta1 = v - dv / 2;
+            double theta0;
+            double eps = 1e-5;
+
+            do
+            {
+                theta0 = theta1;
+                g0 = g(body, destLambda, theta0);
+                
+                theta1 = theta0 - g0/dgdV(body, destLambda, theta0);
+
+                g1 = g(body, destLambda, theta1);
+
+            } while (Math.Abs(g1) >= eps);
+
+            return theta1;
+        }
+
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        private static double g(CelestialBody body, double destLambda, double theta)
+        {
+            EclipticPos epos = new EclipticPos();
+
+            body.get_ecliptic_coords(theta, ref epos);
+
+            return destLambda - epos.lambda;
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        private static double dgdV(CelestialBody body, double destLambda, double theta)
+        {
+            double h = 1e-3;
+            double g0 = g(body, destLambda, theta);
+            double g1 = g(body, destLambda, theta + h);
+
+            return (g1 - g0)/h;
+        }
+
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static double get_transfer_orbit(double t,
+                                                CelestialBody arivBody,
+                                                CelestialBody destBody,
+                                                double phi, 
+                                                ref Orbit orbit,
+                                                ref double destLambda)
+        {
+            if (arivBody.get_ref_body() != destBody.get_ref_body())
+                return -1;
+            
+            OrbitPos pos = new OrbitPos();
+            EclipticPos epos = new EclipticPos();            
+
+            arivBody.get_position(t, ref pos);
+            arivBody.get_ecliptic_coords(pos.theta, ref epos);
+            destLambda = epos.lambda + Math.PI - phi;
+
+            double destTheta = get_dest_theta(destBody, destLambda);
+
+            Vector3D x1 = arivBody.get_cartesian_pos(pos.theta);
+            Vector3D x2 = destBody.get_cartesian_pos(destTheta);
+
+            double u = 0;
+            get_transfer_orientation(x1, x2, ref orbit.i, ref orbit.Omega, ref u); 
+
+            double r1 = x1.lenght();
+            double r2 = x2.lenght();
+            double theta = x1.angle(x2);
+
+            orbit.omega = u / math.RAD;
+
+            if (r2 > r1)
+            {
+                orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
+                orbit.a = r1 / (1 - orbit.e);
+            }
+            else
+            {
+                orbit.e = (r1 - r2) / (r1 + r2 * Math.Cos(theta));
+                orbit.a = r1 / (1 + orbit.e);
+            }
+
+            BodyData data = new BodyData();
+
+            destBody.get_data(ref data);
+
+            double transTime = 0;
+            double mu = 4 * Math.PI * Math.PI * Math.Pow(data.orbit.a, 3) / data.orbit.period / data.orbit.period;
+
+            if ((orbit.e > 0) && (orbit.e < 1))
+            {
+                double n = Math.Sqrt(mu / orbit.a) / orbit.a;
+                double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
+                double E = 2 * Math.Atan(tgE2);
+                double M = E - orbit.e * Math.Sin(E);
+                transTime = M / n;
+            }
+            else
+            {
+                return -1;
+            }
+
+            return transTime;
+        }
+
+        private static void get_transfer_orientation(Vector3D x1, Vector3D x2, 
+                                                       ref double i,
+                                                       ref double Omega,
+                                                       ref double u)
+        {
+            // Radius-vectors orts
+            DVector3D ex1 = new DVector3D(Convert.ToDecimal(x1.ort().x), Convert.ToDecimal(x1.ort().y), Convert.ToDecimal(x1.ort().z));
+            DVector3D ex2 = new DVector3D(Convert.ToDecimal(x2.ort().x), Convert.ToDecimal(x2.ort().y), Convert.ToDecimal(x2.ort().z));
+
+            // Orbit plane normal
+            DVector3D en = (ex1 & ex2).ort();
+
+            // Orbit inclination
+            decimal inc = DMath.acos(en.z);
+            i = Convert.ToDouble(inc) / math.RAD;
+
+            // Accenting node longtitude
+            decimal sin_Omega = en.x / DMath.sin(inc);
+            decimal cos_Omega = -en.y / DMath.sin(inc);
+
+            decimal Omg = DMath.arg(sin_Omega, cos_Omega);
+
+            Omega = Convert.ToDouble(Omg) / math.RAD;
+
+            // Argument of latitude
+            decimal sin_u = ex1.z / DMath.sin(inc);
+            decimal cos_u = (ex1.x + sin_Omega * en.z * sin_u) / cos_Omega;
+        }
+
+        
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static double Phi(double t,
+                                     CelestialBody arivBody,
+                                     CelestialBody destBody,
+                                     double phi)
+        {
+            Orbit orbit = new Orbit();
+
+            double destLambda = 0;
+            double transTime = get_transfer_orbit(t, arivBody, destBody, phi, ref orbit, ref destLambda);
+
+            OrbitPos pos = new OrbitPos();
+            EclipticPos epos = new EclipticPos();
+
+            destBody.get_position(t + transTime, ref pos);
+            destBody.get_ecliptic_coords(pos.theta, ref epos);
+            
+            return get_phase(epos.lambda - destLambda);
+        }
+
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static double get_phase(double angle)
+        {
+            if (Math.Abs(angle) <= Math.PI)
+            {
+                return angle;
+            }
+            else
+                return angle - 2 * Math.PI*Math.Sign(angle);
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static double dDLmabdadt(double t,
+                                     CelestialBody arivBody,
+                                     CelestialBody destBody,
+                                     double psi)
+        {
+            double h = 1.0*21600.0;
+
+            double dL0 = Phi(t, arivBody, destBody, psi);
+            double dL1 = Phi(t + h, arivBody, destBody, psi);
+
+            return (dL1 - dL0)/h;
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static void get_transfer_date(double curTime,
+                                             CelestialBody arivBody,
+                                             CelestialBody destBody,
+                                             double psi,
+                                             ref Transfer trans)
+        {
+            double t0 = curTime;
+            double t = t0;
+            double dL0;
+            double dL1;
+            double eps = 1e-8;
+            double dt = 21600.0;
+
+            bool ready = false;            
+
+            do
+            {
+                dL0 = Phi(t, arivBody, destBody, psi);
+                t += dt;
+                dL1 = Phi(t, arivBody, destBody, psi);
+
+                if ((dL0 * dL1 < 0) && (Math.Abs(dL1) < 10.0 * math.RAD))
+                    ready = true;
+                else
+                    ready = false;
+
+            } while (!ready);
+            
+            double ta = t - dt;
+            double tb = t;
+            double tc = 0;
+
+            do
+            {
+                tc = (ta + tb) / 2;
+
+                dL0 = Phi(ta, arivBody, destBody, psi);
+                dL1 = Phi(tc, arivBody, destBody, psi);
+
+                if (dL0 * dL1 >= 0)
+                    ta = tc;
+                else
+                    tb = tc;
+
+            } while (Math.Abs(dL1) >= eps);
+
+            trans.arivTime = tc;
+            KCalendar.sec_to_date(tc, ref trans.arivDate);
+            
+            trans.transTime = get_transfer_orbit(tc, arivBody, destBody, psi, ref trans.orbit, ref trans.destLambda);
+
+            trans.depTime = tc + trans.transTime;
+            KCalendar.sec_to_date(trans.depTime, ref trans.depDate);
         }
     }
 }

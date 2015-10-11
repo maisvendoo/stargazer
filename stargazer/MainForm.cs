@@ -64,26 +64,12 @@ namespace stargazer
 
             comboSec.SelectedIndex = 0;
 
-            int num = 6;
+            double t = KCalendar.date_to_sec(33, 353, 3, 42, 20);
+            double phi = 10 * RAD;
 
-            OrbitPos pos = new OrbitPos();
+            Transfer trans = new Transfer();            
 
-            double t1 = KCalendar.date_to_sec(2, 1, 0, 0, 0);
-            double t2 = KCalendar.date_to_sec(2, 101, 0, 0, 0);
-
-            Bodies[num].get_position(t1, ref pos);
-            Vector3D x1 = Bodies[num].get_cartesian_pos(pos.theta);
-
-            Bodies[num].get_position(t2, ref pos);
-            Vector3D x2 = Bodies[num].get_cartesian_pos(pos.theta);
-
-            BodyData body_data = new BodyData();
-
-            Bodies[0].get_data(ref body_data);
-
-            Orbit orbit = new Orbit();
-
-            bool flag = Lambert.get_orbit(x1, x2, t1, t2, body_data.gravParameter, ref orbit);
+            Lambert.get_transfer_date(t, Bodies[6], Bodies[1], phi, ref trans);
         }                
         
         private List<CelestialBody> Bodies;
@@ -320,16 +306,39 @@ namespace stargazer
             float delta = 5.0F;                    
 
             BodyData data = new BodyData();
-            
+                        
             Bodies[body_idx].get_data(ref data);
+
+            int kerbin_idx = get_body_index("Kerbin");
+            OrbitPos kerbin_pos = new OrbitPos();
+
+            double  t = KCalendar.date_to_sec(int.Parse(textYear.Text.ToString()),
+                                            int.Parse(comboDay.Text.ToString()),
+                                            int.Parse(comboHour.Text.ToString()),
+                                            int.Parse(comboMin.Text.ToString()),
+                                            int.Parse(comboSec.Text.ToString()));
+
+            Bodies[kerbin_idx].get_position(t, ref kerbin_pos);
+
+            EclipticPos kerbin_epos = new EclipticPos();
+
+            Bodies[kerbin_idx].get_ecliptic_coords(kerbin_pos.theta, ref kerbin_epos);            
             
             double  ra = data.orbit.a / (1 - data.orbit.e);
-            double r_max = ra;            
+            double r_max = ra;
+
+            float r0 = 0;
 
             if (width > height)
+            {
                 scale = (height / 2 - Delta) / r_max;
+                r0 = height / 2 - Delta;
+            }
             else
+            {
                 scale = (width / 2 - Delta) / r_max;
+                r0 = width / 2 - Delta;
+            }
 
             double  V = 0;
             double  dV = 5.0;           
@@ -362,6 +371,12 @@ namespace stargazer
             // Draw planet position
             pos = Bodies[body_idx].get_cartesian_pos(theta);
 
+            EclipticPos epos = new EclipticPos();
+
+            Bodies[body_idx].get_ecliptic_coords(theta, ref epos);
+
+            double phi = Lambert.get_phase(epos.lambda - kerbin_epos.lambda) / RAD;
+
             x = x0 + Convert.ToSingle(scale * pos.x);
             y = y0 - Convert.ToSingle(scale * pos.y);
 
@@ -378,14 +393,12 @@ namespace stargazer
                            comboHour.Text + "h " +
                            comboMin.Text + "m " + 
                            comboSec.Text + "s";
-            graph.DrawString(title, font, brush, delta, delta);
 
-            EclipticPos epos = new EclipticPos();
-
-            Bodies[body_idx].get_ecliptic_coords(theta, ref epos);
+            graph.DrawString(title, font, brush, delta, delta);            
 
             graph.DrawString("Lat. " + Math.Round(epos.beta / RAD, 4).ToString(), font, brush, delta, delta + font.Height);
-            graph.DrawString("Lon. " + Math.Round(epos.lambda / RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height); 
+            graph.DrawString("Lon. " + Math.Round(epos.lambda / RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height);
+            graph.DrawString("Kerbin phase: " + Math.Round(phi, 4).ToString(), font, brush, delta, height - delta - font.Height); 
             
             // Draw Ref Body
             myPen.Color = Color.Yellow;
@@ -405,6 +418,15 @@ namespace stargazer
             brush.Color = Color.Green;
 
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
+
+            // Draw Kerbin direction
+            myPen.Color = Color.Red;
+            myPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+
+            x = x0 + r0 * Convert.ToSingle(Math.Cos(kerbin_epos.lambda));
+            y = y0 - r0 * Convert.ToSingle(Math.Sin(kerbin_epos.lambda));
+
+            graph.DrawLine(myPen, x0, y0, x, y);
         }
     }   
 }
