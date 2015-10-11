@@ -31,7 +31,8 @@ namespace Astronomy
         public double theta;       // True anomaly
         public double E;           // Eccentric anomaly
         public double M;           // Mean anomaly
-        public double r;           // Radius-vector;        
+        public double r;           // Radius-vector;  
+        public double refAltitude; // Altitude over reference body surface
     }
 
     //-------------------------------------------------------------------------
@@ -42,6 +43,7 @@ namespace Astronomy
         public string name;
         public int id;
         public string refBody;
+        public int refId;
         public double mass;
         public double radius;
         public double gravParameter;
@@ -58,7 +60,7 @@ namespace Astronomy
     
     public class CelestialBody
     {
-        BodyData data;
+        private BodyData data;
 
         private const double KEPLER_EQ_ERROR = 1e-11;
         private const int NEWTON = 0;
@@ -118,6 +120,7 @@ namespace Astronomy
 
             pos.E = math.Trunc2PiN(E);
             pos.r = data.orbit.a * (1 - data.orbit.e * Math.Cos(E));
+            pos.refAltitude = pos.r - data.orbit.RefRadius;
 
             // True anomaly calculation
             double sin_V = Math.Sqrt(1 - data.orbit.e * data.orbit.e) * Math.Sin(E) / (1 - data.orbit.e * Math.Cos(E));
@@ -169,6 +172,32 @@ namespace Astronomy
             return data.refBody;
         }
 
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public void set_refId(int refId)
+        {
+            data.refId = refId;
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public double get_radius()
+        {
+            return data.radius;
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public void set_refRadius(double refRadius)
+        {
+            data.orbit.RefRadius = refRadius;
+        }
 
 
         //---------------------------------------------------------------------

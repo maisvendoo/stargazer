@@ -198,9 +198,21 @@ namespace stargazer
                 Body.set_data(data);
                 Bodies.Add(Body);
             }
+
+            for (int i = 0; i < Bodies.Count; i++)
+            {
+                string refBody = Bodies[i].get_ref_body();
+                int refId = get_body_index(refBody);
+
+                if (refId != -1)
+                {
+                    Bodies[i].set_refId(refId);
+                    Bodies[i].set_refRadius(Bodies[refId].get_radius());
+                }
+            }
         }
 
-        
+
 
         //-----------------------------------------------------------
         //
@@ -227,7 +239,7 @@ namespace stargazer
 
             } while ((idx-1 <= Bodies.Count) && (data.name != name));
 
-            if (idx-1 > BodiesList.Items.Count)
+            if (idx-1 > Bodies.Count)
                 return -1;
 
             return idx - 1;
@@ -263,7 +275,7 @@ namespace stargazer
             labelEccAnomaly.Text = Math.Round(pos.E, 4).ToString() + " rad";
             labelLat.Text = Math.Round(ecoords.beta / RAD, 4).ToString() + " deg";
             labelLon.Text = Math.Round(ecoords.lambda / RAD, 4).ToString() + " deg";
-
+            labelAltitude.Text = Math.Round(pos.refAltitude, 0).ToString() + " m";
                      
             DrawPlanet(panelBodyPos, pos.theta, body_idx);
         }
