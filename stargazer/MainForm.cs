@@ -10,7 +10,7 @@ using System.Xml;
 using System.Collections;
 using System.Globalization;
 
-using EphemeridesCalc;
+using Astronomy;
 
 namespace stargazer
 {
@@ -19,8 +19,7 @@ namespace stargazer
         public MainForm()
         {
             InitializeComponent();
-
-            bodies = new List<TBodyData>();       
+                 
             Bodies = new List<CelestialBody>();
 
             ReadSystemConfig("../cfg/kerbal.xml");
@@ -85,10 +84,8 @@ namespace stargazer
             Orbit orbit = new Orbit();
 
             bool flag = Lambert.get_orbit(x1, x2, t1, t2, body_data.gravParameter, ref orbit);
-        }        
-
-        private List<TBodyData> bodies;
-        //private CCalendar calendar;
+        }                
+        
         private List<CelestialBody> Bodies;
 
         private const double RAD = Math.PI / 180.0; 
@@ -322,9 +319,7 @@ namespace stargazer
                 scale = (width / 2 - Delta) / r_max;
 
             double  V = 0;
-            double  dV = 5.0;
-                        
-            CBody body = new CBody();
+            double  dV = 5.0;           
 
             Vector3D pos;
 

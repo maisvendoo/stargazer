@@ -77,9 +77,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EphemeridesCalc\EphemeridesCalc.csproj">
+    <ProjectReference Include="..\EphemeridesCalc\astronomy.csproj">
       <Project>{8B858C3B-A570-4389-977C-5DAED51F654B}</Project>
-      <Name>EphemeridesCalc</Name>
+      <Name>astronomy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

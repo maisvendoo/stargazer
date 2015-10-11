@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stargazer", "stargazer.csproj", "{5E4B6398-22A1-4646-A629-B1D5F11C9736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EphemeridesCalc", "..\EphemeridesCalc\EphemeridesCalc.csproj", "{8B858C3B-A570-4389-977C-5DAED51F654B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "astronomy", "..\EphemeridesCalc\astronomy.csproj", "{8B858C3B-A570-4389-977C-5DAED51F654B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

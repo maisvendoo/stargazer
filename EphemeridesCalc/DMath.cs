@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EphemeridesCalc
+namespace Astronomy
 {
     public class DMath
     {
@@ -12,8 +12,10 @@ namespace EphemeridesCalc
 
         private const decimal ERROR = 1e-16m; 
         
+
+
         //---------------------------------------------------------------------
-        //
+        //      y = |x|
         //---------------------------------------------------------------------
         public static decimal abs(decimal x)
         {
@@ -23,6 +25,9 @@ namespace EphemeridesCalc
                 return -x;
         }
 
+        //---------------------------------------------------------------------
+        //      y = sign x
+        //---------------------------------------------------------------------
         public static decimal sign(decimal x)
         {
             if (x == 0)
@@ -36,10 +41,8 @@ namespace EphemeridesCalc
             }
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = sin x
         //---------------------------------------------------------------------
         public static decimal sin(decimal x)
         {
@@ -59,10 +62,8 @@ namespace EphemeridesCalc
             return sum;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = cos x
         //---------------------------------------------------------------------
         public static decimal cos(decimal x)
         {
@@ -82,19 +83,16 @@ namespace EphemeridesCalc
             return sum;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = tg x
         //---------------------------------------------------------------------
         public static decimal tan(decimal x)
         {
             return sin(x) / cos(x);
         }
 
-
         //---------------------------------------------------------------------
-        //
+        //      y = exp x
         //---------------------------------------------------------------------
         public static decimal exp(decimal x)
         {
@@ -114,9 +112,9 @@ namespace EphemeridesCalc
             return sum;
         }
 
-
-
         //---------------------------------------------------------------------
+        //            ___
+        //      y = \/ x
         //
         //---------------------------------------------------------------------
         public static decimal sqrt(decimal a)
@@ -133,12 +131,9 @@ namespace EphemeridesCalc
 
             return xn_1;
         }
-
-
-
         
         //---------------------------------------------------------------------
-        //
+        //      y = ln x
         //---------------------------------------------------------------------
         public static decimal log(decimal a)
         {
@@ -155,10 +150,8 @@ namespace EphemeridesCalc
             return xn_1;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = arcsin x
         //---------------------------------------------------------------------
         public static decimal asin(decimal a)
         {
@@ -175,10 +168,8 @@ namespace EphemeridesCalc
             return xn_1;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = arccos x
         //---------------------------------------------------------------------
         public static decimal acos(decimal a)
         {
@@ -195,20 +186,16 @@ namespace EphemeridesCalc
             return xn_1;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = a^x
         //---------------------------------------------------------------------
         public static decimal pow(decimal a, decimal x)
         {
             return exp(x * log(a));
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = sh x
         //---------------------------------------------------------------------
         public static decimal sinh(decimal x)
         {
@@ -228,10 +215,8 @@ namespace EphemeridesCalc
             return sum;            
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = ch x
         //---------------------------------------------------------------------
         public static decimal cosh(decimal x)
         {
@@ -251,20 +236,16 @@ namespace EphemeridesCalc
             return sum;
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      y = th x
         //---------------------------------------------------------------------
         public static decimal tanh(decimal x)
         {
             return sinh(x) / cosh(x);
         }
 
-
-
         //---------------------------------------------------------------------
-        //
+        //      Angle calculation (x) from sin x and cos x (x in [0..2Pi])
         //---------------------------------------------------------------------
         public static decimal arg(decimal sin_x, decimal cos_x)
         {
@@ -274,10 +255,8 @@ namespace EphemeridesCalc
                 return 2 * PI - acos(cos_x);
         }
 
-
-
         //-----------------------------------------------------------
-        //
+        //      Truncate integer mumber of periods (2Pi)
         //-----------------------------------------------------------
         public static decimal Trunc2PiN(decimal x)
         {
