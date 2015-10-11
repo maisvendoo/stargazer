@@ -199,6 +199,7 @@ namespace stargazer
                 Bodies.Add(Body);
             }
 
+            // Init reference IDs and radiuses
             for (int i = 0; i < Bodies.Count; i++)
             {
                 string refBody = Bodies[i].get_ref_body();
@@ -391,7 +392,10 @@ namespace stargazer
 
             float sunRadius = 10.0F;
 
-            brush.Color = Color.Yellow;
+            if (data.refBody == "Sun")
+                brush.Color = Color.Yellow;
+            else
+                brush.Color = Color.Blue;
 
             graph.FillEllipse(brush, x0 - sunRadius, y0 - sunRadius, 2*sunRadius, 2*sunRadius);
 
