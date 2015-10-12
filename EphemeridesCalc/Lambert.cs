@@ -178,45 +178,45 @@ namespace Astronomy
         //----------------------------------------------------------------------
         //
         //----------------------------------------------------------------------
-        public static double get_dest_theta(CelestialBody body, double destLambda)
+        public static double get_dest_theta(CelestialBody body, double lambda)
         {
-            double v0 = 0;
-            double v = v0;
-            double vk = 2 * Math.PI;
-            int N = 100;
-            double dv = (vk - v0) / N;
+            BodyData data = new BodyData();
 
-            double g0 = g(body, destLambda, v0);
-            double g1;
+            body.get_data(ref data);
 
-            do
-            {
-                v += dv;
-                g1 = g(body, destLambda, v);
+            double i = data.orbit.i * math.RAD;
+            double Omega = data.orbit.Omega * math.RAD;
+            
 
-            } while ((v <= vk) && (g0 * g1 > 0));
+            double cos_u = sqrt(pow(cos(i), 0.2e1) * (0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(Omega), 0.2e1) - 
+                 0.2e1 * cos(Omega) * cos(lambda) * sin(lambda) * sin(Omega) - 
+                 pow(cos(lambda), 0.2e1) - pow(cos(Omega), 0.2e1) + 0.1e1) / (pow(cos(lambda), 0.4e1) * pow(cos(i), 0.2e1) + 
+                 0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(i), 0.2e1) * pow(cos(Omega), 0.2e1) + 
+                 pow(cos(i), 0.2e1) * pow(cos(Omega), 0.4e1) - pow(cos(lambda), 0.4e1) - 
+                 0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(i), 0.2e1) - 0.2e1 * cos(Omega) * cos(lambda) * sin(lambda) * sin(Omega) - 
+                 0.2e1 * pow(cos(i), 0.2e1) * pow(cos(Omega), 0.2e1) - pow(cos(Omega), 0.4e1) + pow(cos(lambda), 0.2e1) + pow(cos(i), 0.2e1) + 
+                 pow(cos(Omega), 0.2e1))) * (cos(lambda) * cos(Omega) + sin(lambda) * sin(Omega));
 
-            if (v > vk)
-                return -1;
+            double sin_u = -sqrt(pow(cos(i), 0.2e1) * (0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(Omega), 0.2e1) - 
+                   0.2e1 * cos(Omega) * cos(lambda) * sin(lambda) * sin(Omega) - pow(cos(lambda), 0.2e1) - 
+                   pow(cos(Omega), 0.2e1) + 0.1e1) / (pow(cos(lambda), 0.4e1) * pow(cos(i), 0.2e1) + 
+                   0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(i), 0.2e1) * pow(cos(Omega), 0.2e1) + 
+                   pow(cos(i), 0.2e1) * pow(cos(Omega), 0.4e1) - pow(cos(lambda), 0.4e1) - 
+                   0.2e1 * pow(cos(lambda), 0.2e1) * pow(cos(i), 0.2e1) - 0.2e1 * cos(Omega) * cos(lambda) * sin(lambda) * sin(Omega) - 
+                   0.2e1 * pow(cos(i), 0.2e1) * pow(cos(Omega), 0.2e1) - pow(cos(Omega), 0.4e1) + 
+                   pow(cos(lambda), 0.2e1) + pow(cos(i), 0.2e1) + 
+                   pow(cos(Omega), 0.2e1))) * (cos(lambda) * sin(Omega) - cos(Omega) * sin(lambda)) / cos(i);
 
-            double theta1 = v - dv / 2;
-            double theta0;
-            double eps = 1e-5;
 
-            do
-            {
-                theta0 = theta1;
-                g0 = g(body, destLambda, theta0);
-                
-                theta1 = theta0 - g0/dgdV(body, destLambda, theta0);
+            double u = math.arg(sin_u, cos_u);
 
-                g1 = g(body, destLambda, theta1);
-
-            } while (Math.Abs(g1) >= eps);
-
-            return theta1;
+            return u - data.orbit.omega*math.RAD;
         }
 
+        private static double sin(double x) { return Math.Sin(x); }
+        private static double cos(double x) { return Math.Cos(x); }
+        private static double pow(double x, double a) { return Math.Pow(x, a); }
+        private static double sqrt(double x) { return Math.Sqrt(x); }
 
 
         //---------------------------------------------------------------------
@@ -279,7 +279,7 @@ namespace Astronomy
             double r1 = x1.lenght();
             double r2 = x2.lenght();            
 
-            //orbit.omega = u / math.RAD;
+            orbit.omega = u / math.RAD;
 
             BodyData data = new BodyData();
 
@@ -290,8 +290,8 @@ namespace Astronomy
             double E = 0;
             double theta = 0;
 
-            if (r2 > r1)
-            {
+            //if (r2 > r1)
+            //{
                 theta = x1.angle(x2);
                 orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
                 orbit.a = r1 / (1 - orbit.e);
@@ -300,11 +300,9 @@ namespace Astronomy
                 double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
                 E = 2 * Math.Atan(tgE2);
                 double M = E - orbit.e * Math.Sin(E);
-                transTime = M / n;
-
-                orbit.omega = 0;
-            }
-            else
+                transTime = M / n;                
+            //}
+            /*else
             {
                 theta = Math.PI - x1.angle(x2);
                 orbit.e = (r1 - r2) / (r1 + r2 * Math.Cos(theta));
@@ -314,10 +312,8 @@ namespace Astronomy
                 double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
                 E = 2 * Math.Atan(tgE2);
                 double M = E - orbit.e * Math.Sin(E);
-                transTime = (Math.PI - M) / n;
-
-                orbit.omega = 0;// 180.0;
-            }                        
+                transTime = (Math.PI - M) / n;                
+            } */                       
 
             return transTime;
         }
@@ -349,6 +345,8 @@ namespace Astronomy
             // Argument of latitude
             decimal sin_u = ex1.z / DMath.sin(inc);
             decimal cos_u = (ex1.x + sin_Omega * en.z * sin_u) / cos_Omega;
+
+            u = Convert.ToDouble(DMath.arg(Decimal.Round(sin_u, 5), Decimal.Round(cos_u, 5)));
         }
 
         

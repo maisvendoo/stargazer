@@ -88,6 +88,9 @@ namespace stargazer
             comboSec.SelectedIndex = 0;
             comboBeginSec.SelectedIndex = 0;
             comboEndSec.SelectedIndex = 0;
+
+            double lambda = 355.9635 * RAD;
+            double v = Lambert.get_dest_theta(Bodies[6], lambda) / RAD;
         }                
         
         private List<CelestialBody> Bodies;
@@ -627,24 +630,13 @@ namespace stargazer
             }
 
 
-            // Transfer orbit
-            if (ariv_ra < dest_ra)
-            {
-                V0 = 0;
-                V = V0;
-                V1 = Lambert.get_dest_theta(craft, trans.destLambda) / RAD;
-                dV = 5.0;                
-            }
-            else
-            {                
-                V0 = 180.0;
-                V = V0;
-                V1 = 360 + Lambert.get_dest_theta(craft, trans.destLambda) / RAD; ; 
-                dV = 5.0;                
-            }
+           
+            V0 = 0;
+            V = V0;
+            V1 = Lambert.get_dest_theta(craft, trans.destLambda) / RAD;
+            dV = 5.0;                            
 
-            pen.Color = Color.Red;
-            
+            pen.Color = Color.Red;            
 
             do
             {
