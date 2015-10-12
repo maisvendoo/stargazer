@@ -482,7 +482,8 @@ namespace Astronomy
                                                CelestialBody craft,
                                                double t1,
                                                double h,
-                                               ref Orbit orbit)
+                                               ref Orbit orbit,
+                                               ref double startTime)
         {
             double vx = 0;
             double vy = 0;
@@ -515,6 +516,20 @@ namespace Astronomy
 
             double v0 = Math.Sqrt(2 * mu * (1 / (R + h) - 1 / ro) + v_ro * v_ro);
             double dv = v0 - Math.Sqrt(mu / (R + h));
+
+            double vk = Math.Sqrt(mu / (R + h));
+            orbit.e = (v0 * v0 / vk / vk - 1);
+            double p = (R + h) * (1 + orbit.e);
+            double cos_theta = (p / ro - 1) / orbit.e;
+            double theta = Math.Acos(cos_theta);
+            orbit.a = p / (orbit.e * orbit.e - 1);
+            double n = Math.Sqrt(mu / orbit.a) / orbit.a;
+            double thH2 = Math.Sqrt((orbit.e - 1) / (orbit.e + 1)) * Math.Tan(theta / 2);
+            double H = Math.Log((1 + thH2) / (1 - thH2));
+            double M = orbit.e * Math.Sinh(H) - H;
+            double dT = M / n;
+
+            startTime = t1 - dT;
 
             return dv;
         }

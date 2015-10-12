@@ -521,9 +521,22 @@ namespace stargazer
 
             double h = double.Parse(textAltitude.Text)*1000.0;
 
-            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, ref arivOrbit);
+            double startTime = 0;
+
+            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, ref arivOrbit, ref startTime);
 
             labelDeltaV.Text = Math.Round(dv, 2).ToString();
+            labelInc.Text = Math.Round(arivOrbit.i, 4).ToString();
+
+            KDate startDate = new KDate();
+
+            KCalendar.sec_to_date(startTime, ref startDate);
+
+            labelStartDate.Text = startDate.year.ToString() + "y " +
+                                  startDate.day.ToString() + "d " +
+                                  startDate.hour.ToString() + "h " +
+                                  startDate.min.ToString() + "m " +
+                                  startDate.sec.ToString() + "s";
             
             DrawTransOrbit(panelTransOrbit, trans, Bodies[a_idx], Bodies[d_idx], craft);
         }

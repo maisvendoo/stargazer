@@ -116,6 +116,10 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.labelDeltaV = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.labelInc = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -240,9 +244,9 @@
             // 
             // panelTransOrbit
             // 
-            this.panelTransOrbit.Location = new System.Drawing.Point(346, 156);
+            this.panelTransOrbit.Location = new System.Drawing.Point(368, 156);
             this.panelTransOrbit.Name = "panelTransOrbit";
-            this.panelTransOrbit.Size = new System.Drawing.Size(435, 343);
+            this.panelTransOrbit.Size = new System.Drawing.Size(413, 343);
             this.panelTransOrbit.TabIndex = 42;
             // 
             // label34
@@ -318,13 +322,17 @@
             this.groupHomanResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupHomanResults.Location = new System.Drawing.Point(18, 147);
             this.groupHomanResults.Name = "groupHomanResults";
-            this.groupHomanResults.Size = new System.Drawing.Size(322, 352);
+            this.groupHomanResults.Size = new System.Drawing.Size(342, 352);
             this.groupHomanResults.TabIndex = 34;
             this.groupHomanResults.TabStop = false;
             this.groupHomanResults.Text = "Search result";
             // 
             // panelHomanRes
             // 
+            this.panelHomanRes.Controls.Add(this.labelStartDate);
+            this.panelHomanRes.Controls.Add(this.label39);
+            this.panelHomanRes.Controls.Add(this.labelInc);
+            this.panelHomanRes.Controls.Add(this.label38);
             this.panelHomanRes.Controls.Add(this.labelDeltaV);
             this.panelHomanRes.Controls.Add(this.label37);
             this.panelHomanRes.Controls.Add(this.label36);
@@ -345,7 +353,7 @@
             this.panelHomanRes.Controls.Add(this.label24);
             this.panelHomanRes.Location = new System.Drawing.Point(6, 25);
             this.panelHomanRes.Name = "panelHomanRes";
-            this.panelHomanRes.Size = new System.Drawing.Size(310, 321);
+            this.panelHomanRes.Size = new System.Drawing.Size(330, 321);
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
             // 
@@ -1017,6 +1025,46 @@
             this.labelDeltaV.TabIndex = 44;
             this.labelDeltaV.Text = "0";
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(20, 249);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(147, 15);
+            this.label38.TabIndex = 45;
+            this.label38.Text = "low orbit inc., deg:";
+            // 
+            // labelInc
+            // 
+            this.labelInc.AutoSize = true;
+            this.labelInc.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInc.Location = new System.Drawing.Point(196, 249);
+            this.labelInc.Name = "labelInc";
+            this.labelInc.Size = new System.Drawing.Size(14, 15);
+            this.labelInc.TabIndex = 46;
+            this.labelInc.Text = "0";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(20, 269);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(84, 15);
+            this.label39.TabIndex = 47;
+            this.label39.Text = "start date:";
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartDate.Location = new System.Drawing.Point(196, 269);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
+            this.labelStartDate.TabIndex = 48;
+            this.labelStartDate.Text = "0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1138,6 +1186,10 @@
         private System.Windows.Forms.Label labelDeltaV;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label labelInc;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.Label label39;
 
     }
 }
