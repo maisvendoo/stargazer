@@ -35,6 +35,53 @@
             this.itemEphemeride = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
+            this.panelHomanTrans = new System.Windows.Forms.Panel();
+            this.panelTransOrbit = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textPsi = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.comboHomanDepList = new System.Windows.Forms.ComboBox();
+            this.comboHomanArrivList = new System.Windows.Forms.ComboBox();
+            this.buttonHomanSearch = new System.Windows.Forms.Button();
+            this.groupHomanResults = new System.Windows.Forms.GroupBox();
+            this.panelHomanRes = new System.Windows.Forms.Panel();
+            this.labelDepDate = new System.Windows.Forms.Label();
+            this.labelArivDate = new System.Windows.Forms.Label();
+            this.labelArgPe = new System.Windows.Forms.Label();
+            this.labelLAN = new System.Windows.Forms.Label();
+            this.labelInclination = new System.Windows.Forms.Label();
+            this.labelEccentricity = new System.Windows.Forms.Label();
+            this.labelSmiMajorAxis = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textEndYear = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.comboEndSec = new System.Windows.Forms.ComboBox();
+            this.comboEndMin = new System.Windows.Forms.ComboBox();
+            this.comboEndHour = new System.Windows.Forms.ComboBox();
+            this.comboEndDay = new System.Windows.Forms.ComboBox();
+            this.textBeginYear = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBeginSec = new System.Windows.Forms.ComboBox();
+            this.comboBeginMin = new System.Windows.Forms.ComboBox();
+            this.comboBeginHour = new System.Windows.Forms.ComboBox();
+            this.comboBeginDay = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panelBodyPos = new System.Windows.Forms.Panel();
             this.labelDarwTitle = new System.Windows.Forms.Label();
             this.groupCalcResults = new System.Windows.Forms.GroupBox();
@@ -64,60 +111,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.panelHomanTrans = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBeginYear = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBeginSec = new System.Windows.Forms.ComboBox();
-            this.comboBeginMin = new System.Windows.Forms.ComboBox();
-            this.comboBeginHour = new System.Windows.Forms.ComboBox();
-            this.comboBeginDay = new System.Windows.Forms.ComboBox();
-            this.textEndYear = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.comboEndSec = new System.Windows.Forms.ComboBox();
-            this.comboEndMin = new System.Windows.Forms.ComboBox();
-            this.comboEndHour = new System.Windows.Forms.ComboBox();
-            this.comboEndDay = new System.Windows.Forms.ComboBox();
-            this.groupHomanResults = new System.Windows.Forms.GroupBox();
-            this.panelHomanRes = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.labelSmiMajorAxis = new System.Windows.Forms.Label();
-            this.labelEccentricity = new System.Windows.Forms.Label();
-            this.labelInclination = new System.Windows.Forms.Label();
-            this.labelLAN = new System.Windows.Forms.Label();
-            this.labelArgPe = new System.Windows.Forms.Label();
-            this.buttonHomanSearch = new System.Windows.Forms.Button();
-            this.comboHomanArrivList = new System.Windows.Forms.ComboBox();
-            this.comboHomanDepList = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.textPsi = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.labelArivDate = new System.Windows.Forms.Label();
-            this.labelDepDate = new System.Windows.Forms.Label();
-            this.panelTransOrbit = new System.Windows.Forms.Panel();
+            this.textAltitude = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.labelDeltaV = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
-            this.panelBodyPos.SuspendLayout();
-            this.groupCalcResults.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
             this.groupHomanResults.SuspendLayout();
             this.panelHomanRes.SuspendLayout();
+            this.panelBodyPos.SuspendLayout();
+            this.groupCalcResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -192,6 +197,491 @@
             this.panelEphemeride.Name = "panelEphemeride";
             this.panelEphemeride.Size = new System.Drawing.Size(784, 516);
             this.panelEphemeride.TabIndex = 2;
+            // 
+            // panelHomanTrans
+            // 
+            this.panelHomanTrans.Controls.Add(this.label35);
+            this.panelHomanTrans.Controls.Add(this.textAltitude);
+            this.panelHomanTrans.Controls.Add(this.panelTransOrbit);
+            this.panelHomanTrans.Controls.Add(this.label34);
+            this.panelHomanTrans.Controls.Add(this.textPsi);
+            this.panelHomanTrans.Controls.Add(this.label33);
+            this.panelHomanTrans.Controls.Add(this.label32);
+            this.panelHomanTrans.Controls.Add(this.comboHomanDepList);
+            this.panelHomanTrans.Controls.Add(this.comboHomanArrivList);
+            this.panelHomanTrans.Controls.Add(this.buttonHomanSearch);
+            this.panelHomanTrans.Controls.Add(this.groupHomanResults);
+            this.panelHomanTrans.Controls.Add(this.textEndYear);
+            this.panelHomanTrans.Controls.Add(this.label19);
+            this.panelHomanTrans.Controls.Add(this.label20);
+            this.panelHomanTrans.Controls.Add(this.label21);
+            this.panelHomanTrans.Controls.Add(this.label22);
+            this.panelHomanTrans.Controls.Add(this.label23);
+            this.panelHomanTrans.Controls.Add(this.comboEndSec);
+            this.panelHomanTrans.Controls.Add(this.comboEndMin);
+            this.panelHomanTrans.Controls.Add(this.comboEndHour);
+            this.panelHomanTrans.Controls.Add(this.comboEndDay);
+            this.panelHomanTrans.Controls.Add(this.textBeginYear);
+            this.panelHomanTrans.Controls.Add(this.label14);
+            this.panelHomanTrans.Controls.Add(this.label15);
+            this.panelHomanTrans.Controls.Add(this.label16);
+            this.panelHomanTrans.Controls.Add(this.label17);
+            this.panelHomanTrans.Controls.Add(this.label18);
+            this.panelHomanTrans.Controls.Add(this.comboBeginSec);
+            this.panelHomanTrans.Controls.Add(this.comboBeginMin);
+            this.panelHomanTrans.Controls.Add(this.comboBeginHour);
+            this.panelHomanTrans.Controls.Add(this.comboBeginDay);
+            this.panelHomanTrans.Controls.Add(this.label13);
+            this.panelHomanTrans.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelHomanTrans.Location = new System.Drawing.Point(0, 0);
+            this.panelHomanTrans.Name = "panelHomanTrans";
+            this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
+            this.panelHomanTrans.TabIndex = 17;
+            // 
+            // panelTransOrbit
+            // 
+            this.panelTransOrbit.Location = new System.Drawing.Point(346, 156);
+            this.panelTransOrbit.Name = "panelTransOrbit";
+            this.panelTransOrbit.Size = new System.Drawing.Size(435, 343);
+            this.panelTransOrbit.TabIndex = 42;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label34.Location = new System.Drawing.Point(16, 106);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(51, 15);
+            this.label34.TabIndex = 41;
+            this.label34.Text = "Psi, deg";
+            // 
+            // textPsi
+            // 
+            this.textPsi.Location = new System.Drawing.Point(79, 106);
+            this.textPsi.Name = "textPsi";
+            this.textPsi.Size = new System.Drawing.Size(60, 20);
+            this.textPsi.TabIndex = 40;
+            this.textPsi.Text = "5";
+            this.textPsi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label33.Location = new System.Drawing.Point(16, 58);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(91, 15);
+            this.label33.TabIndex = 39;
+            this.label33.Text = "Departure body";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(15, 12);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(69, 15);
+            this.label32.TabIndex = 38;
+            this.label32.Text = "Arrival body";
+            // 
+            // comboHomanDepList
+            // 
+            this.comboHomanDepList.FormattingEnabled = true;
+            this.comboHomanDepList.Location = new System.Drawing.Point(18, 74);
+            this.comboHomanDepList.Name = "comboHomanDepList";
+            this.comboHomanDepList.Size = new System.Drawing.Size(121, 21);
+            this.comboHomanDepList.TabIndex = 37;
+            this.comboHomanDepList.Text = "Duna";
+            // 
+            // comboHomanArrivList
+            // 
+            this.comboHomanArrivList.FormattingEnabled = true;
+            this.comboHomanArrivList.Location = new System.Drawing.Point(18, 38);
+            this.comboHomanArrivList.Name = "comboHomanArrivList";
+            this.comboHomanArrivList.Size = new System.Drawing.Size(121, 21);
+            this.comboHomanArrivList.TabIndex = 36;
+            this.comboHomanArrivList.Text = "Kerbin";
+            // 
+            // buttonHomanSearch
+            // 
+            this.buttonHomanSearch.Location = new System.Drawing.Point(687, 66);
+            this.buttonHomanSearch.Name = "buttonHomanSearch";
+            this.buttonHomanSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonHomanSearch.TabIndex = 35;
+            this.buttonHomanSearch.Text = "Search";
+            this.buttonHomanSearch.UseVisualStyleBackColor = true;
+            this.buttonHomanSearch.Click += new System.EventHandler(this.buttonHomanSearch_Click);
+            // 
+            // groupHomanResults
+            // 
+            this.groupHomanResults.Controls.Add(this.panelHomanRes);
+            this.groupHomanResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupHomanResults.Location = new System.Drawing.Point(18, 147);
+            this.groupHomanResults.Name = "groupHomanResults";
+            this.groupHomanResults.Size = new System.Drawing.Size(322, 352);
+            this.groupHomanResults.TabIndex = 34;
+            this.groupHomanResults.TabStop = false;
+            this.groupHomanResults.Text = "Search result";
+            // 
+            // panelHomanRes
+            // 
+            this.panelHomanRes.Controls.Add(this.labelDeltaV);
+            this.panelHomanRes.Controls.Add(this.label37);
+            this.panelHomanRes.Controls.Add(this.label36);
+            this.panelHomanRes.Controls.Add(this.labelDepDate);
+            this.panelHomanRes.Controls.Add(this.labelArivDate);
+            this.panelHomanRes.Controls.Add(this.labelArgPe);
+            this.panelHomanRes.Controls.Add(this.labelLAN);
+            this.panelHomanRes.Controls.Add(this.labelInclination);
+            this.panelHomanRes.Controls.Add(this.labelEccentricity);
+            this.panelHomanRes.Controls.Add(this.labelSmiMajorAxis);
+            this.panelHomanRes.Controls.Add(this.label31);
+            this.panelHomanRes.Controls.Add(this.label30);
+            this.panelHomanRes.Controls.Add(this.label29);
+            this.panelHomanRes.Controls.Add(this.label28);
+            this.panelHomanRes.Controls.Add(this.label27);
+            this.panelHomanRes.Controls.Add(this.label26);
+            this.panelHomanRes.Controls.Add(this.label25);
+            this.panelHomanRes.Controls.Add(this.label24);
+            this.panelHomanRes.Location = new System.Drawing.Point(6, 25);
+            this.panelHomanRes.Name = "panelHomanRes";
+            this.panelHomanRes.Size = new System.Drawing.Size(310, 321);
+            this.panelHomanRes.TabIndex = 0;
+            this.panelHomanRes.Visible = false;
+            // 
+            // labelDepDate
+            // 
+            this.labelDepDate.AutoSize = true;
+            this.labelDepDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDepDate.Location = new System.Drawing.Point(147, 42);
+            this.labelDepDate.Name = "labelDepDate";
+            this.labelDepDate.Size = new System.Drawing.Size(14, 15);
+            this.labelDepDate.TabIndex = 41;
+            this.labelDepDate.Text = "0";
+            // 
+            // labelArivDate
+            // 
+            this.labelArivDate.AutoSize = true;
+            this.labelArivDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArivDate.Location = new System.Drawing.Point(147, 21);
+            this.labelArivDate.Name = "labelArivDate";
+            this.labelArivDate.Size = new System.Drawing.Size(14, 15);
+            this.labelArivDate.TabIndex = 40;
+            this.labelArivDate.Text = "0";
+            // 
+            // labelArgPe
+            // 
+            this.labelArgPe.AutoSize = true;
+            this.labelArgPe.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArgPe.Location = new System.Drawing.Point(196, 182);
+            this.labelArgPe.Name = "labelArgPe";
+            this.labelArgPe.Size = new System.Drawing.Size(14, 15);
+            this.labelArgPe.TabIndex = 39;
+            this.labelArgPe.Text = "0";
+            // 
+            // labelLAN
+            // 
+            this.labelLAN.AutoSize = true;
+            this.labelLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLAN.Location = new System.Drawing.Point(196, 162);
+            this.labelLAN.Name = "labelLAN";
+            this.labelLAN.Size = new System.Drawing.Size(14, 15);
+            this.labelLAN.TabIndex = 38;
+            this.labelLAN.Text = "0";
+            // 
+            // labelInclination
+            // 
+            this.labelInclination.AutoSize = true;
+            this.labelInclination.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInclination.Location = new System.Drawing.Point(196, 142);
+            this.labelInclination.Name = "labelInclination";
+            this.labelInclination.Size = new System.Drawing.Size(14, 15);
+            this.labelInclination.TabIndex = 37;
+            this.labelInclination.Text = "0";
+            // 
+            // labelEccentricity
+            // 
+            this.labelEccentricity.AutoSize = true;
+            this.labelEccentricity.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEccentricity.Location = new System.Drawing.Point(196, 122);
+            this.labelEccentricity.Name = "labelEccentricity";
+            this.labelEccentricity.Size = new System.Drawing.Size(14, 15);
+            this.labelEccentricity.TabIndex = 36;
+            this.labelEccentricity.Text = "0";
+            // 
+            // labelSmiMajorAxis
+            // 
+            this.labelSmiMajorAxis.AutoSize = true;
+            this.labelSmiMajorAxis.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSmiMajorAxis.Location = new System.Drawing.Point(196, 102);
+            this.labelSmiMajorAxis.Name = "labelSmiMajorAxis";
+            this.labelSmiMajorAxis.Size = new System.Drawing.Size(14, 15);
+            this.labelSmiMajorAxis.TabIndex = 35;
+            this.labelSmiMajorAxis.Text = "0";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(20, 182);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(161, 15);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "argument of periapsis:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(20, 162);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(42, 15);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "LAN: ";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(20, 142);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(91, 15);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "inclination:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(20, 122);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(91, 15);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "eccenticity:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(20, 102);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(119, 15);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "semi major axis:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label26.Location = new System.Drawing.Point(17, 80);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(106, 16);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Transfer orbit";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(17, 42);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(119, 15);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Departure Date: ";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(17, 21);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(105, 15);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Arrival Date: ";
+            // 
+            // textEndYear
+            // 
+            this.textEndYear.Location = new System.Drawing.Point(288, 76);
+            this.textEndYear.Name = "textEndYear";
+            this.textEndYear.Size = new System.Drawing.Size(72, 20);
+            this.textEndYear.TabIndex = 33;
+            this.textEndYear.Text = "1";
+            this.textEndYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(659, 75);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(12, 13);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "s";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(588, 75);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(15, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "m";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(521, 75);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(13, 13);
+            this.label21.TabIndex = 30;
+            this.label21.Text = "h";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(451, 75);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(13, 13);
+            this.label22.TabIndex = 29;
+            this.label22.Text = "d";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(365, 75);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(12, 13);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "y";
+            // 
+            // comboEndSec
+            // 
+            this.comboEndSec.FormattingEnabled = true;
+            this.comboEndSec.Location = new System.Drawing.Point(607, 75);
+            this.comboEndSec.Name = "comboEndSec";
+            this.comboEndSec.Size = new System.Drawing.Size(46, 21);
+            this.comboEndSec.TabIndex = 27;
+            // 
+            // comboEndMin
+            // 
+            this.comboEndMin.FormattingEnabled = true;
+            this.comboEndMin.Location = new System.Drawing.Point(540, 75);
+            this.comboEndMin.Name = "comboEndMin";
+            this.comboEndMin.Size = new System.Drawing.Size(46, 21);
+            this.comboEndMin.TabIndex = 26;
+            // 
+            // comboEndHour
+            // 
+            this.comboEndHour.FormattingEnabled = true;
+            this.comboEndHour.Location = new System.Drawing.Point(469, 75);
+            this.comboEndHour.Name = "comboEndHour";
+            this.comboEndHour.Size = new System.Drawing.Size(46, 21);
+            this.comboEndHour.TabIndex = 25;
+            // 
+            // comboEndDay
+            // 
+            this.comboEndDay.FormattingEnabled = true;
+            this.comboEndDay.Location = new System.Drawing.Point(383, 75);
+            this.comboEndDay.Name = "comboEndDay";
+            this.comboEndDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboEndDay.Size = new System.Drawing.Size(64, 21);
+            this.comboEndDay.TabIndex = 24;
+            // 
+            // textBeginYear
+            // 
+            this.textBeginYear.Location = new System.Drawing.Point(288, 38);
+            this.textBeginYear.Name = "textBeginYear";
+            this.textBeginYear.Size = new System.Drawing.Size(72, 20);
+            this.textBeginYear.TabIndex = 23;
+            this.textBeginYear.Text = "1";
+            this.textBeginYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(659, 37);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(12, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "s";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(588, 37);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(15, 13);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "m";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(521, 37);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "h";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(451, 37);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 13);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "d";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(365, 37);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(12, 13);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "y";
+            // 
+            // comboBeginSec
+            // 
+            this.comboBeginSec.FormattingEnabled = true;
+            this.comboBeginSec.Location = new System.Drawing.Point(607, 37);
+            this.comboBeginSec.Name = "comboBeginSec";
+            this.comboBeginSec.Size = new System.Drawing.Size(46, 21);
+            this.comboBeginSec.TabIndex = 17;
+            // 
+            // comboBeginMin
+            // 
+            this.comboBeginMin.FormattingEnabled = true;
+            this.comboBeginMin.Location = new System.Drawing.Point(540, 37);
+            this.comboBeginMin.Name = "comboBeginMin";
+            this.comboBeginMin.Size = new System.Drawing.Size(46, 21);
+            this.comboBeginMin.TabIndex = 16;
+            // 
+            // comboBeginHour
+            // 
+            this.comboBeginHour.FormattingEnabled = true;
+            this.comboBeginHour.Location = new System.Drawing.Point(469, 37);
+            this.comboBeginHour.Name = "comboBeginHour";
+            this.comboBeginHour.Size = new System.Drawing.Size(46, 21);
+            this.comboBeginHour.TabIndex = 15;
+            // 
+            // comboBeginDay
+            // 
+            this.comboBeginDay.FormattingEnabled = true;
+            this.comboBeginDay.Location = new System.Drawing.Point(383, 37);
+            this.comboBeginDay.Name = "comboBeginDay";
+            this.comboBeginDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBeginDay.Size = new System.Drawing.Size(64, 21);
+            this.comboBeginDay.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(295, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(230, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Transfer windows search time interval";
             // 
             // panelBodyPos
             // 
@@ -478,485 +968,54 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
-            // panelHomanTrans
-            // 
-            this.panelHomanTrans.Controls.Add(this.panelTransOrbit);
-            this.panelHomanTrans.Controls.Add(this.label34);
-            this.panelHomanTrans.Controls.Add(this.textPsi);
-            this.panelHomanTrans.Controls.Add(this.label33);
-            this.panelHomanTrans.Controls.Add(this.label32);
-            this.panelHomanTrans.Controls.Add(this.comboHomanDepList);
-            this.panelHomanTrans.Controls.Add(this.comboHomanArrivList);
-            this.panelHomanTrans.Controls.Add(this.buttonHomanSearch);
-            this.panelHomanTrans.Controls.Add(this.groupHomanResults);
-            this.panelHomanTrans.Controls.Add(this.textEndYear);
-            this.panelHomanTrans.Controls.Add(this.label19);
-            this.panelHomanTrans.Controls.Add(this.label20);
-            this.panelHomanTrans.Controls.Add(this.label21);
-            this.panelHomanTrans.Controls.Add(this.label22);
-            this.panelHomanTrans.Controls.Add(this.label23);
-            this.panelHomanTrans.Controls.Add(this.comboEndSec);
-            this.panelHomanTrans.Controls.Add(this.comboEndMin);
-            this.panelHomanTrans.Controls.Add(this.comboEndHour);
-            this.panelHomanTrans.Controls.Add(this.comboEndDay);
-            this.panelHomanTrans.Controls.Add(this.textBeginYear);
-            this.panelHomanTrans.Controls.Add(this.label14);
-            this.panelHomanTrans.Controls.Add(this.label15);
-            this.panelHomanTrans.Controls.Add(this.label16);
-            this.panelHomanTrans.Controls.Add(this.label17);
-            this.panelHomanTrans.Controls.Add(this.label18);
-            this.panelHomanTrans.Controls.Add(this.comboBeginSec);
-            this.panelHomanTrans.Controls.Add(this.comboBeginMin);
-            this.panelHomanTrans.Controls.Add(this.comboBeginHour);
-            this.panelHomanTrans.Controls.Add(this.comboBeginDay);
-            this.panelHomanTrans.Controls.Add(this.label13);
-            this.panelHomanTrans.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelHomanTrans.Location = new System.Drawing.Point(0, 0);
-            this.panelHomanTrans.Name = "panelHomanTrans";
-            this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
-            this.panelHomanTrans.TabIndex = 17;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(209, 15);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(230, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Transfer windows search time interval";
-            // 
-            // textBeginYear
-            // 
-            this.textBeginYear.Location = new System.Drawing.Point(202, 38);
-            this.textBeginYear.Name = "textBeginYear";
-            this.textBeginYear.Size = new System.Drawing.Size(72, 20);
-            this.textBeginYear.TabIndex = 23;
-            this.textBeginYear.Text = "1";
-            this.textBeginYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(573, 37);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(12, 13);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "s";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(502, 37);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 13);
-            this.label15.TabIndex = 21;
-            this.label15.Text = "m";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(435, 37);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(13, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "h";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(365, 37);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(13, 13);
-            this.label17.TabIndex = 19;
-            this.label17.Text = "d";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(279, 37);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(12, 13);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "y";
-            // 
-            // comboBeginSec
-            // 
-            this.comboBeginSec.FormattingEnabled = true;
-            this.comboBeginSec.Location = new System.Drawing.Point(521, 37);
-            this.comboBeginSec.Name = "comboBeginSec";
-            this.comboBeginSec.Size = new System.Drawing.Size(46, 21);
-            this.comboBeginSec.TabIndex = 17;
-            // 
-            // comboBeginMin
-            // 
-            this.comboBeginMin.FormattingEnabled = true;
-            this.comboBeginMin.Location = new System.Drawing.Point(454, 37);
-            this.comboBeginMin.Name = "comboBeginMin";
-            this.comboBeginMin.Size = new System.Drawing.Size(46, 21);
-            this.comboBeginMin.TabIndex = 16;
-            // 
-            // comboBeginHour
-            // 
-            this.comboBeginHour.FormattingEnabled = true;
-            this.comboBeginHour.Location = new System.Drawing.Point(383, 37);
-            this.comboBeginHour.Name = "comboBeginHour";
-            this.comboBeginHour.Size = new System.Drawing.Size(46, 21);
-            this.comboBeginHour.TabIndex = 15;
-            // 
-            // comboBeginDay
-            // 
-            this.comboBeginDay.FormattingEnabled = true;
-            this.comboBeginDay.Location = new System.Drawing.Point(297, 37);
-            this.comboBeginDay.Name = "comboBeginDay";
-            this.comboBeginDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBeginDay.Size = new System.Drawing.Size(64, 21);
-            this.comboBeginDay.TabIndex = 14;
-            // 
-            // textEndYear
-            // 
-            this.textEndYear.Location = new System.Drawing.Point(202, 76);
-            this.textEndYear.Name = "textEndYear";
-            this.textEndYear.Size = new System.Drawing.Size(72, 20);
-            this.textEndYear.TabIndex = 33;
-            this.textEndYear.Text = "1";
-            this.textEndYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(573, 75);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(12, 13);
-            this.label19.TabIndex = 32;
-            this.label19.Text = "s";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(502, 75);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(15, 13);
-            this.label20.TabIndex = 31;
-            this.label20.Text = "m";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(435, 75);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(13, 13);
-            this.label21.TabIndex = 30;
-            this.label21.Text = "h";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(365, 75);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(13, 13);
-            this.label22.TabIndex = 29;
-            this.label22.Text = "d";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(279, 75);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(12, 13);
-            this.label23.TabIndex = 28;
-            this.label23.Text = "y";
-            // 
-            // comboEndSec
-            // 
-            this.comboEndSec.FormattingEnabled = true;
-            this.comboEndSec.Location = new System.Drawing.Point(521, 75);
-            this.comboEndSec.Name = "comboEndSec";
-            this.comboEndSec.Size = new System.Drawing.Size(46, 21);
-            this.comboEndSec.TabIndex = 27;
-            // 
-            // comboEndMin
-            // 
-            this.comboEndMin.FormattingEnabled = true;
-            this.comboEndMin.Location = new System.Drawing.Point(454, 75);
-            this.comboEndMin.Name = "comboEndMin";
-            this.comboEndMin.Size = new System.Drawing.Size(46, 21);
-            this.comboEndMin.TabIndex = 26;
-            // 
-            // comboEndHour
-            // 
-            this.comboEndHour.FormattingEnabled = true;
-            this.comboEndHour.Location = new System.Drawing.Point(383, 75);
-            this.comboEndHour.Name = "comboEndHour";
-            this.comboEndHour.Size = new System.Drawing.Size(46, 21);
-            this.comboEndHour.TabIndex = 25;
-            // 
-            // comboEndDay
-            // 
-            this.comboEndDay.FormattingEnabled = true;
-            this.comboEndDay.Location = new System.Drawing.Point(297, 75);
-            this.comboEndDay.Name = "comboEndDay";
-            this.comboEndDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboEndDay.Size = new System.Drawing.Size(64, 21);
-            this.comboEndDay.TabIndex = 24;
-            // 
-            // groupHomanResults
-            // 
-            this.groupHomanResults.Controls.Add(this.panelHomanRes);
-            this.groupHomanResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupHomanResults.Location = new System.Drawing.Point(18, 147);
-            this.groupHomanResults.Name = "groupHomanResults";
-            this.groupHomanResults.Size = new System.Drawing.Size(322, 352);
-            this.groupHomanResults.TabIndex = 34;
-            this.groupHomanResults.TabStop = false;
-            this.groupHomanResults.Text = "Search result";
-            // 
-            // panelHomanRes
-            // 
-            this.panelHomanRes.Controls.Add(this.labelDepDate);
-            this.panelHomanRes.Controls.Add(this.labelArivDate);
-            this.panelHomanRes.Controls.Add(this.labelArgPe);
-            this.panelHomanRes.Controls.Add(this.labelLAN);
-            this.panelHomanRes.Controls.Add(this.labelInclination);
-            this.panelHomanRes.Controls.Add(this.labelEccentricity);
-            this.panelHomanRes.Controls.Add(this.labelSmiMajorAxis);
-            this.panelHomanRes.Controls.Add(this.label31);
-            this.panelHomanRes.Controls.Add(this.label30);
-            this.panelHomanRes.Controls.Add(this.label29);
-            this.panelHomanRes.Controls.Add(this.label28);
-            this.panelHomanRes.Controls.Add(this.label27);
-            this.panelHomanRes.Controls.Add(this.label26);
-            this.panelHomanRes.Controls.Add(this.label25);
-            this.panelHomanRes.Controls.Add(this.label24);
-            this.panelHomanRes.Location = new System.Drawing.Point(6, 29);
-            this.panelHomanRes.Name = "panelHomanRes";
-            this.panelHomanRes.Size = new System.Drawing.Size(310, 317);
-            this.panelHomanRes.TabIndex = 0;
-            this.panelHomanRes.Visible = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(17, 21);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(105, 15);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Arrival Date: ";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(17, 42);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(119, 15);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Departure Date: ";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(17, 98);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(106, 16);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "Transfer orbit";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(20, 120);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(119, 15);
-            this.label27.TabIndex = 3;
-            this.label27.Text = "semi major axis:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(20, 140);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(91, 15);
-            this.label28.TabIndex = 4;
-            this.label28.Text = "eccenticity:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(20, 160);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(91, 15);
-            this.label29.TabIndex = 5;
-            this.label29.Text = "inclination:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(20, 180);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(42, 15);
-            this.label30.TabIndex = 6;
-            this.label30.Text = "LAN: ";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(20, 200);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(161, 15);
-            this.label31.TabIndex = 7;
-            this.label31.Text = "argument of periapsis:";
-            // 
-            // labelSmiMajorAxis
-            // 
-            this.labelSmiMajorAxis.AutoSize = true;
-            this.labelSmiMajorAxis.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSmiMajorAxis.Location = new System.Drawing.Point(196, 120);
-            this.labelSmiMajorAxis.Name = "labelSmiMajorAxis";
-            this.labelSmiMajorAxis.Size = new System.Drawing.Size(14, 15);
-            this.labelSmiMajorAxis.TabIndex = 35;
-            this.labelSmiMajorAxis.Text = "0";
-            // 
-            // labelEccentricity
-            // 
-            this.labelEccentricity.AutoSize = true;
-            this.labelEccentricity.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEccentricity.Location = new System.Drawing.Point(196, 140);
-            this.labelEccentricity.Name = "labelEccentricity";
-            this.labelEccentricity.Size = new System.Drawing.Size(14, 15);
-            this.labelEccentricity.TabIndex = 36;
-            this.labelEccentricity.Text = "0";
-            // 
-            // labelInclination
-            // 
-            this.labelInclination.AutoSize = true;
-            this.labelInclination.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInclination.Location = new System.Drawing.Point(196, 160);
-            this.labelInclination.Name = "labelInclination";
-            this.labelInclination.Size = new System.Drawing.Size(14, 15);
-            this.labelInclination.TabIndex = 37;
-            this.labelInclination.Text = "0";
-            // 
-            // labelLAN
-            // 
-            this.labelLAN.AutoSize = true;
-            this.labelLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLAN.Location = new System.Drawing.Point(196, 180);
-            this.labelLAN.Name = "labelLAN";
-            this.labelLAN.Size = new System.Drawing.Size(14, 15);
-            this.labelLAN.TabIndex = 38;
-            this.labelLAN.Text = "0";
-            // 
-            // labelArgPe
-            // 
-            this.labelArgPe.AutoSize = true;
-            this.labelArgPe.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArgPe.Location = new System.Drawing.Point(196, 200);
-            this.labelArgPe.Name = "labelArgPe";
-            this.labelArgPe.Size = new System.Drawing.Size(14, 15);
-            this.labelArgPe.TabIndex = 39;
-            this.labelArgPe.Text = "0";
-            // 
-            // buttonHomanSearch
-            // 
-            this.buttonHomanSearch.Location = new System.Drawing.Point(687, 66);
-            this.buttonHomanSearch.Name = "buttonHomanSearch";
-            this.buttonHomanSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonHomanSearch.TabIndex = 35;
-            this.buttonHomanSearch.Text = "Search";
-            this.buttonHomanSearch.UseVisualStyleBackColor = true;
-            this.buttonHomanSearch.Click += new System.EventHandler(this.buttonHomanSearch_Click);
-            // 
-            // comboHomanArrivList
-            // 
-            this.comboHomanArrivList.FormattingEnabled = true;
-            this.comboHomanArrivList.Location = new System.Drawing.Point(18, 34);
-            this.comboHomanArrivList.Name = "comboHomanArrivList";
-            this.comboHomanArrivList.Size = new System.Drawing.Size(121, 21);
-            this.comboHomanArrivList.TabIndex = 36;
-            this.comboHomanArrivList.Text = "Kerbin";
-            // 
-            // comboHomanDepList
-            // 
-            this.comboHomanDepList.FormattingEnabled = true;
-            this.comboHomanDepList.Location = new System.Drawing.Point(18, 74);
-            this.comboHomanDepList.Name = "comboHomanDepList";
-            this.comboHomanDepList.Size = new System.Drawing.Size(121, 21);
-            this.comboHomanDepList.TabIndex = 37;
-            this.comboHomanDepList.Text = "Duna";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(15, 12);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(69, 15);
-            this.label32.TabIndex = 38;
-            this.label32.Text = "Arrival body";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(15, 55);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(91, 15);
-            this.label33.TabIndex = 39;
-            this.label33.Text = "Departure body";
-            // 
-            // textPsi
-            // 
-            this.textPsi.Location = new System.Drawing.Point(79, 106);
-            this.textPsi.Name = "textPsi";
-            this.textPsi.Size = new System.Drawing.Size(60, 20);
-            this.textPsi.TabIndex = 40;
-            this.textPsi.Text = "5";
-            this.textPsi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(16, 106);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(51, 15);
-            this.label34.TabIndex = 41;
-            this.label34.Text = "Psi, deg";
-            // 
-            // labelArivDate
-            // 
-            this.labelArivDate.AutoSize = true;
-            this.labelArivDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArivDate.Location = new System.Drawing.Point(147, 21);
-            this.labelArivDate.Name = "labelArivDate";
-            this.labelArivDate.Size = new System.Drawing.Size(14, 15);
-            this.labelArivDate.TabIndex = 40;
-            this.labelArivDate.Text = "0";
-            // 
-            // labelDepDate
-            // 
-            this.labelDepDate.AutoSize = true;
-            this.labelDepDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepDate.Location = new System.Drawing.Point(147, 42);
-            this.labelDepDate.Name = "labelDepDate";
-            this.labelDepDate.Size = new System.Drawing.Size(14, 15);
-            this.labelDepDate.TabIndex = 41;
-            this.labelDepDate.Text = "0";
-            // 
-            // panelTransOrbit
-            // 
-            this.panelTransOrbit.Location = new System.Drawing.Point(346, 156);
-            this.panelTransOrbit.Name = "panelTransOrbit";
-            this.panelTransOrbit.Size = new System.Drawing.Size(435, 343);
-            this.panelTransOrbit.TabIndex = 42;
+            // textAltitude
+            // 
+            this.textAltitude.Location = new System.Drawing.Point(185, 38);
+            this.textAltitude.Name = "textAltitude";
+            this.textAltitude.Size = new System.Drawing.Size(60, 20);
+            this.textAltitude.TabIndex = 43;
+            this.textAltitude.Text = "80";
+            this.textAltitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label35.Location = new System.Drawing.Point(152, 15);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(123, 15);
+            this.label35.TabIndex = 44;
+            this.label35.Text = "Low orbit altitude, km";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(17, 206);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(120, 16);
+            this.label36.TabIndex = 42;
+            this.label36.Text = "Arrival maneuver";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(20, 229);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(133, 15);
+            this.label37.TabIndex = 43;
+            this.label37.Text = "prograde dV, m/s: ";
+            // 
+            // labelDeltaV
+            // 
+            this.labelDeltaV.AutoSize = true;
+            this.labelDeltaV.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeltaV.Location = new System.Drawing.Point(196, 229);
+            this.labelDeltaV.Name = "labelDeltaV";
+            this.labelDeltaV.Size = new System.Drawing.Size(14, 15);
+            this.labelDeltaV.TabIndex = 44;
+            this.labelDeltaV.Text = "0";
             // 
             // MainForm
             // 
@@ -975,15 +1034,15 @@
             this.mainMenu.PerformLayout();
             this.panelEphemeride.ResumeLayout(false);
             this.panelEphemeride.PerformLayout();
-            this.panelBodyPos.ResumeLayout(false);
-            this.panelBodyPos.PerformLayout();
-            this.groupCalcResults.ResumeLayout(false);
-            this.groupCalcResults.PerformLayout();
             this.panelHomanTrans.ResumeLayout(false);
             this.panelHomanTrans.PerformLayout();
             this.groupHomanResults.ResumeLayout(false);
             this.panelHomanRes.ResumeLayout(false);
             this.panelHomanRes.PerformLayout();
+            this.panelBodyPos.ResumeLayout(false);
+            this.panelBodyPos.PerformLayout();
+            this.groupCalcResults.ResumeLayout(false);
+            this.groupCalcResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1074,6 +1133,11 @@
         private System.Windows.Forms.Label labelDepDate;
         private System.Windows.Forms.Label labelArivDate;
         private System.Windows.Forms.Panel panelTransOrbit;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox textAltitude;
+        private System.Windows.Forms.Label labelDeltaV;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
 
     }
 }

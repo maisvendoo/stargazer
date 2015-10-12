@@ -8,6 +8,7 @@
     <gravParameter>1.17233279483249E+18</gravParameter>
     <radius>261600000</radius>
     <rotationPeriod>432000</rotationPeriod>
+    <sphereOfInfluence>Infinity</sphereOfInfluence>
   </Body>
   <Body>
     <name>Kerbin</name>
@@ -17,6 +18,7 @@
     <gravParameter>3531600000000</gravParameter>
     <radius>600000</radius>
     <rotationPeriod>21599.9120145401</rotationPeriod>
+    <sphereOfInfluence>84159286.4796305</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>13599840256</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -36,6 +38,7 @@
     <gravParameter>65138397520.7807</gravParameter>
     <radius>200000</radius>
     <rotationPeriod>138984.376574476</rotationPeriod>
+    <sphereOfInfluence>2429559.11656475</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>12000000</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -55,6 +58,7 @@
     <gravParameter>1765800026.31247</gravParameter>
     <radius>60000</radius>
     <rotationPeriod>40400</rotationPeriod>
+    <sphereOfInfluence>2247428.3879023</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>47000000</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -74,6 +78,7 @@
     <gravParameter>168609378654.509</gravParameter>
     <radius>250000</radius>
     <rotationPeriod>1210000</rotationPeriod>
+    <sphereOfInfluence>9646663.0233281</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>5263138304</semiMajorAxis>
       <eccentricity>0.200000002980232</eccentricity>
@@ -93,6 +98,7 @@
     <gravParameter>8171730229210.87</gravParameter>
     <radius>700000</radius>
     <rotationPeriod>80500</rotationPeriod>
+    <sphereOfInfluence>85109364.7382441</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>9832684544</semiMajorAxis>
       <eccentricity>0.00999999977648258</eccentricity>
@@ -112,6 +118,7 @@
     <gravParameter>301363211975.098</gravParameter>
     <radius>320000</radius>
     <rotationPeriod>65517.859375</rotationPeriod>
+    <sphereOfInfluence>47921949.369738</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>20726155264</semiMajorAxis>
       <eccentricity>0.0509999990463257</eccentricity>
@@ -131,6 +138,7 @@
     <gravParameter>18568368573.144</gravParameter>
     <radius>130000</radius>
     <rotationPeriod>65517.8621348081</rotationPeriod>
+    <sphereOfInfluence>1049598.93931162</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>3200000</semiMajorAxis>
       <eccentricity>0.0299999993294477</eccentricity>
@@ -150,6 +158,7 @@
     <gravParameter>282528004209995</gravParameter>
     <radius>6000000</radius>
     <rotationPeriod>36000</rotationPeriod>
+    <sphereOfInfluence>2455985185.42347</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>68773560320</semiMajorAxis>
       <eccentricity>0.0500000007450581</eccentricity>
@@ -169,6 +178,7 @@
     <gravParameter>1962000029236.08</gravParameter>
     <radius>500000</radius>
     <rotationPeriod>52980.8790593796</rotationPeriod>
+    <sphereOfInfluence>3723645.81113302</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>27184000</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -188,6 +198,7 @@
     <gravParameter>207481499473.751</gravParameter>
     <radius>300000</radius>
     <rotationPeriod>105962.088893924</rotationPeriod>
+    <sphereOfInfluence>2406401.44479404</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>43152000</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -207,6 +218,7 @@
     <gravParameter>2486834944.41491</gravParameter>
     <radius>65000</radius>
     <rotationPeriod>544507.428516654</rotationPeriod>
+    <sphereOfInfluence>1221060.86284253</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>128500000</semiMajorAxis>
       <eccentricity>0.234999999403954</eccentricity>
@@ -226,6 +238,7 @@
     <gravParameter>2825280042099.95</gravParameter>
     <radius>600000</radius>
     <rotationPeriod>211926.35802123</rotationPeriod>
+    <sphereOfInfluence>10856518.3683586</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>68500000</semiMajorAxis>
       <eccentricity>0</eccentricity>
@@ -245,6 +258,7 @@
     <gravParameter>8289449.81471635</gravParameter>
     <radius>13000</radius>
     <rotationPeriod>28255</rotationPeriod>
+    <sphereOfInfluence>126123.271704568</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>31500000</semiMajorAxis>
       <eccentricity>0.550000011920929</eccentricity>
@@ -264,6 +278,7 @@
     <gravParameter>721702080</gravParameter>
     <radius>44000</radius>
     <rotationPeriod>901902.623531173</rotationPeriod>
+    <sphereOfInfluence>1042138.89230178</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>179890000</semiMajorAxis>
       <eccentricity>0.17085</eccentricity>
@@ -283,6 +298,7 @@
     <gravParameter>21484488600</gravParameter>
     <radius>138000</radius>
     <rotationPeriod>34800</rotationPeriod>
+    <sphereOfInfluence>32832839.5767762</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>40839348203</semiMajorAxis>
       <eccentricity>0.145</eccentricity>
@@ -302,6 +318,7 @@
     <gravParameter>74410814527.0496</gravParameter>
     <radius>210000</radius>
     <rotationPeriod>19460</rotationPeriod>
+    <sphereOfInfluence>119082941.647812</sphereOfInfluence>
     <Orbit>
       <semiMajorAxis>90118820000</semiMajorAxis>
       <eccentricity>0.26</eccentricity>

@@ -474,5 +474,49 @@ namespace Astronomy
 
             return true;
         }
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static double get_init_velocity(CelestialBody arivBody,                                                 
+                                               CelestialBody craft,
+                                               double t1,
+                                               double h,
+                                               ref Orbit orbit)
+        {
+            double vx = 0;
+            double vy = 0;
+            double vz = 0;
+
+            OrbitPos arivPos = new OrbitPos();                     
+
+            arivBody.get_position(t1, ref arivPos);
+            Vector3D Va = arivBody.get_velocity(arivPos.theta);
+            
+            Vector3D Vc = craft.get_velocity(0);
+
+            Vector3D Vro = Vc - Va;
+
+            double v_ro = Vro.lenght();
+
+            Vector3D x1 = arivBody.get_cartesian_pos(arivPos.theta);
+
+            double u = 0;
+
+            get_transfer_orientation(x1, Vro, ref orbit.i, ref orbit.Omega, ref u);
+
+            BodyData arivData = new BodyData();
+
+            arivBody.get_data(ref arivData);
+
+            double ro = arivData.sphereOfInfluence;
+            double R = arivData.radius;
+            double mu = arivData.gravParameter;
+
+            double v0 = Math.Sqrt(2 * mu * (1 / (R + h) - 1 / ro) + v_ro * v_ro);
+            double dv = v0 - Math.Sqrt(mu / (R + h));
+
+            return dv;
+        }
     }
 }

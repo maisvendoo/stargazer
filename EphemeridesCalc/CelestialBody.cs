@@ -49,6 +49,7 @@ namespace Astronomy
         public double gravParameter;
         public double refGravParameter;
         public double rotationPeriod;
+        public double sphereOfInfluence;
 
         public Orbit orbit;        
     }
@@ -77,6 +78,7 @@ namespace Astronomy
             data.gravParameter = this.data.gravParameter;
             data.refGravParameter = this.data.refGravParameter;
             data.rotationPeriod = this.data.rotationPeriod;
+            data.sphereOfInfluence = this.data.sphereOfInfluence;
 
             data.orbit.a = this.data.orbit.a;
             data.orbit.e = this.data.orbit.e;
@@ -89,7 +91,7 @@ namespace Astronomy
             data.orbit.i = this.data.orbit.i;
         }
 
-        public void set_data(BodyData data)
+        public void set_data(ref BodyData data)
         {
             this.data.name = data.name;
             this.data.id = data.id;
@@ -99,6 +101,7 @@ namespace Astronomy
             this.data.gravParameter = data.gravParameter;
             this.data.refGravParameter = data.gravParameter;
             this.data.rotationPeriod = data.rotationPeriod;
+            this.data.sphereOfInfluence = data.sphereOfInfluence;
 
             this.data.orbit.a = data.orbit.a;
             this.data.orbit.e = data.orbit.e;
@@ -114,7 +117,8 @@ namespace Astronomy
         public void get_position(double t, ref OrbitPos pos)
         {
             // Middle anomaly calculation
-            double n = 2 * Math.PI / data.orbit.period;
+            double mu = data.refGravParameter;
+            double n = Math.Sqrt(mu / data.orbit.a) / data.orbit.a;
 
             double M = n * (t - data.orbit.t0) + data.orbit.M0;            
 

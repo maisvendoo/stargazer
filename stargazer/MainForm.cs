@@ -151,6 +151,14 @@ namespace stargazer
                         data.rotationPeriod = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
                     }
 
+                    if (subnode.Name == "sphereOfInfluence")
+                    {
+                        if (subnode.InnerText != "Infinity")
+                            data.sphereOfInfluence = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                        else
+                            data.sphereOfInfluence = 1e50;
+                    }
+
                     if (subnode.Name == "Orbit")
                     {
                         data.orbit = new Orbit();
@@ -202,7 +210,7 @@ namespace stargazer
                 }
 
                 CelestialBody Body = new CelestialBody();
-                Body.set_data(data);
+                Body.set_data(ref data);
                 Bodies.Add(Body);
             }
 
@@ -506,9 +514,16 @@ namespace stargazer
 
             craft_data.name = "Space craft";
             craft_data.orbit = trans.orbit;
-            craft_data.refGravParameter = Bodies[a_idx].get_refGravParameter();
+            craft.set_data(ref craft_data);            
+            craft.set_refGravParameter(Bodies[a_idx].get_refGravParameter());
 
-            craft.set_data(craft_data);            
+            Orbit arivOrbit = new Orbit();
+
+            double h = double.Parse(textAltitude.Text)*1000.0;
+
+            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, ref arivOrbit);
+
+            labelDeltaV.Text = Math.Round(dv, 2).ToString();
             
             DrawTransOrbit(panelTransOrbit, trans, Bodies[a_idx], Bodies[d_idx], craft);
         }
