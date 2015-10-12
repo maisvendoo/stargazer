@@ -381,7 +381,7 @@
             // 
             this.labelArgPe.AutoSize = true;
             this.labelArgPe.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArgPe.Location = new System.Drawing.Point(196, 182);
+            this.labelArgPe.Location = new System.Drawing.Point(182, 182);
             this.labelArgPe.Name = "labelArgPe";
             this.labelArgPe.Size = new System.Drawing.Size(14, 15);
             this.labelArgPe.TabIndex = 39;
@@ -391,7 +391,7 @@
             // 
             this.labelLAN.AutoSize = true;
             this.labelLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLAN.Location = new System.Drawing.Point(196, 162);
+            this.labelLAN.Location = new System.Drawing.Point(182, 162);
             this.labelLAN.Name = "labelLAN";
             this.labelLAN.Size = new System.Drawing.Size(14, 15);
             this.labelLAN.TabIndex = 38;
@@ -401,7 +401,7 @@
             // 
             this.labelInclination.AutoSize = true;
             this.labelInclination.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInclination.Location = new System.Drawing.Point(196, 142);
+            this.labelInclination.Location = new System.Drawing.Point(182, 142);
             this.labelInclination.Name = "labelInclination";
             this.labelInclination.Size = new System.Drawing.Size(14, 15);
             this.labelInclination.TabIndex = 37;
@@ -411,7 +411,7 @@
             // 
             this.labelEccentricity.AutoSize = true;
             this.labelEccentricity.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEccentricity.Location = new System.Drawing.Point(196, 122);
+            this.labelEccentricity.Location = new System.Drawing.Point(182, 122);
             this.labelEccentricity.Name = "labelEccentricity";
             this.labelEccentricity.Size = new System.Drawing.Size(14, 15);
             this.labelEccentricity.TabIndex = 36;
@@ -421,7 +421,7 @@
             // 
             this.labelSmiMajorAxis.AutoSize = true;
             this.labelSmiMajorAxis.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSmiMajorAxis.Location = new System.Drawing.Point(196, 102);
+            this.labelSmiMajorAxis.Location = new System.Drawing.Point(182, 102);
             this.labelSmiMajorAxis.Name = "labelSmiMajorAxis";
             this.labelSmiMajorAxis.Size = new System.Drawing.Size(14, 15);
             this.labelSmiMajorAxis.TabIndex = 35;
@@ -1019,7 +1019,7 @@
             // 
             this.labelDeltaV.AutoSize = true;
             this.labelDeltaV.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeltaV.Location = new System.Drawing.Point(196, 229);
+            this.labelDeltaV.Location = new System.Drawing.Point(182, 229);
             this.labelDeltaV.Name = "labelDeltaV";
             this.labelDeltaV.Size = new System.Drawing.Size(14, 15);
             this.labelDeltaV.TabIndex = 44;
@@ -1039,7 +1039,7 @@
             // 
             this.labelInc.AutoSize = true;
             this.labelInc.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInc.Location = new System.Drawing.Point(196, 249);
+            this.labelInc.Location = new System.Drawing.Point(182, 249);
             this.labelInc.Name = "labelInc";
             this.labelInc.Size = new System.Drawing.Size(14, 15);
             this.labelInc.TabIndex = 46;
@@ -1053,13 +1053,13 @@
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(84, 15);
             this.label39.TabIndex = 47;
-            this.label39.Text = "start date:";
+            this.label39.Text = "eject date:";
             // 
             // labelStartDate
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(196, 269);
+            this.labelStartDate.Location = new System.Drawing.Point(182, 269);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(14, 15);
             this.labelStartDate.TabIndex = 48;
