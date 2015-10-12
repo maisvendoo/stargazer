@@ -13,7 +13,7 @@ namespace Astronomy
         public KDate arivDate;
         public KDate depDate;
         public double destLambda;
-        public double transTime;
+        public double transTime;        
     }
 
     public class Lambert
@@ -178,7 +178,7 @@ namespace Astronomy
         //----------------------------------------------------------------------
         //
         //----------------------------------------------------------------------
-        private static double get_dest_theta(CelestialBody body, double destLambda)
+        public static double get_dest_theta(CelestialBody body, double destLambda)
         {
             double v0 = 0;
             double v = v0;
@@ -266,6 +266,8 @@ namespace Astronomy
             arivBody.get_ecliptic_coords(pos.theta, ref epos);
             destLambda = epos.lambda + Math.PI - phi;
 
+            destLambda = math.Trunc2PiN(destLambda);
+
             double destTheta = get_dest_theta(destBody, destLambda);
 
             Vector3D x1 = arivBody.get_cartesian_pos(pos.theta);
@@ -275,21 +277,9 @@ namespace Astronomy
             get_transfer_orientation(x1, x2, ref orbit.i, ref orbit.Omega, ref u); 
 
             double r1 = x1.lenght();
-            double r2 = x2.lenght();
-            double theta = x1.angle(x2);
+            double r2 = x2.lenght();            
 
-            orbit.omega = u / math.RAD;
-
-            if (r2 > r1)
-            {
-                orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
-                orbit.a = r1 / (1 - orbit.e);
-            }
-            else
-            {
-                orbit.e = (r1 - r2) / (r1 + r2 * Math.Cos(theta));
-                orbit.a = r1 / (1 + orbit.e);
-            }
+            //orbit.omega = u / math.RAD;
 
             BodyData data = new BodyData();
 
@@ -297,19 +287,37 @@ namespace Astronomy
 
             double transTime = 0;
             double mu = 4 * Math.PI * Math.PI * Math.Pow(data.orbit.a, 3) / data.orbit.period / data.orbit.period;
+            double E = 0;
+            double theta = 0;
 
-            if ((orbit.e > 0) && (orbit.e < 1))
+            if (r2 > r1)
             {
+                theta = x1.angle(x2);
+                orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
+                orbit.a = r1 / (1 - orbit.e);
+
                 double n = Math.Sqrt(mu / orbit.a) / orbit.a;
                 double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
-                double E = 2 * Math.Atan(tgE2);
+                E = 2 * Math.Atan(tgE2);
                 double M = E - orbit.e * Math.Sin(E);
                 transTime = M / n;
+
+                orbit.omega = 0;
             }
             else
             {
-                return -1;
-            }
+                theta = Math.PI - x1.angle(x2);
+                orbit.e = (r1 - r2) / (r1 + r2 * Math.Cos(theta));
+                orbit.a = r1 / (1 + orbit.e);
+
+                double n = Math.Sqrt(mu / orbit.a) / orbit.a;
+                double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
+                E = 2 * Math.Atan(tgE2);
+                double M = E - orbit.e * Math.Sin(E);
+                transTime = (Math.PI - M) / n;
+
+                orbit.omega = 0;// 180.0;
+            }                        
 
             return transTime;
         }
@@ -402,13 +410,13 @@ namespace Astronomy
         //---------------------------------------------------------------------
         //
         //---------------------------------------------------------------------
-        public static void get_transfer_date(double curTime,
+        public static bool get_transfer_date(double t0,
+                                             double t1,
                                              CelestialBody arivBody,
                                              CelestialBody destBody,
                                              double psi,
                                              ref Transfer trans)
         {
-            double t0 = curTime;
             double t = t0;
             double dL0;
             double dL1;
@@ -428,7 +436,10 @@ namespace Astronomy
                 else
                     ready = false;
 
-            } while (!ready);
+            } while ( (!ready) && (t <= t1) );
+
+            if (t > t1)
+                return false;
             
             double ta = t - dt;
             double tb = t;
@@ -455,6 +466,8 @@ namespace Astronomy
 
             trans.depTime = tc + trans.transTime;
             KCalendar.sec_to_date(trans.depTime, ref trans.depDate);
+
+            return true;
         }
     }
 }
