@@ -478,7 +478,7 @@ namespace stargazer
 
             Transfer trans = new Transfer();
 
-            double psi = Convert.ToDouble(textPsi.Text, CultureInfo.InvariantCulture) * RAD;
+            double psi = Convert.ToDouble(textPsi.Text) * RAD;
 
             bool ready = Lambert.get_transfer_date(t0, t1, Bodies[a_idx], Bodies[d_idx], psi, ref trans);
 
@@ -489,6 +489,10 @@ namespace stargazer
             }
 
             panelHomanRes.Visible = true;
+
+            KDate deltaDate = new KDate();
+
+            KCalendar.DeltaDate(trans.depTime - trans.arivTime, ref deltaDate);
 
             labelArivDate.Text = trans.arivDate.year.ToString() + "y " +
                                  trans.arivDate.day.ToString() + "d " +
@@ -501,6 +505,12 @@ namespace stargazer
                                  trans.depDate.hour.ToString() + "h " +
                                  trans.depDate.min.ToString() + "m " +
                                  trans.depDate.sec.ToString() + "s";
+
+            labelTransTime.Text = deltaDate.year.ToString() + "y " +
+                                 deltaDate.day.ToString() + "d " +
+                                 deltaDate.hour.ToString() + "h " +
+                                 deltaDate.min.ToString() + "m " +
+                                 deltaDate.sec.ToString() + "s";
             
             labelSmiMajorAxis.Text = Math.Round(trans.orbit.a, 0).ToString() + " m";
             labelEccentricity.Text = Math.Round(trans.orbit.e, 4).ToString();
@@ -522,8 +532,9 @@ namespace stargazer
             double h = double.Parse(textAltitude.Text)*1000.0;
 
             double startTime = 0;
+            int turns = int.Parse(textWaitTurns.Text);
 
-            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, ref arivOrbit, ref startTime);
+            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, turns, ref arivOrbit, ref startTime);
 
             labelDeltaV.Text = Math.Round(dv, 2).ToString();
             labelInc.Text = Math.Round(arivOrbit.i, 4).ToString();
@@ -746,8 +757,8 @@ namespace stargazer
 
         private void buttonPlusPsi_Click(object sender, EventArgs e)
         {
-            double psi = double.Parse(textPsi.Text, CultureInfo.InvariantCulture);
-            double dPsi = double.Parse(textDeltaPsi.Text, CultureInfo.InvariantCulture);
+            double psi = double.Parse(textPsi.Text);
+            double dPsi = double.Parse(textDeltaPsi.Text);
 
             psi += dPsi;
 
@@ -758,8 +769,8 @@ namespace stargazer
 
         private void buttonMinusPsi_Click(object sender, EventArgs e)
         {
-            double psi = double.Parse(textPsi.Text, CultureInfo.InvariantCulture);
-            double dPsi = double.Parse(textDeltaPsi.Text, CultureInfo.InvariantCulture);
+            double psi = double.Parse(textPsi.Text);
+            double dPsi = double.Parse(textDeltaPsi.Text);
 
             psi -= dPsi;
 
@@ -767,5 +778,15 @@ namespace stargazer
 
             buttonHomanSearch_Click(sender, e);
         }
+
+        private void itemEphemeride_Click(object sender, EventArgs e)
+        {
+            panelHomanTrans.Visible = false;
+        }
+
+        private void homanTransferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelHomanTrans.Visible = true;
+        }       
     }   
 }

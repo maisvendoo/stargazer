@@ -39,5 +39,19 @@ namespace Astronomy
             date.min = Convert.ToInt32(Math.Truncate((t - (date.year - 1) * sYear - (date.day - 1) * sDay - date.hour * sHour) / sMin));
             date.sec = Convert.ToInt32(Math.Truncate(t - (date.year - 1) * sYear - (date.day - 1) * sDay - date.hour * sHour - date.min * sMin));
         }
+
+        public static void DeltaDate(double t, ref KDate date)
+        {
+            int sYear = Days * Hours * Mins * Secs;
+            int sDay = Hours * Mins * Secs;
+            int sHour = Mins * Secs;
+            int sMin = Secs;
+
+            date.year = Convert.ToInt32(Math.Truncate(t / sYear));
+            date.day = Convert.ToInt32(Math.Truncate((t - (date.year) * sYear) / sDay));
+            date.hour = Convert.ToInt32(Math.Truncate((t - (date.year) * sYear - (date.day ) * sDay) / sHour));
+            date.min = Convert.ToInt32(Math.Truncate((t - (date.year) * sYear - (date.day) * sDay - date.hour * sHour) / sMin));
+            date.sec = Convert.ToInt32(Math.Truncate(t - (date.year) * sYear - (date.day) * sDay - date.hour * sHour - date.min * sMin));
+        }
     }
 }

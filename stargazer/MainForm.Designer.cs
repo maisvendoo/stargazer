@@ -36,6 +36,11 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
             this.panelHomanTrans = new System.Windows.Forms.Panel();
+            this.buttonMinusPsi = new System.Windows.Forms.Button();
+            this.buttonPlusPsi = new System.Windows.Forms.Button();
+            this.textDeltaPsi = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.textAltitude = new System.Windows.Forms.TextBox();
             this.panelTransOrbit = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.textPsi = new System.Windows.Forms.TextBox();
@@ -46,6 +51,15 @@
             this.buttonHomanSearch = new System.Windows.Forms.Button();
             this.groupHomanResults = new System.Windows.Forms.GroupBox();
             this.panelHomanRes = new System.Windows.Forms.Panel();
+            this.labelStartLAN = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.labelInc = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.labelDeltaV = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.labelDepDate = new System.Windows.Forms.Label();
             this.labelArivDate = new System.Windows.Forms.Label();
             this.labelArgPe = new System.Windows.Forms.Label();
@@ -111,20 +125,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.textAltitude = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.labelDeltaV = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.labelInc = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.labelStartDate = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.labelStartLAN = new System.Windows.Forms.Label();
-            this.textDeltaPsi = new System.Windows.Forms.TextBox();
-            this.buttonPlusPsi = new System.Windows.Forms.Button();
-            this.buttonMinusPsi = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
+            this.homanTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textWaitTurns = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.labelTransTime = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -163,7 +169,8 @@
             // itemTools
             // 
             this.itemTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemEphemeride});
+            this.itemEphemeride,
+            this.homanTransferToolStripMenuItem});
             this.itemTools.Name = "itemTools";
             this.itemTools.Size = new System.Drawing.Size(48, 20);
             this.itemTools.Text = "Tools";
@@ -173,6 +180,7 @@
             this.itemEphemeride.Name = "itemEphemeride";
             this.itemEphemeride.Size = new System.Drawing.Size(189, 22);
             this.itemEphemeride.Text = "Calculate ephemeride";
+            this.itemEphemeride.Click += new System.EventHandler(this.itemEphemeride_Click);
             // 
             // statusBar
             // 
@@ -209,6 +217,9 @@
             // 
             // panelHomanTrans
             // 
+            this.panelHomanTrans.Controls.Add(this.label42);
+            this.panelHomanTrans.Controls.Add(this.textWaitTurns);
+            this.panelHomanTrans.Controls.Add(this.label41);
             this.panelHomanTrans.Controls.Add(this.buttonMinusPsi);
             this.panelHomanTrans.Controls.Add(this.buttonPlusPsi);
             this.panelHomanTrans.Controls.Add(this.textDeltaPsi);
@@ -249,6 +260,54 @@
             this.panelHomanTrans.Name = "panelHomanTrans";
             this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
             this.panelHomanTrans.TabIndex = 17;
+            // 
+            // buttonMinusPsi
+            // 
+            this.buttonMinusPsi.Location = new System.Drawing.Point(143, 117);
+            this.buttonMinusPsi.Name = "buttonMinusPsi";
+            this.buttonMinusPsi.Size = new System.Drawing.Size(21, 20);
+            this.buttonMinusPsi.TabIndex = 47;
+            this.buttonMinusPsi.Text = "-";
+            this.buttonMinusPsi.UseVisualStyleBackColor = true;
+            this.buttonMinusPsi.Click += new System.EventHandler(this.buttonMinusPsi_Click);
+            // 
+            // buttonPlusPsi
+            // 
+            this.buttonPlusPsi.Location = new System.Drawing.Point(143, 96);
+            this.buttonPlusPsi.Name = "buttonPlusPsi";
+            this.buttonPlusPsi.Size = new System.Drawing.Size(21, 20);
+            this.buttonPlusPsi.TabIndex = 46;
+            this.buttonPlusPsi.Text = "+";
+            this.buttonPlusPsi.UseVisualStyleBackColor = true;
+            this.buttonPlusPsi.Click += new System.EventHandler(this.buttonPlusPsi_Click);
+            // 
+            // textDeltaPsi
+            // 
+            this.textDeltaPsi.Location = new System.Drawing.Point(243, 106);
+            this.textDeltaPsi.Name = "textDeltaPsi";
+            this.textDeltaPsi.Size = new System.Drawing.Size(37, 20);
+            this.textDeltaPsi.TabIndex = 45;
+            this.textDeltaPsi.Text = "1";
+            this.textDeltaPsi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label35.Location = new System.Drawing.Point(152, 15);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(123, 15);
+            this.label35.TabIndex = 44;
+            this.label35.Text = "Low orbit altitude, km";
+            // 
+            // textAltitude
+            // 
+            this.textAltitude.Location = new System.Drawing.Point(194, 37);
+            this.textAltitude.Name = "textAltitude";
+            this.textAltitude.Size = new System.Drawing.Size(52, 20);
+            this.textAltitude.TabIndex = 43;
+            this.textAltitude.Text = "80";
+            this.textAltitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panelTransOrbit
             // 
@@ -337,6 +396,8 @@
             // 
             // panelHomanRes
             // 
+            this.panelHomanRes.Controls.Add(this.labelTransTime);
+            this.panelHomanRes.Controls.Add(this.label43);
             this.panelHomanRes.Controls.Add(this.labelStartLAN);
             this.panelHomanRes.Controls.Add(this.label40);
             this.panelHomanRes.Controls.Add(this.labelStartDate);
@@ -367,11 +428,101 @@
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
             // 
+            // labelStartLAN
+            // 
+            this.labelStartLAN.AutoSize = true;
+            this.labelStartLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartLAN.Location = new System.Drawing.Point(182, 269);
+            this.labelStartLAN.Name = "labelStartLAN";
+            this.labelStartLAN.Size = new System.Drawing.Size(14, 15);
+            this.labelStartLAN.TabIndex = 50;
+            this.labelStartLAN.Text = "0";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(20, 269);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(70, 15);
+            this.label40.TabIndex = 49;
+            this.label40.Text = "LAN, deg:";
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartDate.Location = new System.Drawing.Point(182, 289);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
+            this.labelStartDate.TabIndex = 48;
+            this.labelStartDate.Text = "0";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(20, 289);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(84, 15);
+            this.label39.TabIndex = 47;
+            this.label39.Text = "eject date:";
+            // 
+            // labelInc
+            // 
+            this.labelInc.AutoSize = true;
+            this.labelInc.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInc.Location = new System.Drawing.Point(182, 249);
+            this.labelInc.Name = "labelInc";
+            this.labelInc.Size = new System.Drawing.Size(14, 15);
+            this.labelInc.TabIndex = 46;
+            this.labelInc.Text = "0";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(20, 249);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(147, 15);
+            this.label38.TabIndex = 45;
+            this.label38.Text = "low orbit inc., deg:";
+            // 
+            // labelDeltaV
+            // 
+            this.labelDeltaV.AutoSize = true;
+            this.labelDeltaV.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeltaV.Location = new System.Drawing.Point(182, 229);
+            this.labelDeltaV.Name = "labelDeltaV";
+            this.labelDeltaV.Size = new System.Drawing.Size(14, 15);
+            this.labelDeltaV.TabIndex = 44;
+            this.labelDeltaV.Text = "0";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(20, 229);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(133, 15);
+            this.label37.TabIndex = 43;
+            this.label37.Text = "prograde dV, m/s: ";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(17, 206);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(120, 16);
+            this.label36.TabIndex = 42;
+            this.label36.Text = "Arrival maneuver";
+            // 
             // labelDepDate
             // 
             this.labelDepDate.AutoSize = true;
             this.labelDepDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepDate.Location = new System.Drawing.Point(147, 42);
+            this.labelDepDate.Location = new System.Drawing.Point(147, 30);
             this.labelDepDate.Name = "labelDepDate";
             this.labelDepDate.Size = new System.Drawing.Size(14, 15);
             this.labelDepDate.TabIndex = 41;
@@ -381,7 +532,7 @@
             // 
             this.labelArivDate.AutoSize = true;
             this.labelArivDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArivDate.Location = new System.Drawing.Point(147, 21);
+            this.labelArivDate.Location = new System.Drawing.Point(147, 10);
             this.labelArivDate.Name = "labelArivDate";
             this.labelArivDate.Size = new System.Drawing.Size(14, 15);
             this.labelArivDate.TabIndex = 40;
@@ -501,7 +652,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(17, 42);
+            this.label25.Location = new System.Drawing.Point(17, 30);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(119, 15);
             this.label25.TabIndex = 1;
@@ -511,7 +662,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(17, 21);
+            this.label24.Location = new System.Drawing.Point(17, 10);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(105, 15);
             this.label24.TabIndex = 0;
@@ -986,143 +1137,61 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
-            // textAltitude
+            // label41
             // 
-            this.textAltitude.Location = new System.Drawing.Point(220, 37);
-            this.textAltitude.Name = "textAltitude";
-            this.textAltitude.Size = new System.Drawing.Size(60, 20);
-            this.textAltitude.TabIndex = 43;
-            this.textAltitude.Text = "80";
-            this.textAltitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(179, 107);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(58, 15);
+            this.label41.TabIndex = 48;
+            this.label41.Text = "dPsi, deg";
             // 
-            // label35
+            // homanTransferToolStripMenuItem
             // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(152, 15);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(123, 15);
-            this.label35.TabIndex = 44;
-            this.label35.Text = "Low orbit altitude, km";
+            this.homanTransferToolStripMenuItem.Name = "homanTransferToolStripMenuItem";
+            this.homanTransferToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.homanTransferToolStripMenuItem.Text = "Homan transfer";
+            this.homanTransferToolStripMenuItem.Click += new System.EventHandler(this.homanTransferToolStripMenuItem_Click);
             // 
-            // label36
+            // textWaitTurns
             // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(17, 206);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(120, 16);
-            this.label36.TabIndex = 42;
-            this.label36.Text = "Arrival maneuver";
+            this.textWaitTurns.Location = new System.Drawing.Point(209, 73);
+            this.textWaitTurns.Name = "textWaitTurns";
+            this.textWaitTurns.Size = new System.Drawing.Size(37, 20);
+            this.textWaitTurns.TabIndex = 49;
+            this.textWaitTurns.Text = "1";
+            this.textWaitTurns.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label37
+            // label42
             // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(20, 229);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(133, 15);
-            this.label37.TabIndex = 43;
-            this.label37.Text = "prograde dV, m/s: ";
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(145, 75);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(61, 15);
+            this.label42.TabIndex = 50;
+            this.label42.Text = "Wait turns";
             // 
-            // labelDeltaV
+            // label43
             // 
-            this.labelDeltaV.AutoSize = true;
-            this.labelDeltaV.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeltaV.Location = new System.Drawing.Point(182, 229);
-            this.labelDeltaV.Name = "labelDeltaV";
-            this.labelDeltaV.Size = new System.Drawing.Size(14, 15);
-            this.labelDeltaV.TabIndex = 44;
-            this.labelDeltaV.Text = "0";
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(17, 50);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(82, 15);
+            this.label43.TabIndex = 51;
+            this.label43.Text = "Transfer time:";
             // 
-            // label38
+            // labelTransTime
             // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(20, 249);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(147, 15);
-            this.label38.TabIndex = 45;
-            this.label38.Text = "low orbit inc., deg:";
-            // 
-            // labelInc
-            // 
-            this.labelInc.AutoSize = true;
-            this.labelInc.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInc.Location = new System.Drawing.Point(182, 249);
-            this.labelInc.Name = "labelInc";
-            this.labelInc.Size = new System.Drawing.Size(14, 15);
-            this.labelInc.TabIndex = 46;
-            this.labelInc.Text = "0";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(20, 289);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(84, 15);
-            this.label39.TabIndex = 47;
-            this.label39.Text = "eject date:";
-            // 
-            // labelStartDate
-            // 
-            this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 289);
-            this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
-            this.labelStartDate.TabIndex = 48;
-            this.labelStartDate.Text = "0";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(20, 269);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(70, 15);
-            this.label40.TabIndex = 49;
-            this.label40.Text = "LAN, deg:";
-            // 
-            // labelStartLAN
-            // 
-            this.labelStartLAN.AutoSize = true;
-            this.labelStartLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartLAN.Location = new System.Drawing.Point(182, 269);
-            this.labelStartLAN.Name = "labelStartLAN";
-            this.labelStartLAN.Size = new System.Drawing.Size(14, 15);
-            this.labelStartLAN.TabIndex = 50;
-            this.labelStartLAN.Text = "0";
-            // 
-            // textDeltaPsi
-            // 
-            this.textDeltaPsi.Location = new System.Drawing.Point(220, 106);
-            this.textDeltaPsi.Name = "textDeltaPsi";
-            this.textDeltaPsi.Size = new System.Drawing.Size(60, 20);
-            this.textDeltaPsi.TabIndex = 45;
-            this.textDeltaPsi.Text = "1";
-            this.textDeltaPsi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonPlusPsi
-            // 
-            this.buttonPlusPsi.Location = new System.Drawing.Point(145, 87);
-            this.buttonPlusPsi.Name = "buttonPlusPsi";
-            this.buttonPlusPsi.Size = new System.Drawing.Size(21, 24);
-            this.buttonPlusPsi.TabIndex = 46;
-            this.buttonPlusPsi.Text = "+";
-            this.buttonPlusPsi.UseVisualStyleBackColor = true;
-            this.buttonPlusPsi.Click += new System.EventHandler(this.buttonPlusPsi_Click);
-            // 
-            // buttonMinusPsi
-            // 
-            this.buttonMinusPsi.Location = new System.Drawing.Point(145, 117);
-            this.buttonMinusPsi.Name = "buttonMinusPsi";
-            this.buttonMinusPsi.Size = new System.Drawing.Size(21, 24);
-            this.buttonMinusPsi.TabIndex = 47;
-            this.buttonMinusPsi.Text = "-";
-            this.buttonMinusPsi.UseVisualStyleBackColor = true;
-            this.buttonMinusPsi.Click += new System.EventHandler(this.buttonMinusPsi_Click);
+            this.labelTransTime.AutoSize = true;
+            this.labelTransTime.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTransTime.Location = new System.Drawing.Point(147, 51);
+            this.labelTransTime.Name = "labelTransTime";
+            this.labelTransTime.Size = new System.Drawing.Size(14, 15);
+            this.labelTransTime.TabIndex = 52;
+            this.labelTransTime.Text = "0";
             // 
             // MainForm
             // 
@@ -1254,6 +1323,12 @@
         private System.Windows.Forms.Button buttonMinusPsi;
         private System.Windows.Forms.Button buttonPlusPsi;
         private System.Windows.Forms.TextBox textDeltaPsi;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ToolStripMenuItem homanTransferToolStripMenuItem;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox textWaitTurns;
+        private System.Windows.Forms.Label labelTransTime;
+        private System.Windows.Forms.Label label43;
 
     }
 }

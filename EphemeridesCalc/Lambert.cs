@@ -482,13 +482,10 @@ namespace Astronomy
                                                CelestialBody craft,
                                                double t1,
                                                double h,
+                                               int n_turns,
                                                ref Orbit orbit,
                                                ref double startTime)
         {
-            double vx = 0;
-            double vy = 0;
-            double vz = 0;
-
             OrbitPos arivPos = new OrbitPos();                     
 
             arivBody.get_position(t1, ref arivPos);
@@ -529,7 +526,9 @@ namespace Astronomy
             double M = orbit.e * Math.Sinh(H) - H;
             double dT = M / n;
 
-            startTime = t1 - dT;
+            double waitTime = n_turns * 2 * Math.PI * (R + h) / vk;
+
+            startTime = t1 - dT - waitTime;
 
             return dv;
         }
