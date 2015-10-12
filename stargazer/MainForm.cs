@@ -478,7 +478,7 @@ namespace stargazer
 
             Transfer trans = new Transfer();
 
-            double psi = Convert.ToDouble(textPsi.Text) * RAD;
+            double psi = Convert.ToDouble(textPsi.Text, CultureInfo.InvariantCulture) * RAD;
 
             bool ready = Lambert.get_transfer_date(t0, t1, Bodies[a_idx], Bodies[d_idx], psi, ref trans);
 
@@ -742,6 +742,30 @@ namespace stargazer
                 brush.Color = Color.Blue;
 
             graph.FillEllipse(brush, x0 - sunRadius, y0 - sunRadius, 2 * sunRadius, 2 * sunRadius);
+        }
+
+        private void buttonPlusPsi_Click(object sender, EventArgs e)
+        {
+            double psi = double.Parse(textPsi.Text, CultureInfo.InvariantCulture);
+            double dPsi = double.Parse(textDeltaPsi.Text, CultureInfo.InvariantCulture);
+
+            psi += dPsi;
+
+            textPsi.Text = psi.ToString();
+
+            buttonHomanSearch_Click(sender, e);
+        }
+
+        private void buttonMinusPsi_Click(object sender, EventArgs e)
+        {
+            double psi = double.Parse(textPsi.Text, CultureInfo.InvariantCulture);
+            double dPsi = double.Parse(textDeltaPsi.Text, CultureInfo.InvariantCulture);
+
+            psi -= dPsi;
+
+            textPsi.Text = psi.ToString();
+
+            buttonHomanSearch_Click(sender, e);
         }
     }   
 }

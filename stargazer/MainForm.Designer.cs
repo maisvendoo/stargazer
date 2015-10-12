@@ -122,6 +122,9 @@
             this.labelStartDate = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.labelStartLAN = new System.Windows.Forms.Label();
+            this.textDeltaPsi = new System.Windows.Forms.TextBox();
+            this.buttonPlusPsi = new System.Windows.Forms.Button();
+            this.buttonMinusPsi = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -206,6 +209,9 @@
             // 
             // panelHomanTrans
             // 
+            this.panelHomanTrans.Controls.Add(this.buttonMinusPsi);
+            this.panelHomanTrans.Controls.Add(this.buttonPlusPsi);
+            this.panelHomanTrans.Controls.Add(this.textDeltaPsi);
             this.panelHomanTrans.Controls.Add(this.label35);
             this.panelHomanTrans.Controls.Add(this.textAltitude);
             this.panelHomanTrans.Controls.Add(this.panelTransOrbit);
@@ -982,7 +988,7 @@
             // 
             // textAltitude
             // 
-            this.textAltitude.Location = new System.Drawing.Point(185, 38);
+            this.textAltitude.Location = new System.Drawing.Point(220, 37);
             this.textAltitude.Name = "textAltitude";
             this.textAltitude.Size = new System.Drawing.Size(60, 20);
             this.textAltitude.TabIndex = 43;
@@ -1088,6 +1094,35 @@
             this.labelStartLAN.Size = new System.Drawing.Size(14, 15);
             this.labelStartLAN.TabIndex = 50;
             this.labelStartLAN.Text = "0";
+            // 
+            // textDeltaPsi
+            // 
+            this.textDeltaPsi.Location = new System.Drawing.Point(220, 106);
+            this.textDeltaPsi.Name = "textDeltaPsi";
+            this.textDeltaPsi.Size = new System.Drawing.Size(60, 20);
+            this.textDeltaPsi.TabIndex = 45;
+            this.textDeltaPsi.Text = "1";
+            this.textDeltaPsi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // buttonPlusPsi
+            // 
+            this.buttonPlusPsi.Location = new System.Drawing.Point(145, 87);
+            this.buttonPlusPsi.Name = "buttonPlusPsi";
+            this.buttonPlusPsi.Size = new System.Drawing.Size(21, 24);
+            this.buttonPlusPsi.TabIndex = 46;
+            this.buttonPlusPsi.Text = "+";
+            this.buttonPlusPsi.UseVisualStyleBackColor = true;
+            this.buttonPlusPsi.Click += new System.EventHandler(this.buttonPlusPsi_Click);
+            // 
+            // buttonMinusPsi
+            // 
+            this.buttonMinusPsi.Location = new System.Drawing.Point(145, 117);
+            this.buttonMinusPsi.Name = "buttonMinusPsi";
+            this.buttonMinusPsi.Size = new System.Drawing.Size(21, 24);
+            this.buttonMinusPsi.TabIndex = 47;
+            this.buttonMinusPsi.Text = "-";
+            this.buttonMinusPsi.UseVisualStyleBackColor = true;
+            this.buttonMinusPsi.Click += new System.EventHandler(this.buttonMinusPsi_Click);
             // 
             // MainForm
             // 
@@ -1216,6 +1251,9 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label labelStartLAN;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button buttonMinusPsi;
+        private System.Windows.Forms.Button buttonPlusPsi;
+        private System.Windows.Forms.TextBox textDeltaPsi;
 
     }
 }
