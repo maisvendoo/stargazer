@@ -47,6 +47,7 @@ namespace Astronomy
         public double mass;
         public double radius;
         public double gravParameter;
+        public double refGravParameter;
         public double rotationPeriod;
 
         public Orbit orbit;        
@@ -74,6 +75,7 @@ namespace Astronomy
             data.mass = this.data.mass;
             data.radius = this.data.radius;
             data.gravParameter = this.data.gravParameter;
+            data.refGravParameter = this.data.refGravParameter;
             data.rotationPeriod = this.data.rotationPeriod;
 
             data.orbit.a = this.data.orbit.a;
@@ -95,6 +97,7 @@ namespace Astronomy
             this.data.mass = data.mass;
             this.data.radius = data.radius;
             this.data.gravParameter = data.gravParameter;
+            this.data.refGravParameter = data.gravParameter;
             this.data.rotationPeriod = data.rotationPeriod;
 
             this.data.orbit.a = data.orbit.a;
@@ -202,6 +205,23 @@ namespace Astronomy
         //---------------------------------------------------------------------
         //
         //---------------------------------------------------------------------
+        public void set_refGravParameter(double mu)
+        {
+            data.refGravParameter = mu;
+        }
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public double get_refGravParameter()
+        {
+            return data.refGravParameter;
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
         public void set_refRadius(double refRadius)
         {
             data.orbit.RefRadius = refRadius;
@@ -250,6 +270,44 @@ namespace Astronomy
             double z = r * Math.Sin(epos.beta);
 
             return new Vector3D(x, y, z);
-        }        
+        }
+
+        public Vector3D get_velocity(double theta)
+        {
+            double vx = 0;
+            double vy = 0;
+            double vz = 0;
+
+            double e = data.orbit.e;
+            double p = 0;
+
+            if ((e > -1) && (e < 1))
+                p = data.orbit.a * (1 - e * e);
+
+            if (e == 1)
+                p = 2*data.orbit.a;
+
+            if (e > 1)
+                p = data.orbit.a * (e * e - 1);
+
+            double mu = data.refGravParameter;
+            double vp = Math.Sqrt(mu / p);
+            double vr = e * Math.Sin(theta) * vp;
+            double vt = (1 + e*Math.Cos(theta))*vp;
+
+            double i = data.orbit.i * math.RAD;
+            double Omega = data.orbit.Omega * math.RAD;
+            double omega = data.orbit.omega * math.RAD;
+
+            vx = vr * (Math.Cos(Omega) * Math.Cos(omega + theta) - Math.Sin(Omega) * Math.Cos(i) * Math.Sin(omega + theta)) -
+                 vt * (Math.Cos(Omega) * Math.Sin(omega + theta) + Math.Sin(Omega) * Math.Cos(i) * Math.Cos(omega + theta));
+
+            vy = vr * (Math.Sin(Omega) * Math.Cos(omega + theta) + Math.Cos(Omega) * Math.Cos(i) * Math.Sin(omega + theta)) -
+                 vt * (Math.Sin(Omega) * Math.Sin(omega + theta) - Math.Cos(Omega) * Math.Cos(i) * Math.Cos(omega + theta));
+
+            vz = Math.Sin(i) * (vr * Math.Sin(omega + theta) + vt * Math.Cos(omega + theta));
+
+            return new Vector3D(vx, vy, vz);
+        }
     }
 }

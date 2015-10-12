@@ -286,7 +286,7 @@ namespace Astronomy
             destBody.get_data(ref data);
 
             double transTime = 0;
-            double mu = 4 * Math.PI * Math.PI * Math.Pow(data.orbit.a, 3) / data.orbit.period / data.orbit.period;
+            double mu = arivBody.get_refGravParameter();            
             double E = 0;
             double theta = 0;
             

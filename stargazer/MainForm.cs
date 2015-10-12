@@ -216,6 +216,7 @@ namespace stargazer
                 {
                     Bodies[i].set_refId(refId);
                     Bodies[i].set_refRadius(Bodies[refId].get_radius());
+                    Bodies[i].set_refGravParameter(Bodies[refId].get_gravParameter());
                 }
             }
         }
@@ -505,8 +506,9 @@ namespace stargazer
 
             craft_data.name = "Space craft";
             craft_data.orbit = trans.orbit;
+            craft_data.refGravParameter = Bodies[a_idx].get_refGravParameter();
 
-            craft.set_data(craft_data);
+            craft.set_data(craft_data);            
             
             DrawTransOrbit(panelTransOrbit, trans, Bodies[a_idx], Bodies[d_idx], craft);
         }
