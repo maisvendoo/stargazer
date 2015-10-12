@@ -229,7 +229,17 @@ namespace Astronomy
 
         public Vector3D get_cartesian_pos(double theta)
         {
-            double r = data.orbit.a * (1 - data.orbit.e * data.orbit.e) / (1 + data.orbit.e * Math.Cos(theta));
+            double r = 0;
+            double e = data.orbit.e;            
+            
+            if ( (e > -1) && (e < 1) )
+                r = data.orbit.a * (1 - e * e) / (1 + e * Math.Cos(theta));
+
+            if (e == 1)
+                r = 2 * data.orbit.a / (1 + e * Math.Cos(theta));
+
+            if (e > 1)
+                r = data.orbit.a * (e*e - 1) / (1 + e * Math.Cos(theta));
 
             EclipticPos epos = new EclipticPos();
 

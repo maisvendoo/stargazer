@@ -895,20 +895,20 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label32.Location = new System.Drawing.Point(15, 12);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(80, 16);
+            this.label32.Size = new System.Drawing.Size(69, 15);
             this.label32.TabIndex = 38;
             this.label32.Text = "Arrival body";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label33.Location = new System.Drawing.Point(15, 55);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(102, 16);
+            this.label33.Size = new System.Drawing.Size(91, 15);
             this.label33.TabIndex = 39;
             this.label33.Text = "Departure body";
             // 
@@ -924,10 +924,10 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label34.Location = new System.Drawing.Point(16, 106);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(57, 16);
+            this.label34.Size = new System.Drawing.Size(51, 15);
             this.label34.TabIndex = 41;
             this.label34.Text = "Psi, deg";
             // 

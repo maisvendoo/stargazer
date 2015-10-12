@@ -289,31 +289,38 @@ namespace Astronomy
             double mu = 4 * Math.PI * Math.PI * Math.Pow(data.orbit.a, 3) / data.orbit.period / data.orbit.period;
             double E = 0;
             double theta = 0;
+            
+            
+            theta = x1.angle(x2);
+            orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
 
-            //if (r2 > r1)
-            //{
-                theta = x1.angle(x2);
-                orbit.e = (r2 - r1) / (r1 - r2 * Math.Cos(theta));
+            if ( (orbit.e > - 1) && (orbit.e < 1) )
+            {
                 orbit.a = r1 / (1 - orbit.e);
 
                 double n = Math.Sqrt(mu / orbit.a) / orbit.a;
                 double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
                 E = 2 * Math.Atan(tgE2);
                 double M = E - orbit.e * Math.Sin(E);
-                transTime = M / n;                
-            //}
-            /*else
+                transTime = M / n;
+            }
+            
+            if (orbit.e == 1)
             {
-                theta = Math.PI - x1.angle(x2);
-                orbit.e = (r1 - r2) / (r1 + r2 * Math.Cos(theta));
-                orbit.a = r1 / (1 + orbit.e);
+                orbit.a = 2*r1;
+                transTime = r1*Math.Sqrt(2*r1/mu)*(Math.Tan(theta/2) + Math.Pow(Math.Tan(theta/2), 3)/3); 
+            }
+
+            if (orbit.e > 1)
+            {
+                orbit.a = r1 / (orbit.e - 1);
 
                 double n = Math.Sqrt(mu / orbit.a) / orbit.a;
-                double tgE2 = Math.Sqrt((1 - orbit.e) / (1 + orbit.e)) * Math.Tan(theta / 2);
-                E = 2 * Math.Atan(tgE2);
-                double M = E - orbit.e * Math.Sin(E);
-                transTime = (Math.PI - M) / n;                
-            } */                       
+                double thE2 = Math.Sqrt((orbit.e - 1) / (orbit.e + 1)) * Math.Tan(theta / 2);
+                double H = Math.Log((1 + thE2) / (1 - thE2));
+                double M = orbit.e * Math.Sinh(H) - H;
+                transTime = M / n;
+            }
 
             return transTime;
         }
@@ -346,7 +353,7 @@ namespace Astronomy
             decimal sin_u = ex1.z / DMath.sin(inc);
             decimal cos_u = (ex1.x + sin_Omega * en.z * sin_u) / cos_Omega;
 
-            u = Convert.ToDouble(DMath.arg(Decimal.Round(sin_u, 5), Decimal.Round(cos_u, 5)));
+            u = Convert.ToDouble(DMath.arg(Decimal.Round(sin_u, 4), Decimal.Round(cos_u, 4)));
         }
 
         
