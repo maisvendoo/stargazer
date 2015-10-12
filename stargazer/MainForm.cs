@@ -527,6 +527,7 @@ namespace stargazer
 
             labelDeltaV.Text = Math.Round(dv, 2).ToString();
             labelInc.Text = Math.Round(arivOrbit.i, 4).ToString();
+            labelStartLAN.Text = Math.Round(arivOrbit.Omega, 4).ToString();
 
             KDate startDate = new KDate();
 

@@ -120,6 +120,8 @@
             this.labelInc = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.labelStartLAN = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -246,7 +248,7 @@
             // 
             this.panelTransOrbit.Location = new System.Drawing.Point(368, 156);
             this.panelTransOrbit.Name = "panelTransOrbit";
-            this.panelTransOrbit.Size = new System.Drawing.Size(413, 343);
+            this.panelTransOrbit.Size = new System.Drawing.Size(413, 357);
             this.panelTransOrbit.TabIndex = 42;
             // 
             // label34
@@ -322,13 +324,15 @@
             this.groupHomanResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupHomanResults.Location = new System.Drawing.Point(18, 147);
             this.groupHomanResults.Name = "groupHomanResults";
-            this.groupHomanResults.Size = new System.Drawing.Size(342, 352);
+            this.groupHomanResults.Size = new System.Drawing.Size(342, 366);
             this.groupHomanResults.TabIndex = 34;
             this.groupHomanResults.TabStop = false;
             this.groupHomanResults.Text = "Search result";
             // 
             // panelHomanRes
             // 
+            this.panelHomanRes.Controls.Add(this.labelStartLAN);
+            this.panelHomanRes.Controls.Add(this.label40);
             this.panelHomanRes.Controls.Add(this.labelStartDate);
             this.panelHomanRes.Controls.Add(this.label39);
             this.panelHomanRes.Controls.Add(this.labelInc);
@@ -353,7 +357,7 @@
             this.panelHomanRes.Controls.Add(this.label24);
             this.panelHomanRes.Location = new System.Drawing.Point(6, 25);
             this.panelHomanRes.Name = "panelHomanRes";
-            this.panelHomanRes.Size = new System.Drawing.Size(330, 321);
+            this.panelHomanRes.Size = new System.Drawing.Size(330, 335);
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
             // 
@@ -1049,7 +1053,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(20, 269);
+            this.label39.Location = new System.Drawing.Point(20, 289);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(84, 15);
             this.label39.TabIndex = 47;
@@ -1059,11 +1063,31 @@
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 269);
+            this.labelStartDate.Location = new System.Drawing.Point(182, 289);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(14, 15);
             this.labelStartDate.TabIndex = 48;
             this.labelStartDate.Text = "0";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(20, 269);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(70, 15);
+            this.label40.TabIndex = 49;
+            this.label40.Text = "LAN, deg:";
+            // 
+            // labelStartLAN
+            // 
+            this.labelStartLAN.AutoSize = true;
+            this.labelStartLAN.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartLAN.Location = new System.Drawing.Point(182, 269);
+            this.labelStartLAN.Name = "labelStartLAN";
+            this.labelStartLAN.Size = new System.Drawing.Size(14, 15);
+            this.labelStartLAN.TabIndex = 50;
+            this.labelStartLAN.Text = "0";
             // 
             // MainForm
             // 
@@ -1190,6 +1214,8 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label labelStartLAN;
+        private System.Windows.Forms.Label label40;
 
     }
 }
