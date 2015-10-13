@@ -33,9 +33,13 @@
             this.itemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTools = new System.Windows.Forms.ToolStripMenuItem();
             this.itemEphemeride = new System.Windows.Forms.ToolStripMenuItem();
+            this.homanTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
             this.panelHomanTrans = new System.Windows.Forms.Panel();
+            this.label42 = new System.Windows.Forms.Label();
+            this.textWaitTurns = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.buttonMinusPsi = new System.Windows.Forms.Button();
             this.buttonPlusPsi = new System.Windows.Forms.Button();
             this.textDeltaPsi = new System.Windows.Forms.TextBox();
@@ -51,6 +55,8 @@
             this.buttonHomanSearch = new System.Windows.Forms.Button();
             this.groupHomanResults = new System.Windows.Forms.GroupBox();
             this.panelHomanRes = new System.Windows.Forms.Panel();
+            this.labelTransTime = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
             this.labelStartLAN = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
@@ -125,12 +131,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.homanTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textWaitTurns = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.labelTransTime = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -181,6 +181,13 @@
             this.itemEphemeride.Size = new System.Drawing.Size(189, 22);
             this.itemEphemeride.Text = "Calculate ephemeride";
             this.itemEphemeride.Click += new System.EventHandler(this.itemEphemeride_Click);
+            // 
+            // homanTransferToolStripMenuItem
+            // 
+            this.homanTransferToolStripMenuItem.Name = "homanTransferToolStripMenuItem";
+            this.homanTransferToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.homanTransferToolStripMenuItem.Text = "Homan transfer";
+            this.homanTransferToolStripMenuItem.Click += new System.EventHandler(this.homanTransferToolStripMenuItem_Click);
             // 
             // statusBar
             // 
@@ -261,6 +268,35 @@
             this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
             this.panelHomanTrans.TabIndex = 17;
             // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(145, 75);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(61, 15);
+            this.label42.TabIndex = 50;
+            this.label42.Text = "Wait turns";
+            // 
+            // textWaitTurns
+            // 
+            this.textWaitTurns.Location = new System.Drawing.Point(209, 73);
+            this.textWaitTurns.Name = "textWaitTurns";
+            this.textWaitTurns.Size = new System.Drawing.Size(37, 20);
+            this.textWaitTurns.TabIndex = 49;
+            this.textWaitTurns.Text = "1";
+            this.textWaitTurns.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(179, 107);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(58, 15);
+            this.label41.TabIndex = 48;
+            this.label41.Text = "dPsi, deg";
+            // 
             // buttonMinusPsi
             // 
             this.buttonMinusPsi.Location = new System.Drawing.Point(143, 117);
@@ -339,7 +375,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(16, 58);
+            this.label33.Location = new System.Drawing.Point(16, 19);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(91, 15);
             this.label33.TabIndex = 39;
@@ -349,7 +385,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(15, 12);
+            this.label32.Location = new System.Drawing.Point(15, 58);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(69, 15);
             this.label32.TabIndex = 38;
@@ -428,6 +464,26 @@
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
             // 
+            // labelTransTime
+            // 
+            this.labelTransTime.AutoSize = true;
+            this.labelTransTime.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTransTime.Location = new System.Drawing.Point(147, 51);
+            this.labelTransTime.Name = "labelTransTime";
+            this.labelTransTime.Size = new System.Drawing.Size(14, 15);
+            this.labelTransTime.TabIndex = 52;
+            this.labelTransTime.Text = "0";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(17, 50);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(82, 15);
+            this.label43.TabIndex = 51;
+            this.label43.Text = "Transfer time:";
+            // 
             // labelStartLAN
             // 
             this.labelStartLAN.AutoSize = true;
@@ -464,9 +520,9 @@
             this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(20, 289);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(84, 15);
+            this.label39.Size = new System.Drawing.Size(91, 15);
             this.label39.TabIndex = 47;
-            this.label39.Text = "eject date:";
+            this.label39.Text = "launch date:";
             // 
             // labelInc
             // 
@@ -514,9 +570,9 @@
             this.label36.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label36.Location = new System.Drawing.Point(17, 206);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(120, 16);
+            this.label36.Size = new System.Drawing.Size(134, 16);
             this.label36.TabIndex = 42;
-            this.label36.Text = "Arrival maneuver";
+            this.label36.Text = "Depatrure maneuver";
             // 
             // labelDepDate
             // 
@@ -652,7 +708,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(17, 30);
+            this.label25.Location = new System.Drawing.Point(16, 10);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(119, 15);
             this.label25.TabIndex = 1;
@@ -662,7 +718,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(17, 10);
+            this.label24.Location = new System.Drawing.Point(16, 30);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(105, 15);
             this.label24.TabIndex = 0;
@@ -1136,62 +1192,6 @@
             this.labelCelBody.Size = new System.Drawing.Size(109, 20);
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label41.Location = new System.Drawing.Point(179, 107);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(58, 15);
-            this.label41.TabIndex = 48;
-            this.label41.Text = "dPsi, deg";
-            // 
-            // homanTransferToolStripMenuItem
-            // 
-            this.homanTransferToolStripMenuItem.Name = "homanTransferToolStripMenuItem";
-            this.homanTransferToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.homanTransferToolStripMenuItem.Text = "Homan transfer";
-            this.homanTransferToolStripMenuItem.Click += new System.EventHandler(this.homanTransferToolStripMenuItem_Click);
-            // 
-            // textWaitTurns
-            // 
-            this.textWaitTurns.Location = new System.Drawing.Point(209, 73);
-            this.textWaitTurns.Name = "textWaitTurns";
-            this.textWaitTurns.Size = new System.Drawing.Size(37, 20);
-            this.textWaitTurns.TabIndex = 49;
-            this.textWaitTurns.Text = "1";
-            this.textWaitTurns.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label42.Location = new System.Drawing.Point(145, 75);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(61, 15);
-            this.label42.TabIndex = 50;
-            this.label42.Text = "Wait turns";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label43.Location = new System.Drawing.Point(17, 50);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(82, 15);
-            this.label43.TabIndex = 51;
-            this.label43.Text = "Transfer time:";
-            // 
-            // labelTransTime
-            // 
-            this.labelTransTime.AutoSize = true;
-            this.labelTransTime.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTransTime.Location = new System.Drawing.Point(147, 51);
-            this.labelTransTime.Name = "labelTransTime";
-            this.labelTransTime.Size = new System.Drawing.Size(14, 15);
-            this.labelTransTime.TabIndex = 52;
-            this.labelTransTime.Text = "0";
             // 
             // MainForm
             // 
