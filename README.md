@@ -11,4 +11,8 @@ Calculation of:
 3. Eject manuever from departure planet/moon low orbit
 4. Low orbit parameters (inclination, LAN, argument of periapsis)
 
+## Example transfer from Kerbin to Duna
+
+![Transfer calculation example](http://storage1.static.itmages.ru/i/15/1014/h_1444855130_5830063_c7a51d92c1.png)
+
 (c) Dmitry Pritykin (maisvendoo), 2015
