@@ -6,7 +6,7 @@ using System.Text;
 namespace Astronomy
 {
     //-------------------------------------------------------------------------
-    //
+    //      Orbit elemnts
     //-------------------------------------------------------------------------
     public struct Orbit
     {
@@ -24,7 +24,7 @@ namespace Astronomy
 
 
     //-------------------------------------------------------------------------
-    //
+    //      Body orbital position
     //-------------------------------------------------------------------------
     public struct OrbitPos
     {
@@ -36,28 +36,29 @@ namespace Astronomy
     }
 
     //-------------------------------------------------------------------------
-    //
+    //      Common body data
     //-------------------------------------------------------------------------
     public struct BodyData
     {
-        public string name;
-        public int id;
-        public string refBody;
-        public int refId;
-        public double mass;
-        public double radius;
-        public double gravParameter;
-        public double refGravParameter;
-        public double rotationPeriod;
-        public double sphereOfInfluence;
+        public string name;                 // Body's name
+        public int id;                      // Body's id 
+        public string refBody;              // Referense body name  
+        public int refId;                   // Referense body id
+        public double mass;                 // Body's mass
+        public double radius;               // Equatorial radius
+        public double gravParameter;        // mu = G*M (G = 6.67e-11 - constatnt of gravity, M - body's mass)    
+        public double refGravParameter;     // Reference body mu
+        public double rotationPeriod;       // Own axis rotation period
+        public double sphereOfInfluence;    // SOI radius
+        public double initialRotation;      // Initial angle of rotation  (at t = 1y 1d 0h 0m 0s)
 
-        public Orbit orbit;        
+        public Orbit orbit;                 // Orbit
     }
 
     public struct EclipticPos
     {
-        public double beta;
-        public double lambda;
+        public double beta;                 // Ecliptic latitude
+        public double lambda;               // Ecliptic longtitude
     }    
     
     public class CelestialBody
@@ -250,7 +251,9 @@ namespace Astronomy
             ecoords.lambda = math.arg(sin_lambda, cos_lambda);
         }
 
-
+        //---------------------------------------------------------------------
+        //      Cartesian system position of body
+        //---------------------------------------------------------------------
         public Vector3D get_cartesian_pos(double theta)
         {
             double r = 0;
@@ -276,6 +279,10 @@ namespace Astronomy
             return new Vector3D(x, y, z);
         }
 
+
+        //---------------------------------------------------------------------
+        //      Get body velocity vector
+        //---------------------------------------------------------------------
         public Vector3D get_velocity(double theta)
         {
             double vx = 0;

@@ -59,7 +59,7 @@
             this.label43 = new System.Windows.Forms.Label();
             this.labelStartLAN = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.labelStartDate = new System.Windows.Forms.Label();
+            this.labelEjectDate = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.labelInc = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -131,6 +131,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -432,11 +434,13 @@
             // 
             // panelHomanRes
             // 
+            this.panelHomanRes.Controls.Add(this.labelStartDate);
+            this.panelHomanRes.Controls.Add(this.label45);
             this.panelHomanRes.Controls.Add(this.labelTransTime);
             this.panelHomanRes.Controls.Add(this.label43);
             this.panelHomanRes.Controls.Add(this.labelStartLAN);
             this.panelHomanRes.Controls.Add(this.label40);
-            this.panelHomanRes.Controls.Add(this.labelStartDate);
+            this.panelHomanRes.Controls.Add(this.labelEjectDate);
             this.panelHomanRes.Controls.Add(this.label39);
             this.panelHomanRes.Controls.Add(this.labelInc);
             this.panelHomanRes.Controls.Add(this.label38);
@@ -504,15 +508,15 @@
             this.label40.TabIndex = 49;
             this.label40.Text = "LAN, deg:";
             // 
-            // labelStartDate
+            // labelEjectDate
             // 
-            this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 289);
-            this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
-            this.labelStartDate.TabIndex = 48;
-            this.labelStartDate.Text = "0";
+            this.labelEjectDate.AutoSize = true;
+            this.labelEjectDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEjectDate.Location = new System.Drawing.Point(182, 289);
+            this.labelEjectDate.Name = "labelEjectDate";
+            this.labelEjectDate.Size = new System.Drawing.Size(14, 15);
+            this.labelEjectDate.TabIndex = 48;
+            this.labelEjectDate.Text = "0";
             // 
             // label39
             // 
@@ -520,9 +524,9 @@
             this.label39.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(20, 289);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(91, 15);
+            this.label39.Size = new System.Drawing.Size(84, 15);
             this.label39.TabIndex = 47;
-            this.label39.Text = "launch date:";
+            this.label39.Text = "eject date:";
             // 
             // labelInc
             // 
@@ -1193,6 +1197,26 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartDate.Location = new System.Drawing.Point(182, 309);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
+            this.labelStartDate.TabIndex = 54;
+            this.labelStartDate.Text = "0";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(20, 309);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(91, 15);
+            this.label45.TabIndex = 53;
+            this.label45.Text = "launch date:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,7 +1340,7 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label labelInc;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.Label labelEjectDate;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label labelStartLAN;
         private System.Windows.Forms.Label label40;
@@ -1329,6 +1353,8 @@
         private System.Windows.Forms.TextBox textWaitTurns;
         private System.Windows.Forms.Label labelTransTime;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.Label label45;
 
     }
 }

@@ -527,22 +527,36 @@ namespace stargazer
             craft.set_data(ref craft_data);            
             craft.set_refGravParameter(Bodies[a_idx].get_refGravParameter());
 
-            Orbit arivOrbit = new Orbit();
+            Orbit depOrbit = new Orbit();
 
-            double h = double.Parse(textAltitude.Text)*1000.0;
+            double h = double.Parse(textAltitude.Text)*1000.0;           
 
-            double startTime = 0;
             int turns = int.Parse(textWaitTurns.Text);
 
-            double dv = Lambert.get_init_velocity(Bodies[a_idx], craft, trans.arivTime, h, turns, ref arivOrbit, ref startTime);
+            DepManuever manuever = new DepManuever();
 
-            labelDeltaV.Text = Math.Round(dv, 2).ToString();
-            labelInc.Text = Math.Round(arivOrbit.i, 4).ToString();
-            labelStartLAN.Text = Math.Round(arivOrbit.Omega, 4).ToString();
+            Lambert.get_depatrure_manuever(Bodies[a_idx],
+                                           craft,
+                                           trans.arivTime,
+                                           h,
+                                           turns,
+                                           ref manuever);
+
+            labelDeltaV.Text = Math.Round(manuever.dv, 2).ToString();
+            labelInc.Text = Math.Round(depOrbit.i, 4).ToString();
+            labelStartLAN.Text = Math.Round(depOrbit.Omega, 4).ToString();
+
+            KDate ejectDate = new KDate();
+            KCalendar.sec_to_date(manuever.ejectTime, ref ejectDate);
+
+            labelEjectDate.Text = ejectDate.year.ToString() + "y " +
+                                  ejectDate.day.ToString() + "d " +
+                                  ejectDate.hour.ToString() + "h " +
+                                  ejectDate.min.ToString() + "m " +
+                                  ejectDate.sec.ToString() + "s";
 
             KDate startDate = new KDate();
-
-            KCalendar.sec_to_date(startTime, ref startDate);
+            KCalendar.sec_to_date(manuever.startTime, ref startDate);
 
             labelStartDate.Text = startDate.year.ToString() + "y " +
                                   startDate.day.ToString() + "d " +
