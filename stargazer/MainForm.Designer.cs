@@ -133,6 +133,7 @@
             this.labelCelBody = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.labelNoTransfer = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -226,6 +227,7 @@
             // 
             // panelHomanTrans
             // 
+            this.panelHomanTrans.Controls.Add(this.labelNoTransfer);
             this.panelHomanTrans.Controls.Add(this.label42);
             this.panelHomanTrans.Controls.Add(this.textWaitTurns);
             this.panelHomanTrans.Controls.Add(this.label41);
@@ -1217,6 +1219,16 @@
             this.label45.TabIndex = 53;
             this.label45.Text = "launch date:";
             // 
+            // labelNoTransfer
+            // 
+            this.labelNoTransfer.AutoSize = true;
+            this.labelNoTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNoTransfer.Location = new System.Drawing.Point(371, 122);
+            this.labelNoTransfer.Name = "labelNoTransfer";
+            this.labelNoTransfer.Size = new System.Drawing.Size(0, 24);
+            this.labelNoTransfer.TabIndex = 0;
+            this.labelNoTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1355,6 +1367,7 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label labelNoTransfer;
 
     }
 }

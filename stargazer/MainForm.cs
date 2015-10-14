@@ -473,20 +473,30 @@ namespace stargazer
                                             int.Parse(comboEndMin.Text.ToString()),
                                             int.Parse(comboEndSec.Text.ToString()));
 
-            int a_idx = get_body_index(comboHomanArrivList.Text.ToString());
-            int d_idx = get_body_index(comboHomanDepList.Text.ToString());
+            int dep_idx = get_body_index(comboHomanArrivList.Text.ToString());
+            int arr_idx = get_body_index(comboHomanDepList.Text.ToString());
+
+            // Check same reference body!!!            
+            if (Bodies[dep_idx].get_ref_body() != Bodies[arr_idx].get_ref_body())
+            {
+                labelNoTransfer.Text = "Bodies must have same reference body!\nPlease, change other bodies";
+                return;
+            }
 
             Transfer trans = new Transfer();
 
             double psi = Convert.ToDouble(textPsi.Text) * RAD;
 
-            bool ready = Lambert.get_transfer_date(t0, t1, Bodies[a_idx], Bodies[d_idx], psi, ref trans);
+            bool ready = Lambert.get_transfer_date(t0, t1, Bodies[dep_idx], Bodies[arr_idx], psi, ref trans);
 
             if (!ready)
             {
                 panelHomanRes.Visible = false;
+                labelNoTransfer.Text = "Transfer is imposible in changed period";
                 return;
             }
+
+            labelNoTransfer.Text = "";
 
             panelHomanRes.Visible = true;
 
@@ -525,7 +535,7 @@ namespace stargazer
             craft_data.name = "Space craft";
             craft_data.orbit = trans.orbit;
             craft.set_data(ref craft_data);            
-            craft.set_refGravParameter(Bodies[a_idx].get_refGravParameter());
+            craft.set_refGravParameter(Bodies[dep_idx].get_refGravParameter());
 
             Orbit depOrbit = new Orbit();
 
@@ -535,7 +545,7 @@ namespace stargazer
 
             DepManuever manuever = new DepManuever();
 
-            Lambert.get_depatrure_manuever(Bodies[a_idx],
+            Lambert.get_depatrure_manuever(Bodies[dep_idx],
                                            craft,
                                            trans.arivTime,
                                            h,
@@ -564,7 +574,7 @@ namespace stargazer
                                   startDate.min.ToString() + "m " +
                                   startDate.sec.ToString() + "s";
             
-            DrawTransOrbit(panelTransOrbit, trans, Bodies[a_idx], Bodies[d_idx], craft);
+            DrawTransOrbit(panelTransOrbit, trans, Bodies[dep_idx], Bodies[arr_idx], craft);
         }
 
 
