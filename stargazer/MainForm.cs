@@ -553,8 +553,8 @@ namespace stargazer
                                            ref manuever);
 
             labelDeltaV.Text = Math.Round(manuever.dv, 2).ToString();
-            labelInc.Text = Math.Round(depOrbit.i, 4).ToString();
-            labelStartLAN.Text = Math.Round(depOrbit.Omega, 4).ToString();
+            labelInc.Text = Math.Round(manuever.orbit.i, 4).ToString();
+            labelStartLAN.Text = Math.Round(manuever.orbit.Omega, 4).ToString();
 
             KDate ejectDate = new KDate();
             KCalendar.sec_to_date(manuever.ejectTime, ref ejectDate);
