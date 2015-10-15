@@ -37,6 +37,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
             this.panelHomanTrans = new System.Windows.Forms.Panel();
+            this.labelNoTransfer = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.textWaitTurns = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
@@ -55,6 +56,8 @@
             this.buttonHomanSearch = new System.Windows.Forms.Button();
             this.groupHomanResults = new System.Windows.Forms.GroupBox();
             this.panelHomanRes = new System.Windows.Forms.Panel();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.labelTransTime = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.labelStartLAN = new System.Windows.Forms.Label();
@@ -131,9 +134,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.labelStartDate = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.labelNoTransfer = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -272,6 +272,16 @@
             this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
             this.panelHomanTrans.TabIndex = 17;
             // 
+            // labelNoTransfer
+            // 
+            this.labelNoTransfer.AutoSize = true;
+            this.labelNoTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNoTransfer.Location = new System.Drawing.Point(371, 122);
+            this.labelNoTransfer.Name = "labelNoTransfer";
+            this.labelNoTransfer.Size = new System.Drawing.Size(0, 24);
+            this.labelNoTransfer.TabIndex = 0;
+            this.labelNoTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label42
             // 
             this.label42.AutoSize = true;
@@ -295,11 +305,12 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label41.Location = new System.Drawing.Point(179, 107);
+            this.label41.Location = new System.Drawing.Point(174, 108);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(58, 15);
+            this.label41.Size = new System.Drawing.Size(22, 15);
             this.label41.TabIndex = 48;
-            this.label41.Text = "dPsi, deg";
+            this.label41.Text = "dP";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // buttonMinusPsi
             // 
@@ -323,7 +334,7 @@
             // 
             // textDeltaPsi
             // 
-            this.textDeltaPsi.Location = new System.Drawing.Point(243, 106);
+            this.textDeltaPsi.Location = new System.Drawing.Point(229, 106);
             this.textDeltaPsi.Name = "textDeltaPsi";
             this.textDeltaPsi.Size = new System.Drawing.Size(37, 20);
             this.textDeltaPsi.TabIndex = 45;
@@ -360,15 +371,16 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(16, 106);
+            this.label34.Location = new System.Drawing.Point(26, 108);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(51, 15);
+            this.label34.Size = new System.Drawing.Size(15, 15);
             this.label34.TabIndex = 41;
-            this.label34.Text = "Psi, deg";
+            this.label34.Text = "P";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textPsi
             // 
-            this.textPsi.Location = new System.Drawing.Point(79, 106);
+            this.textPsi.Location = new System.Drawing.Point(77, 106);
             this.textPsi.Name = "textPsi";
             this.textPsi.Size = new System.Drawing.Size(60, 20);
             this.textPsi.TabIndex = 40;
@@ -469,6 +481,26 @@
             this.panelHomanRes.Size = new System.Drawing.Size(330, 335);
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartDate.Location = new System.Drawing.Point(182, 309);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
+            this.labelStartDate.TabIndex = 54;
+            this.labelStartDate.Text = "0";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(20, 309);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(91, 15);
+            this.label45.TabIndex = 53;
+            this.label45.Text = "launch date:";
             // 
             // labelTransTime
             // 
@@ -1198,36 +1230,6 @@
             this.labelCelBody.Size = new System.Drawing.Size(109, 20);
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
-            // 
-            // labelStartDate
-            // 
-            this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 309);
-            this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
-            this.labelStartDate.TabIndex = 54;
-            this.labelStartDate.Text = "0";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(20, 309);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(91, 15);
-            this.label45.TabIndex = 53;
-            this.label45.Text = "launch date:";
-            // 
-            // labelNoTransfer
-            // 
-            this.labelNoTransfer.AutoSize = true;
-            this.labelNoTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNoTransfer.Location = new System.Drawing.Point(371, 122);
-            this.labelNoTransfer.Name = "labelNoTransfer";
-            this.labelNoTransfer.Size = new System.Drawing.Size(0, 24);
-            this.labelNoTransfer.TabIndex = 0;
-            this.labelNoTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 

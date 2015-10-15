@@ -89,8 +89,8 @@ namespace stargazer
             comboBeginSec.SelectedIndex = 0;
             comboEndSec.SelectedIndex = 0;
 
-            double lambda = 355.9635 * RAD;
-            double v = Lambert.get_dest_theta(Bodies[6], lambda) / RAD;
+            label34.Text = "\u03c8, deg.";    // Psi letter  
+            label41.Text = "\u0394\u03c8, deg.";
         }                
         
         private List<CelestialBody> Bodies;
@@ -556,23 +556,20 @@ namespace stargazer
             labelInc.Text = Math.Round(manuever.orbit.i, 4).ToString();
             labelStartLAN.Text = Math.Round(manuever.orbit.Omega, 4).ToString();
 
-            KDate ejectDate = new KDate();
-            KCalendar.sec_to_date(manuever.ejectTime, ref ejectDate);
 
-            labelEjectDate.Text = ejectDate.year.ToString() + "y " +
-                                  ejectDate.day.ToString() + "d " +
-                                  ejectDate.hour.ToString() + "h " +
-                                  ejectDate.min.ToString() + "m " +
-                                  ejectDate.sec.ToString() + "s";
+            labelEjectDate.Text = manuever.ejectDate.year.ToString() + "y " +
+                                  manuever.ejectDate.day.ToString() + "d " +
+                                  manuever.ejectDate.hour.ToString() + "h " +
+                                  manuever.ejectDate.min.ToString() + "m " +
+                                  manuever.ejectDate.sec.ToString() + "s";
 
-            KDate startDate = new KDate();
-            KCalendar.sec_to_date(manuever.startTime, ref startDate);
 
-            labelStartDate.Text = startDate.year.ToString() + "y " +
-                                  startDate.day.ToString() + "d " +
-                                  startDate.hour.ToString() + "h " +
-                                  startDate.min.ToString() + "m " +
-                                  startDate.sec.ToString() + "s";
+
+            labelStartDate.Text = manuever.startDate.year.ToString() + "y " +
+                                  manuever.startDate.day.ToString() + "d " +
+                                  manuever.startDate.hour.ToString() + "h " +
+                                  manuever.startDate.min.ToString() + "m " +
+                                  manuever.startDate.sec.ToString() + "s";
             
             DrawTransOrbit(panelTransOrbit, trans, Bodies[dep_idx], Bodies[arr_idx], craft);
         }
@@ -730,7 +727,7 @@ namespace stargazer
             // Destination body position
             SolidBrush brush = new SolidBrush(Color.Blue);
 
-            // Draw Planet
+            // Draw Planets at departure date
             float radius = 5.0F;
 
             destBody.get_position(trans.depTime, ref orbit_pos);
@@ -739,25 +736,28 @@ namespace stargazer
             x = x0 + Convert.ToSingle(scale * pos.x);
             y = y0 - Convert.ToSingle(scale * pos.y);
 
+            float x5 = x;
+            float y5 = y;
+
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
             arivBody.get_position(trans.depTime, ref orbit_pos);
             pos = arivBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
-            y = y0 - Convert.ToSingle(scale * pos.y);
+            y = y0 - Convert.ToSingle(scale * pos.y);            
 
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
 
             brush.Color = Color.Red;
 
-            // Draw Planet
+            // Draw Planets at arrival date
             destBody.get_position(trans.arivTime, ref orbit_pos);
             pos = destBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
-            y = y0 - Convert.ToSingle(scale * pos.y);
+            y = y0 - Convert.ToSingle(scale * pos.y);            
 
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
@@ -767,8 +767,28 @@ namespace stargazer
             x = x0 + Convert.ToSingle(scale * pos.x);
             y = y0 - Convert.ToSingle(scale * pos.y);
 
+            float x3 = x;
+            float y3 = y;
+
+            EclipticPos epos = new EclipticPos();
+            arivBody.get_ecliptic_coords(orbit_pos.theta, ref epos);
+            epos.lambda += Math.PI;
+            double opos_theta = Lambert.get_dest_theta(destBody, epos.lambda);
+            pos = destBody.get_cartesian_pos(opos_theta);
+
+            float x4 = x0 + Convert.ToSingle(scale * pos.x);
+            float y4 = y0 - Convert.ToSingle(scale * pos.y);
+
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
+            // Draw Psi angle
+            pen.Color = Color.LightGray;
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            pen.Width = 1.0F;
+            graph.DrawLine(pen, x3, y3, x4, y4);
+            graph.DrawLine(pen, x0, y0, x5, y5);
+
+            //
             float sunRadius = 10.0F;
 
             if (ariv_data.refBody == "Sun")

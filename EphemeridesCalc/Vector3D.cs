@@ -74,13 +74,13 @@ public struct Vector3D
         return Math.Acos( DotProduct(a, this)/a.lenght()/this.lenght() );
     }
 
-    public Vector3D Mul(Vector3D a, double  lambda)
+    public Vector3D Mul(double  lambda)
     {
         Vector3D result = new Vector3D(0, 0, 0);
 
-        result.x = lambda * a.x;
-        result.y = lambda * a.y;
-        result.z = lambda * a.z;
+        result.x = lambda * x;
+        result.y = lambda * y;
+        result.z = lambda * z;
 
         return result;
     }

@@ -21,7 +21,9 @@ namespace Astronomy
         public Orbit orbit;
         public double dv;
         public double ejectTime;
+        public KDate ejectDate;
         public double startTime;
+        public KDate startDate;
     }
 
     public class Lambert
@@ -503,7 +505,10 @@ namespace Astronomy
             double waitTime = n_turns * 2 * Math.PI * (R + h) / vk;
 
             manuever.ejectTime = t1 - dT;
-            manuever.startTime = t1 - dT - waitTime;            
+            manuever.startTime = t1 - dT - waitTime;
+
+            KCalendar.sec_to_date(manuever.ejectTime, ref manuever.ejectDate);
+            KCalendar.sec_to_date(manuever.startTime, ref manuever.startDate);
         }
     }
 }
