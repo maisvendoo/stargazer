@@ -13,6 +13,6 @@ Calculation of:
 
 ## Example transfer from Kerbin to Duna
 
-![Transfer calculation example](http://storage1.static.itmages.ru/i/15/1014/h_1444855130_5830063_c7a51d92c1.png)
+![Transfer calculation example](http://storage5.static.itmages.ru/i/15/1015/h_1444880796_4884443_1f14370a8d.png)
 
 (c) Dmitry Pritykin (maisvendoo), 2015
