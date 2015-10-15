@@ -502,19 +502,19 @@ namespace stargazer
 
             KDate deltaDate = new KDate();
 
-            KCalendar.DeltaDate(trans.depTime - trans.arivTime, ref deltaDate);
+            KCalendar.DeltaDate(trans.arrivTime - trans.depTime, ref deltaDate);
 
-            labelArivDate.Text = trans.arivDate.year.ToString() + "y " +
-                                 trans.arivDate.day.ToString() + "d " +
-                                 trans.arivDate.hour.ToString() + "h " +
-                                 trans.arivDate.min.ToString() + "m " +
-                                 trans.arivDate.sec.ToString() + "s";
-
-            labelDepDate.Text = trans.depDate.year.ToString() + "y " +
+            labelArivDate.Text = trans.depDate.year.ToString() + "y " +
                                  trans.depDate.day.ToString() + "d " +
                                  trans.depDate.hour.ToString() + "h " +
                                  trans.depDate.min.ToString() + "m " +
                                  trans.depDate.sec.ToString() + "s";
+
+            labelDepDate.Text = trans.arrivDate.year.ToString() + "y " +
+                                 trans.arrivDate.day.ToString() + "d " +
+                                 trans.arrivDate.hour.ToString() + "h " +
+                                 trans.arrivDate.min.ToString() + "m " +
+                                 trans.arrivDate.sec.ToString() + "s";
 
             labelTransTime.Text = deltaDate.year.ToString() + "y " +
                                  deltaDate.day.ToString() + "d " +
@@ -535,9 +535,7 @@ namespace stargazer
             craft_data.name = "Space craft";
             craft_data.orbit = trans.orbit;
             craft.set_data(ref craft_data);            
-            craft.set_refGravParameter(Bodies[dep_idx].get_refGravParameter());
-
-            Orbit depOrbit = new Orbit();
+            craft.set_refGravParameter(Bodies[dep_idx].get_refGravParameter());            
 
             double h = double.Parse(textAltitude.Text)*1000.0;           
 
@@ -547,7 +545,7 @@ namespace stargazer
 
             Lambert.get_depatrure_manuever(Bodies[dep_idx],
                                            craft,
-                                           trans.arivTime,
+                                           trans.depTime,
                                            h,
                                            turns,
                                            ref manuever);
@@ -571,7 +569,7 @@ namespace stargazer
                                   manuever.startDate.min.ToString() + "m " +
                                   manuever.startDate.sec.ToString() + "s";
             
-            DrawTransOrbit(panelTransOrbit, trans, Bodies[dep_idx], Bodies[arr_idx], craft);
+            DrawTransOrbit(panelTransOrbit, trans, Bodies[dep_idx], Bodies[arr_idx], craft);            
         }
 
 
@@ -605,8 +603,7 @@ namespace stargazer
             float y2 = 0;
             
             double scale = 0;
-            int Delta = 25;
-            float delta = 5.0F;
+            int Delta = 25;            
 
             BodyData ariv_data = new BodyData();
             BodyData dest_data = new BodyData();
@@ -730,7 +727,7 @@ namespace stargazer
             // Draw Planets at departure date
             float radius = 5.0F;
 
-            destBody.get_position(trans.depTime, ref orbit_pos);
+            destBody.get_position(trans.arrivTime, ref orbit_pos);
             pos = destBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
@@ -741,7 +738,7 @@ namespace stargazer
 
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
-            arivBody.get_position(trans.depTime, ref orbit_pos);
+            arivBody.get_position(trans.arrivTime, ref orbit_pos);
             pos = arivBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
@@ -753,7 +750,7 @@ namespace stargazer
             brush.Color = Color.Red;
 
             // Draw Planets at arrival date
-            destBody.get_position(trans.arivTime, ref orbit_pos);
+            destBody.get_position(trans.depTime, ref orbit_pos);
             pos = destBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);
@@ -761,7 +758,7 @@ namespace stargazer
 
             graph.FillEllipse(brush, x - radius, y - radius, 2 * radius, 2 * radius);
 
-            arivBody.get_position(trans.arivTime, ref orbit_pos);
+            arivBody.get_position(trans.depTime, ref orbit_pos);
             pos = arivBody.get_cartesian_pos(orbit_pos.theta);
 
             x = x0 + Convert.ToSingle(scale * pos.x);

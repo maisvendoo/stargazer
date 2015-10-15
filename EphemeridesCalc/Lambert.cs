@@ -8,10 +8,10 @@ namespace Astronomy
     public struct Transfer
     {
         public Orbit orbit;
-        public double arivTime;
         public double depTime;
-        public KDate arivDate;
+        public double arrivTime;
         public KDate depDate;
+        public KDate arrivDate;
         public double destLambda;
         public double transTime;        
     }
@@ -435,13 +435,13 @@ namespace Astronomy
 
             } while (Math.Abs(dL1) >= eps);
 
-            trans.arivTime = tc;
-            KCalendar.sec_to_date(tc, ref trans.arivDate);
+            trans.depTime = tc;
+            KCalendar.sec_to_date(tc, ref trans.depDate);
             
             trans.transTime = get_transfer_orbit(tc, depBody, arrivBody, psi, ref trans.orbit, ref trans.destLambda);
 
-            trans.depTime = tc + trans.transTime;
-            KCalendar.sec_to_date(trans.depTime, ref trans.depDate);
+            trans.arrivTime = tc + trans.transTime;
+            KCalendar.sec_to_date(trans.arrivTime, ref trans.arrivDate);
 
             return true;
         }
@@ -501,6 +501,8 @@ namespace Astronomy
             double M = manuever.orbit.e * Math.Sinh(H) - H;
             double dT = M / n;
 
+            manuever.orbit.omega = (Math.Acos(1/manuever.orbit.e) - Math.PI/2) / math.RAD;
+
             // Low orbit wait time calculation
             double waitTime = n_turns * 2 * Math.PI * (R + h) / vk;
 
@@ -509,6 +511,6 @@ namespace Astronomy
 
             KCalendar.sec_to_date(manuever.ejectTime, ref manuever.ejectDate);
             KCalendar.sec_to_date(manuever.startTime, ref manuever.startDate);
-        }
+        }        
     }
 }

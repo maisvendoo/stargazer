@@ -100,7 +100,7 @@ namespace Astronomy
             this.data.mass = data.mass;
             this.data.radius = data.radius;
             this.data.gravParameter = data.gravParameter;
-            this.data.refGravParameter = data.gravParameter;
+            this.data.refGravParameter = data.refGravParameter;
             this.data.rotationPeriod = data.rotationPeriod;
             this.data.sphereOfInfluence = data.sphereOfInfluence;
 
@@ -117,28 +117,72 @@ namespace Astronomy
 
         public void get_position(double t, ref OrbitPos pos)
         {
-            // Middle anomaly calculation
             double mu = data.refGravParameter;
-            double n = Math.Sqrt(mu / data.orbit.a) / data.orbit.a;
+            double e = data.orbit.e;
 
-            double M = n * (t - data.orbit.t0) + data.orbit.M0;            
+            // Elliptic orbit
+            if ((e > -1) && (e < 1))
+            {
+                // Middle anomaly calculation
+                double n = Math.Sqrt(mu / data.orbit.a) / data.orbit.a;
+                double M = n * (t - data.orbit.t0) + data.orbit.M0;
 
-            // Eccentric anomaly calculation (Kepler equation solve)
-            double E = get_eccentric_anomaly(M, data.orbit.e, NEWTON);
+                // Eccentric anomaly calculation (Kepler equation solve)
+                double E = get_eccentric_anomaly(M, data.orbit.e, NEWTON);
 
-            pos.E = math.Trunc2PiN(E);
-            pos.r = data.orbit.a * (1 - data.orbit.e * Math.Cos(E));
-            pos.refAltitude = pos.r - data.orbit.RefRadius;
+                pos.E = math.Trunc2PiN(E);
+                pos.r = data.orbit.a * (1 - data.orbit.e * Math.Cos(E));
+                pos.refAltitude = pos.r - data.orbit.RefRadius;
 
-            // True anomaly calculation
-            double sin_V = Math.Sqrt(1 - data.orbit.e * data.orbit.e) * Math.Sin(E) / (1 - data.orbit.e * Math.Cos(E));
-            double cos_V = (Math.Cos(E) - data.orbit.e) / (1 - data.orbit.e * Math.Cos(E));
+                // True anomaly calculation
+                double sin_V = Math.Sqrt(1 - data.orbit.e * data.orbit.e) * Math.Sin(E) / (1 - data.orbit.e * Math.Cos(E));
+                double cos_V = (Math.Cos(E) - data.orbit.e) / (1 - data.orbit.e * Math.Cos(E));
 
-            pos.theta = math.arg(sin_V, cos_V);
+                pos.theta = math.arg(sin_V, cos_V);
+            }
+
+            // Parabolic orbit
+            if (e == 1)
+            {
+                // Middle anomaly calculation (a - is periapsis radius!!!)
+                double n = Math.Sqrt(mu / 2 / data.orbit.a) / data.orbit.a;
+                double M = n * (t - data.orbit.t0) + data.orbit.M0;
+
+                // Barker equation solution
+                double x = 12 * M + 4 * Math.Sqrt(9 * M * M + 4);
+                double S = 0.5 * Math.Pow(x, 1 / 3) - 2/Math.Pow(x, 1/3);
+
+                double sin_V = 2 * S / (1 + S * S);
+                double cos_V = (1 - S * S) / (1 + S * S);
+
+                pos.theta = math.arg(sin_V, cos_V);
+                pos.r = 2 * data.orbit.a/(1 + Math.Cos(pos.theta));
+                pos.refAltitude = pos.r - data.orbit.RefRadius;
+            }
+
+            // Hyperbolic orbit
+            if (e > 1)
+            {
+                // Middle anomaly calculation
+                double n = Math.Sqrt(mu / data.orbit.a) / data.orbit.a;
+                double M = n * (t - data.orbit.t0) + data.orbit.M0;
+
+                // Eccentric anomaly calculation (Kepler equation solve)
+                double E = get_eccentric_anomaly(M, data.orbit.e, NEWTON);
+
+                pos.E = E;
+                pos.r = data.orbit.a * (data.orbit.e * Math.Cosh(E) - 1);
+                pos.refAltitude = pos.r - data.orbit.RefRadius;
+
+                double sin_V = Math.Sqrt(e * e - 1) * Math.Sinh(E) / (e * Math.Cosh(E) - 1);
+                double cos_V = (e - Math.Cosh(E)) / (e * Math.Cosh(E) - 1);
+
+                pos.theta = math.arg(sin_V, cos_V);
+            }
         }
 
         //---------------------------------------------------------------------
-        //  Kepler equation solver
+        //  Kepler equation solver for elliptic and hyperbolic orbit
         //---------------------------------------------------------------------
         private double get_eccentric_anomaly(double M, double e, int method)
         {
@@ -154,13 +198,25 @@ namespace Astronomy
                 {
                     case SIMPLE_ITER:
                         {
-                            En = M + eps * Math.Sin(En_1);
+                            if (e < 1)
+                            {
+                                En = M + e * Math.Sin(En_1);
+                            }
+                            else
+                            {
+                                double x = (En_1 + M) / e;
+                                En = Math.Log(Math.Sqrt(x*x + 1) + x);
+                            }
+
                             break;
                         }
 
                     case NEWTON:
                         {
-                            En = En_1 - (En_1 - e * Math.Sin(En_1) - M) / (1 - e * Math.Cos(En_1));
+                            if (e < 1)
+                                En = En_1 - (En_1 - e * Math.Sin(En_1) - M) / (1 - e * Math.Cos(En_1));
+                            else
+                                En = En_1 - (e * Math.Sinh(En_1) - En_1 - M) / (e * Math.Cosh(En_1) - 1);
                             break;
                         }
                 }
@@ -319,6 +375,47 @@ namespace Astronomy
             vz = Math.Sin(i) * (vr * Math.Sin(omega + theta) + vt * Math.Cos(omega + theta));
 
             return new Vector3D(vx, vy, vz);
+        }
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public double get_motion_time(double theta0, double theta1)
+        {
+            double dT = 0;
+            double mu = data.refGravParameter;
+
+            double e = data.orbit.e;
+            double a = data.orbit.a;
+
+            if ((e > -1) && (e < 1))
+            {
+                double n = Math.Sqrt(mu / a) / a;
+                double E0 = 2 * Math.Atan(Math.Tan(theta0 / 2) * Math.Sqrt((1 - e) / (1 + e)));
+                double E1 = 2 * Math.Atan(Math.Tan(theta1 / 2) * Math.Sqrt((1 - e) / (1 + e)));
+                double M = E1 - E0 - e * (Math.Sin(E1) - Math.Sin(E0));
+                dT = M / n;
+            }
+
+            if (e == 1)
+            {
+                double n = Math.Sqrt(mu / 2 / a) / a;
+                double M = Math.Tan(theta1 / 2) - Math.Tan(theta0 / 2) + 
+                          (Math.Pow(Math.Tan(theta1 / 2), 3) - Math.Pow(Math.Tan(theta0 / 2), 3)) / 3;
+                dT = M / n;
+            }
+
+            if (e > 1)
+            {
+                double n = Math.Sqrt(mu / a) / a;
+                double E0 = 2 * math.Atanh(Math.Tan(theta0 / 2) * Math.Sqrt((e - 1) / (1 + e)));
+                double E1 = 2 * math.Atanh(Math.Tan(theta1 / 2) * Math.Sqrt((e - 1) / (1 + e)));
+                double M = e * (Math.Sinh(E1) - Math.Sinh(E0)) + E0 - E1;
+                dT = M / n;
+            }
+
+            return dT;
         }
     }
 }

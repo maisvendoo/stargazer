@@ -89,6 +89,14 @@ namespace Astronomy
 
             return (Math.Abs(x) - N * 2 * Math.PI)*sign(x);
         }
+
+        //-----------------------------------------------------------
+        //
+        //-----------------------------------------------------------
+        public static double Atanh(double x)
+        {
+            return 0.5 * Math.Log((1 + x) / (1 - x));
+        }
     }    
 }
 
