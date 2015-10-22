@@ -134,6 +134,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.groupLat = new System.Windows.Forms.GroupBox();
+            this.radioButtonSouth = new System.Windows.Forms.RadioButton();
+            this.radioButtonNorth = new System.Windows.Forms.RadioButton();
+            this.textLatSec = new System.Windows.Forms.TextBox();
+            this.textLatMin = new System.Windows.Forms.TextBox();
+            this.textLatDeg = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.radioButtonWest = new System.Windows.Forms.RadioButton();
+            this.textLonDeg = new System.Windows.Forms.TextBox();
+            this.radioButtonEast = new System.Windows.Forms.RadioButton();
+            this.textLonSec = new System.Windows.Forms.TextBox();
+            this.textLonMin = new System.Windows.Forms.TextBox();
+            this.labelAzimuth = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
@@ -141,6 +162,8 @@
             this.panelHomanRes.SuspendLayout();
             this.panelBodyPos.SuspendLayout();
             this.groupCalcResults.SuspendLayout();
+            this.groupLat.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -150,7 +173,7 @@
             this.itemTools});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(784, 24);
+            this.mainMenu.Size = new System.Drawing.Size(1018, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "mainMenu";
             // 
@@ -194,9 +217,9 @@
             // 
             // statusBar
             // 
-            this.statusBar.Location = new System.Drawing.Point(0, 540);
+            this.statusBar.Location = new System.Drawing.Point(0, 736);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(784, 22);
+            this.statusBar.Size = new System.Drawing.Size(1018, 22);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusBar";
             // 
@@ -222,11 +245,14 @@
             this.panelEphemeride.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEphemeride.Location = new System.Drawing.Point(0, 24);
             this.panelEphemeride.Name = "panelEphemeride";
-            this.panelEphemeride.Size = new System.Drawing.Size(784, 516);
+            this.panelEphemeride.Size = new System.Drawing.Size(1018, 712);
             this.panelEphemeride.TabIndex = 2;
             // 
             // panelHomanTrans
             // 
+            this.panelHomanTrans.Controls.Add(this.groupBox1);
+            this.panelHomanTrans.Controls.Add(this.groupLat);
+            this.panelHomanTrans.Controls.Add(this.label44);
             this.panelHomanTrans.Controls.Add(this.labelNoTransfer);
             this.panelHomanTrans.Controls.Add(this.label42);
             this.panelHomanTrans.Controls.Add(this.textWaitTurns);
@@ -269,14 +295,14 @@
             this.panelHomanTrans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHomanTrans.Location = new System.Drawing.Point(0, 0);
             this.panelHomanTrans.Name = "panelHomanTrans";
-            this.panelHomanTrans.Size = new System.Drawing.Size(784, 516);
+            this.panelHomanTrans.Size = new System.Drawing.Size(1018, 712);
             this.panelHomanTrans.TabIndex = 17;
             // 
             // labelNoTransfer
             // 
             this.labelNoTransfer.AutoSize = true;
             this.labelNoTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNoTransfer.Location = new System.Drawing.Point(371, 122);
+            this.labelNoTransfer.Location = new System.Drawing.Point(550, 110);
             this.labelNoTransfer.Name = "labelNoTransfer";
             this.labelNoTransfer.Size = new System.Drawing.Size(0, 24);
             this.labelNoTransfer.TabIndex = 0;
@@ -286,7 +312,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label42.Location = new System.Drawing.Point(145, 75);
+            this.label42.Location = new System.Drawing.Point(165, 75);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(61, 15);
             this.label42.TabIndex = 50;
@@ -294,7 +320,7 @@
             // 
             // textWaitTurns
             // 
-            this.textWaitTurns.Location = new System.Drawing.Point(209, 73);
+            this.textWaitTurns.Location = new System.Drawing.Point(229, 73);
             this.textWaitTurns.Name = "textWaitTurns";
             this.textWaitTurns.Size = new System.Drawing.Size(37, 20);
             this.textWaitTurns.TabIndex = 49;
@@ -345,7 +371,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(152, 15);
+            this.label35.Location = new System.Drawing.Point(143, 15);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(123, 15);
             this.label35.TabIndex = 44;
@@ -353,7 +379,7 @@
             // 
             // textAltitude
             // 
-            this.textAltitude.Location = new System.Drawing.Point(194, 37);
+            this.textAltitude.Location = new System.Drawing.Point(214, 37);
             this.textAltitude.Name = "textAltitude";
             this.textAltitude.Size = new System.Drawing.Size(52, 20);
             this.textAltitude.TabIndex = 43;
@@ -364,7 +390,7 @@
             // 
             this.panelTransOrbit.Location = new System.Drawing.Point(368, 156);
             this.panelTransOrbit.Name = "panelTransOrbit";
-            this.panelTransOrbit.Size = new System.Drawing.Size(413, 357);
+            this.panelTransOrbit.Size = new System.Drawing.Size(638, 539);
             this.panelTransOrbit.TabIndex = 42;
             // 
             // label34
@@ -427,7 +453,7 @@
             // 
             // buttonHomanSearch
             // 
-            this.buttonHomanSearch.Location = new System.Drawing.Point(687, 66);
+            this.buttonHomanSearch.Location = new System.Drawing.Point(930, 73);
             this.buttonHomanSearch.Name = "buttonHomanSearch";
             this.buttonHomanSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonHomanSearch.TabIndex = 35;
@@ -439,15 +465,17 @@
             // 
             this.groupHomanResults.Controls.Add(this.panelHomanRes);
             this.groupHomanResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupHomanResults.Location = new System.Drawing.Point(18, 147);
+            this.groupHomanResults.Location = new System.Drawing.Point(18, 145);
             this.groupHomanResults.Name = "groupHomanResults";
-            this.groupHomanResults.Size = new System.Drawing.Size(342, 366);
+            this.groupHomanResults.Size = new System.Drawing.Size(342, 550);
             this.groupHomanResults.TabIndex = 34;
             this.groupHomanResults.TabStop = false;
             this.groupHomanResults.Text = "Search result";
             // 
             // panelHomanRes
             // 
+            this.panelHomanRes.Controls.Add(this.labelAzimuth);
+            this.panelHomanRes.Controls.Add(this.label53);
             this.panelHomanRes.Controls.Add(this.labelStartDate);
             this.panelHomanRes.Controls.Add(this.label45);
             this.panelHomanRes.Controls.Add(this.labelTransTime);
@@ -478,7 +506,7 @@
             this.panelHomanRes.Controls.Add(this.label24);
             this.panelHomanRes.Location = new System.Drawing.Point(6, 25);
             this.panelHomanRes.Name = "panelHomanRes";
-            this.panelHomanRes.Size = new System.Drawing.Size(330, 335);
+            this.panelHomanRes.Size = new System.Drawing.Size(330, 461);
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
             // 
@@ -486,7 +514,7 @@
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 309);
+            this.labelStartDate.Location = new System.Drawing.Point(182, 336);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(14, 15);
             this.labelStartDate.TabIndex = 54;
@@ -496,7 +524,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(20, 309);
+            this.label45.Location = new System.Drawing.Point(20, 336);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(91, 15);
             this.label45.TabIndex = 53;
@@ -764,7 +792,7 @@
             // 
             // textEndYear
             // 
-            this.textEndYear.Location = new System.Drawing.Point(288, 76);
+            this.textEndYear.Location = new System.Drawing.Point(540, 76);
             this.textEndYear.Name = "textEndYear";
             this.textEndYear.Size = new System.Drawing.Size(72, 20);
             this.textEndYear.TabIndex = 33;
@@ -774,7 +802,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(659, 75);
+            this.label19.Location = new System.Drawing.Point(911, 75);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(12, 13);
             this.label19.TabIndex = 32;
@@ -783,7 +811,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(588, 75);
+            this.label20.Location = new System.Drawing.Point(840, 75);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(15, 13);
             this.label20.TabIndex = 31;
@@ -792,7 +820,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(521, 75);
+            this.label21.Location = new System.Drawing.Point(773, 75);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(13, 13);
             this.label21.TabIndex = 30;
@@ -801,7 +829,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(451, 75);
+            this.label22.Location = new System.Drawing.Point(703, 75);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(13, 13);
             this.label22.TabIndex = 29;
@@ -810,7 +838,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(365, 75);
+            this.label23.Location = new System.Drawing.Point(617, 75);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(12, 13);
             this.label23.TabIndex = 28;
@@ -819,7 +847,7 @@
             // comboEndSec
             // 
             this.comboEndSec.FormattingEnabled = true;
-            this.comboEndSec.Location = new System.Drawing.Point(607, 75);
+            this.comboEndSec.Location = new System.Drawing.Point(859, 75);
             this.comboEndSec.Name = "comboEndSec";
             this.comboEndSec.Size = new System.Drawing.Size(46, 21);
             this.comboEndSec.TabIndex = 27;
@@ -827,7 +855,7 @@
             // comboEndMin
             // 
             this.comboEndMin.FormattingEnabled = true;
-            this.comboEndMin.Location = new System.Drawing.Point(540, 75);
+            this.comboEndMin.Location = new System.Drawing.Point(792, 75);
             this.comboEndMin.Name = "comboEndMin";
             this.comboEndMin.Size = new System.Drawing.Size(46, 21);
             this.comboEndMin.TabIndex = 26;
@@ -835,7 +863,7 @@
             // comboEndHour
             // 
             this.comboEndHour.FormattingEnabled = true;
-            this.comboEndHour.Location = new System.Drawing.Point(469, 75);
+            this.comboEndHour.Location = new System.Drawing.Point(721, 75);
             this.comboEndHour.Name = "comboEndHour";
             this.comboEndHour.Size = new System.Drawing.Size(46, 21);
             this.comboEndHour.TabIndex = 25;
@@ -843,7 +871,7 @@
             // comboEndDay
             // 
             this.comboEndDay.FormattingEnabled = true;
-            this.comboEndDay.Location = new System.Drawing.Point(383, 75);
+            this.comboEndDay.Location = new System.Drawing.Point(635, 75);
             this.comboEndDay.Name = "comboEndDay";
             this.comboEndDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboEndDay.Size = new System.Drawing.Size(64, 21);
@@ -851,7 +879,7 @@
             // 
             // textBeginYear
             // 
-            this.textBeginYear.Location = new System.Drawing.Point(288, 38);
+            this.textBeginYear.Location = new System.Drawing.Point(540, 38);
             this.textBeginYear.Name = "textBeginYear";
             this.textBeginYear.Size = new System.Drawing.Size(72, 20);
             this.textBeginYear.TabIndex = 23;
@@ -861,7 +889,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(659, 37);
+            this.label14.Location = new System.Drawing.Point(911, 37);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 13);
             this.label14.TabIndex = 22;
@@ -870,7 +898,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(588, 37);
+            this.label15.Location = new System.Drawing.Point(840, 37);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 13);
             this.label15.TabIndex = 21;
@@ -879,7 +907,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(521, 37);
+            this.label16.Location = new System.Drawing.Point(773, 37);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(13, 13);
             this.label16.TabIndex = 20;
@@ -888,7 +916,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(451, 37);
+            this.label17.Location = new System.Drawing.Point(703, 37);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(13, 13);
             this.label17.TabIndex = 19;
@@ -897,7 +925,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(365, 37);
+            this.label18.Location = new System.Drawing.Point(617, 37);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(12, 13);
             this.label18.TabIndex = 18;
@@ -906,7 +934,7 @@
             // comboBeginSec
             // 
             this.comboBeginSec.FormattingEnabled = true;
-            this.comboBeginSec.Location = new System.Drawing.Point(607, 37);
+            this.comboBeginSec.Location = new System.Drawing.Point(859, 37);
             this.comboBeginSec.Name = "comboBeginSec";
             this.comboBeginSec.Size = new System.Drawing.Size(46, 21);
             this.comboBeginSec.TabIndex = 17;
@@ -914,7 +942,7 @@
             // comboBeginMin
             // 
             this.comboBeginMin.FormattingEnabled = true;
-            this.comboBeginMin.Location = new System.Drawing.Point(540, 37);
+            this.comboBeginMin.Location = new System.Drawing.Point(792, 37);
             this.comboBeginMin.Name = "comboBeginMin";
             this.comboBeginMin.Size = new System.Drawing.Size(46, 21);
             this.comboBeginMin.TabIndex = 16;
@@ -922,7 +950,7 @@
             // comboBeginHour
             // 
             this.comboBeginHour.FormattingEnabled = true;
-            this.comboBeginHour.Location = new System.Drawing.Point(469, 37);
+            this.comboBeginHour.Location = new System.Drawing.Point(721, 37);
             this.comboBeginHour.Name = "comboBeginHour";
             this.comboBeginHour.Size = new System.Drawing.Size(46, 21);
             this.comboBeginHour.TabIndex = 15;
@@ -930,7 +958,7 @@
             // comboBeginDay
             // 
             this.comboBeginDay.FormattingEnabled = true;
-            this.comboBeginDay.Location = new System.Drawing.Point(383, 37);
+            this.comboBeginDay.Location = new System.Drawing.Point(635, 37);
             this.comboBeginDay.Name = "comboBeginDay";
             this.comboBeginDay.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBeginDay.Size = new System.Drawing.Size(64, 21);
@@ -940,7 +968,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(295, 15);
+            this.label13.Location = new System.Drawing.Point(547, 15);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(230, 16);
             this.label13.TabIndex = 0;
@@ -1231,11 +1259,227 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(321, 15);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(136, 15);
+            this.label44.TabIndex = 51;
+            this.label44.Text = "Launchpad coordinates";
+            // 
+            // groupLat
+            // 
+            this.groupLat.Controls.Add(this.label48);
+            this.groupLat.Controls.Add(this.label47);
+            this.groupLat.Controls.Add(this.label46);
+            this.groupLat.Controls.Add(this.radioButtonSouth);
+            this.groupLat.Controls.Add(this.textLatDeg);
+            this.groupLat.Controls.Add(this.radioButtonNorth);
+            this.groupLat.Controls.Add(this.textLatSec);
+            this.groupLat.Controls.Add(this.textLatMin);
+            this.groupLat.Location = new System.Drawing.Point(280, 33);
+            this.groupLat.Name = "groupLat";
+            this.groupLat.Size = new System.Drawing.Size(238, 55);
+            this.groupLat.TabIndex = 60;
+            this.groupLat.TabStop = false;
+            this.groupLat.Text = "Latitude";
+            // 
+            // radioButtonSouth
+            // 
+            this.radioButtonSouth.AutoSize = true;
+            this.radioButtonSouth.Checked = true;
+            this.radioButtonSouth.Location = new System.Drawing.Point(201, 28);
+            this.radioButtonSouth.Name = "radioButtonSouth";
+            this.radioButtonSouth.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSouth.TabIndex = 67;
+            this.radioButtonSouth.TabStop = true;
+            this.radioButtonSouth.Text = "S";
+            this.radioButtonSouth.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNorth
+            // 
+            this.radioButtonNorth.AutoSize = true;
+            this.radioButtonNorth.Location = new System.Drawing.Point(201, 10);
+            this.radioButtonNorth.Name = "radioButtonNorth";
+            this.radioButtonNorth.Size = new System.Drawing.Size(33, 17);
+            this.radioButtonNorth.TabIndex = 66;
+            this.radioButtonNorth.Text = "N";
+            this.radioButtonNorth.UseVisualStyleBackColor = true;
+            // 
+            // textLatSec
+            // 
+            this.textLatSec.Location = new System.Drawing.Point(129, 19);
+            this.textLatSec.Name = "textLatSec";
+            this.textLatSec.Size = new System.Drawing.Size(48, 20);
+            this.textLatSec.TabIndex = 65;
+            this.textLatSec.Text = "10";
+            this.textLatSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textLatMin
+            // 
+            this.textLatMin.Location = new System.Drawing.Point(76, 19);
+            this.textLatMin.Name = "textLatMin";
+            this.textLatMin.Size = new System.Drawing.Size(37, 20);
+            this.textLatMin.TabIndex = 64;
+            this.textLatMin.Text = "6";
+            this.textLatMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textLatDeg
+            // 
+            this.textLatDeg.Location = new System.Drawing.Point(18, 20);
+            this.textLatDeg.Name = "textLatDeg";
+            this.textLatDeg.Size = new System.Drawing.Size(37, 20);
+            this.textLatDeg.TabIndex = 63;
+            this.textLatDeg.Text = "0";
+            this.textLatDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(59, 21);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(13, 13);
+            this.label46.TabIndex = 68;
+            this.label46.Text = "d";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(113, 21);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(15, 13);
+            this.label47.TabIndex = 69;
+            this.label47.Text = "m";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(178, 21);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(12, 13);
+            this.label48.TabIndex = 61;
+            this.label48.Text = "s";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label49);
+            this.groupBox1.Controls.Add(this.label50);
+            this.groupBox1.Controls.Add(this.label51);
+            this.groupBox1.Controls.Add(this.radioButtonWest);
+            this.groupBox1.Controls.Add(this.textLonDeg);
+            this.groupBox1.Controls.Add(this.radioButtonEast);
+            this.groupBox1.Controls.Add(this.textLonSec);
+            this.groupBox1.Controls.Add(this.textLonMin);
+            this.groupBox1.Location = new System.Drawing.Point(280, 94);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(238, 55);
+            this.groupBox1.TabIndex = 61;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Longtitude";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(178, 21);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(12, 13);
+            this.label49.TabIndex = 61;
+            this.label49.Text = "s";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(113, 21);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(15, 13);
+            this.label50.TabIndex = 69;
+            this.label50.Text = "m";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(59, 21);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(13, 13);
+            this.label51.TabIndex = 68;
+            this.label51.Text = "d";
+            // 
+            // radioButtonWest
+            // 
+            this.radioButtonWest.AutoSize = true;
+            this.radioButtonWest.Checked = true;
+            this.radioButtonWest.Location = new System.Drawing.Point(201, 28);
+            this.radioButtonWest.Name = "radioButtonWest";
+            this.radioButtonWest.Size = new System.Drawing.Size(36, 17);
+            this.radioButtonWest.TabIndex = 67;
+            this.radioButtonWest.TabStop = true;
+            this.radioButtonWest.Text = "W";
+            this.radioButtonWest.UseVisualStyleBackColor = true;
+            // 
+            // textLonDeg
+            // 
+            this.textLonDeg.Location = new System.Drawing.Point(18, 20);
+            this.textLonDeg.Name = "textLonDeg";
+            this.textLonDeg.Size = new System.Drawing.Size(37, 20);
+            this.textLonDeg.TabIndex = 63;
+            this.textLonDeg.Text = "74";
+            this.textLonDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // radioButtonEast
+            // 
+            this.radioButtonEast.AutoSize = true;
+            this.radioButtonEast.Location = new System.Drawing.Point(201, 10);
+            this.radioButtonEast.Name = "radioButtonEast";
+            this.radioButtonEast.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonEast.TabIndex = 66;
+            this.radioButtonEast.Text = "E";
+            this.radioButtonEast.UseVisualStyleBackColor = true;
+            // 
+            // textLonSec
+            // 
+            this.textLonSec.Location = new System.Drawing.Point(129, 19);
+            this.textLonSec.Name = "textLonSec";
+            this.textLonSec.Size = new System.Drawing.Size(48, 20);
+            this.textLonSec.TabIndex = 65;
+            this.textLonSec.Text = "31";
+            this.textLonSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textLonMin
+            // 
+            this.textLonMin.Location = new System.Drawing.Point(76, 19);
+            this.textLonMin.Name = "textLonMin";
+            this.textLonMin.Size = new System.Drawing.Size(37, 20);
+            this.textLonMin.TabIndex = 64;
+            this.textLonMin.Text = "34";
+            this.textLonMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelAzimuth
+            // 
+            this.labelAzimuth.AutoSize = true;
+            this.labelAzimuth.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAzimuth.Location = new System.Drawing.Point(182, 360);
+            this.labelAzimuth.Name = "labelAzimuth";
+            this.labelAzimuth.Size = new System.Drawing.Size(14, 15);
+            this.labelAzimuth.TabIndex = 56;
+            this.labelAzimuth.Text = "0";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(20, 360);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(147, 15);
+            this.label53.TabIndex = 55;
+            this.label53.Text = "launch azimuth, deg:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(1018, 758);
             this.Controls.Add(this.panelEphemeride);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.mainMenu);
@@ -1257,6 +1501,10 @@
             this.panelBodyPos.PerformLayout();
             this.groupCalcResults.ResumeLayout(false);
             this.groupCalcResults.PerformLayout();
+            this.groupLat.ResumeLayout(false);
+            this.groupLat.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1370,6 +1618,27 @@
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label labelNoTransfer;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.GroupBox groupLat;
+        private System.Windows.Forms.RadioButton radioButtonSouth;
+        private System.Windows.Forms.TextBox textLatDeg;
+        private System.Windows.Forms.RadioButton radioButtonNorth;
+        private System.Windows.Forms.TextBox textLatSec;
+        private System.Windows.Forms.TextBox textLatMin;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.RadioButton radioButtonWest;
+        private System.Windows.Forms.TextBox textLonDeg;
+        private System.Windows.Forms.RadioButton radioButtonEast;
+        private System.Windows.Forms.TextBox textLonSec;
+        private System.Windows.Forms.TextBox textLonMin;
+        private System.Windows.Forms.Label labelAzimuth;
+        private System.Windows.Forms.Label label53;
 
     }
 }

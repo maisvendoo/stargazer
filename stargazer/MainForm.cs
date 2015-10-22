@@ -91,6 +91,7 @@ namespace stargazer
 
             label34.Text = "\u03c8, deg.";    // Psi letter  
             label41.Text = "\u0394\u03c8, deg.";
+            groupLat.Text = "Latitude";
         }                
         
         private List<CelestialBody> Bodies;
@@ -158,6 +159,11 @@ namespace stargazer
                         else
                             data.sphereOfInfluence = 1e50;
                     }
+
+                    if (subnode.Name == "initialRotation")
+                    {
+                        data.initialRotation = double.Parse(subnode.InnerText, CultureInfo.InvariantCulture);
+                    } 
 
                     if (subnode.Name == "Orbit")
                     {
@@ -535,19 +541,16 @@ namespace stargazer
             craft_data.name = "Space craft";
             craft_data.orbit = trans.orbit;
             craft.set_data(ref craft_data);            
-            craft.set_refGravParameter(Bodies[dep_idx].get_refGravParameter());            
-
-            double h = double.Parse(textAltitude.Text)*1000.0;           
-
-            int turns = int.Parse(textWaitTurns.Text);
+            craft.set_refGravParameter(Bodies[dep_idx].get_refGravParameter());
 
             DepManuever manuever = new DepManuever();
+            
+            manuever.h = double.Parse(textAltitude.Text)*1000.0;           
+            manuever.turns = int.Parse(textWaitTurns.Text);            
 
             Lambert.get_depatrure_manuever(Bodies[dep_idx],
                                            craft,
-                                           trans.depTime,
-                                           h,
-                                           turns,
+                                           trans.depTime,                                           
                                            ref manuever);
 
             labelDeltaV.Text = Math.Round(manuever.dv, 2).ToString();
@@ -560,15 +563,39 @@ namespace stargazer
                                   manuever.ejectDate.hour.ToString() + "h " +
                                   manuever.ejectDate.min.ToString() + "m " +
                                   manuever.ejectDate.sec.ToString() + "s";
-
-
-
-            labelStartDate.Text = manuever.startDate.year.ToString() + "y " +
-                                  manuever.startDate.day.ToString() + "d " +
-                                  manuever.startDate.hour.ToString() + "h " +
-                                  manuever.startDate.min.ToString() + "m " +
-                                  manuever.startDate.sec.ToString() + "s";
             
+
+            double latDeg = double.Parse(textLatDeg.Text);
+            double latMin = double.Parse(textLatMin.Text);
+            double latSec = double.Parse(textLatSec.Text);
+
+            double lonDeg = double.Parse(textLonDeg.Text);
+            double lonMin = double.Parse(textLonMin.Text);
+            double lonSec = double.Parse(textLonSec.Text);
+
+            manuever.launchLat = (latDeg + latMin / 60.0 + latSec / 3600.0) * RAD;
+            manuever.launchLon = (lonDeg + lonMin / 60.0 + lonSec / 3600.0) * RAD;
+
+            if (radioButtonSouth.Checked)
+                manuever.launchLat = -manuever.launchLat;
+
+            if (radioButtonWest.Checked)
+                manuever.launchLon = -manuever.launchLon;
+
+            bool flag = Lambert.get_launch_params(Bodies[dep_idx], ref manuever);
+
+            if (flag)
+            {
+                labelStartDate.Text = manuever.launchDate.year.ToString() + "y " +
+                                      manuever.launchDate.day.ToString() + "d " +
+                                      manuever.launchDate.hour.ToString() + "h " +
+                                      manuever.launchDate.min.ToString() + "m " +
+                                      manuever.launchDate.sec.ToString() + "s";
+
+                labelAzimuth.Text = Math.Round(manuever.azimuth, 2).ToString();
+            }
+            
+            // Draw trajectory
             DrawTransOrbit(panelTransOrbit, trans, Bodies[dep_idx], Bodies[arr_idx], craft);            
         }
 

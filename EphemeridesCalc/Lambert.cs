@@ -20,10 +20,17 @@ namespace Astronomy
     {
         public Orbit orbit;
         public double dv;
+        public double h;
+        public int turns;
         public double ejectTime;
         public KDate ejectDate;
         public double startTime;
         public KDate startDate;
+        public double azimuth;
+        public double launchLat;
+        public double launchLon;
+        public double launchTime;
+        public KDate launchDate;
     }
 
     public class Lambert
@@ -451,9 +458,7 @@ namespace Astronomy
         //---------------------------------------------------------------------
         public static void get_depatrure_manuever(CelestialBody depBody,                                                 
                                                CelestialBody craft,
-                                               double t1,
-                                               double h,
-                                               int n_turns,
+                                               double t1,                                               
                                                ref DepManuever manuever)
         {
             OrbitPos depPos = new OrbitPos();                     
@@ -484,6 +489,7 @@ namespace Astronomy
             double ro = depData.sphereOfInfluence;
             double R = depData.radius;
             double mu = depData.gravParameter;
+            double h = manuever.h;
 
             double v0 = Math.Sqrt(2 * mu * (1 / (R + h) - 1 / ro) + v_ro * v_ro);
             manuever.dv = v0 - Math.Sqrt(mu / (R + h));
@@ -504,13 +510,77 @@ namespace Astronomy
             manuever.orbit.omega = (Math.Acos(1/manuever.orbit.e) - Math.PI/2) / math.RAD;
 
             // Low orbit wait time calculation
-            double waitTime = n_turns * 2 * Math.PI * (R + h) / vk;
+            double waitTime = manuever.turns * 2 * Math.PI * (R + h) / vk;
 
             manuever.ejectTime = t1 - dT;
             manuever.startTime = t1 - dT - waitTime;
 
             KCalendar.sec_to_date(manuever.ejectTime, ref manuever.ejectDate);
             KCalendar.sec_to_date(manuever.startTime, ref manuever.startDate);
-        }        
+        } 
+       
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public static bool get_launch_params(CelestialBody depBody,
+                                             ref DepManuever manuever)
+        {
+            BodyData depData = new BodyData();
+            depBody.get_data(ref depData);
+            double mu = depData.gravParameter;
+            double R = depData.radius;
+            double r0 = R + manuever.h;           
+                        
+            double vk = Math.Sqrt(mu / r0);
+
+            double i = manuever.orbit.i * math.RAD;
+            double Omega = manuever.orbit.Omega * math.RAD;
+
+            if (i < Math.Abs(manuever.launchLat))
+                return false;
+
+            double sin_A = Math.Cos(i)/Math.Cos(manuever.launchLat);
+            double A = Math.Asin(sin_A);            
+            
+            double ny = -Math.Cos(A);
+            double nz = sin_A;
+
+            double D = ny * ny + nz * nz * Math.Pow(Math.Sin(manuever.launchLat), 2);
+            double sin_d = -(nz * Math.Cos(Omega) * Math.Sin(manuever.launchLat) + ny * Math.Sin(Omega)) * Math.Sin(i) / D;
+            double cos_d = (nz * Math.Sin(Omega) * Math.Sin(manuever.launchLat) - ny * Math.Cos(Omega)) * Math.Sin(i) / D;
+
+            double d = math.arg(sin_d, cos_d);
+            double rotAngle_ref = d - manuever.launchLon;
+
+            double omega = 2 * Math.PI / depData.rotationPeriod;
+            double rotAngle = depBody.get_rotation_angle(manuever.startTime)*math.RAD;
+
+            double dT = 0;
+
+            if (rotAngle >= rotAngle_ref)
+            {
+                dT = (rotAngle - rotAngle_ref) / omega; 
+            }
+            else
+            {
+                dT = 21600 - (rotAngle_ref - rotAngle) / omega;
+            }
+
+            manuever.launchTime = manuever.startTime - dT;
+            KCalendar.sec_to_date(manuever.launchTime, ref manuever.launchDate);
+
+            // Debug
+            rotAngle = depBody.get_rotation_angle(manuever.launchTime)*math.RAD;
+
+            // Relative azimuth calculation
+            double vs = omega*R*Math.Cos(manuever.launchLat);
+            double sin_Ar = (vk * sin_A - vs) / Math.Sqrt(vk * vk + vs * vs - 2 * vk * vs * sin_A);
+
+            manuever.azimuth = Math.Asin(sin_Ar) / math.RAD;
+
+            return true;
+        }
     }
 }

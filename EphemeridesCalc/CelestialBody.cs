@@ -80,6 +80,7 @@ namespace Astronomy
             data.refGravParameter = this.data.refGravParameter;
             data.rotationPeriod = this.data.rotationPeriod;
             data.sphereOfInfluence = this.data.sphereOfInfluence;
+            data.initialRotation = this.data.initialRotation;
 
             data.orbit.a = this.data.orbit.a;
             data.orbit.e = this.data.orbit.e;
@@ -103,6 +104,7 @@ namespace Astronomy
             this.data.refGravParameter = data.refGravParameter;
             this.data.rotationPeriod = data.rotationPeriod;
             this.data.sphereOfInfluence = data.sphereOfInfluence;
+            this.data.initialRotation = data.initialRotation;
 
             this.data.orbit.a = data.orbit.a;
             this.data.orbit.e = data.orbit.e;
@@ -416,6 +418,16 @@ namespace Astronomy
             }
 
             return dT;
+        }
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
+        public double get_rotation_angle(double t)
+        {
+            double omega = 2 * Math.PI / data.rotationPeriod;
+
+            return math.Trunc2PiN(data.initialRotation * math.RAD + omega * t) / math.RAD;
         }
     }
 }
