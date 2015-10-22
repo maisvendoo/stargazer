@@ -37,6 +37,25 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.panelEphemeride = new System.Windows.Forms.Panel();
             this.panelHomanTrans = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.radioButtonWest = new System.Windows.Forms.RadioButton();
+            this.textLonDeg = new System.Windows.Forms.TextBox();
+            this.radioButtonEast = new System.Windows.Forms.RadioButton();
+            this.textLonSec = new System.Windows.Forms.TextBox();
+            this.textLonMin = new System.Windows.Forms.TextBox();
+            this.groupLat = new System.Windows.Forms.GroupBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.radioButtonSouth = new System.Windows.Forms.RadioButton();
+            this.textLatDeg = new System.Windows.Forms.TextBox();
+            this.radioButtonNorth = new System.Windows.Forms.RadioButton();
+            this.textLatSec = new System.Windows.Forms.TextBox();
+            this.textLatMin = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.labelNoTransfer = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.textWaitTurns = new System.Windows.Forms.TextBox();
@@ -56,8 +75,6 @@
             this.buttonHomanSearch = new System.Windows.Forms.Button();
             this.groupHomanResults = new System.Windows.Forms.GroupBox();
             this.panelHomanRes = new System.Windows.Forms.Panel();
-            this.labelStartDate = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.labelTransTime = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.labelStartLAN = new System.Windows.Forms.Label();
@@ -134,36 +151,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BodiesList = new System.Windows.Forms.ComboBox();
             this.labelCelBody = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.groupLat = new System.Windows.Forms.GroupBox();
-            this.radioButtonSouth = new System.Windows.Forms.RadioButton();
-            this.radioButtonNorth = new System.Windows.Forms.RadioButton();
-            this.textLatSec = new System.Windows.Forms.TextBox();
-            this.textLatMin = new System.Windows.Forms.TextBox();
-            this.textLatDeg = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.radioButtonWest = new System.Windows.Forms.RadioButton();
-            this.textLonDeg = new System.Windows.Forms.TextBox();
-            this.radioButtonEast = new System.Windows.Forms.RadioButton();
-            this.textLonSec = new System.Windows.Forms.TextBox();
-            this.textLonMin = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelAzimuth = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             this.panelEphemeride.SuspendLayout();
             this.panelHomanTrans.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupLat.SuspendLayout();
             this.groupHomanResults.SuspendLayout();
             this.panelHomanRes.SuspendLayout();
             this.panelBodyPos.SuspendLayout();
             this.groupCalcResults.SuspendLayout();
-            this.groupLat.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -297,6 +299,202 @@
             this.panelHomanTrans.Name = "panelHomanTrans";
             this.panelHomanTrans.Size = new System.Drawing.Size(1018, 712);
             this.panelHomanTrans.TabIndex = 17;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label49);
+            this.groupBox1.Controls.Add(this.label50);
+            this.groupBox1.Controls.Add(this.label51);
+            this.groupBox1.Controls.Add(this.radioButtonWest);
+            this.groupBox1.Controls.Add(this.textLonDeg);
+            this.groupBox1.Controls.Add(this.radioButtonEast);
+            this.groupBox1.Controls.Add(this.textLonSec);
+            this.groupBox1.Controls.Add(this.textLonMin);
+            this.groupBox1.Location = new System.Drawing.Point(280, 94);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(238, 55);
+            this.groupBox1.TabIndex = 61;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Longtitude";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(178, 21);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(12, 13);
+            this.label49.TabIndex = 61;
+            this.label49.Text = "s";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(113, 21);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(15, 13);
+            this.label50.TabIndex = 69;
+            this.label50.Text = "m";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(59, 21);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(13, 13);
+            this.label51.TabIndex = 68;
+            this.label51.Text = "d";
+            // 
+            // radioButtonWest
+            // 
+            this.radioButtonWest.AutoSize = true;
+            this.radioButtonWest.Checked = true;
+            this.radioButtonWest.Location = new System.Drawing.Point(201, 28);
+            this.radioButtonWest.Name = "radioButtonWest";
+            this.radioButtonWest.Size = new System.Drawing.Size(36, 17);
+            this.radioButtonWest.TabIndex = 67;
+            this.radioButtonWest.TabStop = true;
+            this.radioButtonWest.Text = "W";
+            this.radioButtonWest.UseVisualStyleBackColor = true;
+            // 
+            // textLonDeg
+            // 
+            this.textLonDeg.Location = new System.Drawing.Point(18, 20);
+            this.textLonDeg.Name = "textLonDeg";
+            this.textLonDeg.Size = new System.Drawing.Size(37, 20);
+            this.textLonDeg.TabIndex = 63;
+            this.textLonDeg.Text = "74";
+            this.textLonDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // radioButtonEast
+            // 
+            this.radioButtonEast.AutoSize = true;
+            this.radioButtonEast.Location = new System.Drawing.Point(201, 10);
+            this.radioButtonEast.Name = "radioButtonEast";
+            this.radioButtonEast.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonEast.TabIndex = 66;
+            this.radioButtonEast.Text = "E";
+            this.radioButtonEast.UseVisualStyleBackColor = true;
+            // 
+            // textLonSec
+            // 
+            this.textLonSec.Location = new System.Drawing.Point(129, 19);
+            this.textLonSec.Name = "textLonSec";
+            this.textLonSec.Size = new System.Drawing.Size(48, 20);
+            this.textLonSec.TabIndex = 65;
+            this.textLonSec.Text = "31";
+            this.textLonSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textLonMin
+            // 
+            this.textLonMin.Location = new System.Drawing.Point(76, 19);
+            this.textLonMin.Name = "textLonMin";
+            this.textLonMin.Size = new System.Drawing.Size(37, 20);
+            this.textLonMin.TabIndex = 64;
+            this.textLonMin.Text = "34";
+            this.textLonMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupLat
+            // 
+            this.groupLat.Controls.Add(this.label48);
+            this.groupLat.Controls.Add(this.label47);
+            this.groupLat.Controls.Add(this.label46);
+            this.groupLat.Controls.Add(this.radioButtonSouth);
+            this.groupLat.Controls.Add(this.textLatDeg);
+            this.groupLat.Controls.Add(this.radioButtonNorth);
+            this.groupLat.Controls.Add(this.textLatSec);
+            this.groupLat.Controls.Add(this.textLatMin);
+            this.groupLat.Location = new System.Drawing.Point(280, 33);
+            this.groupLat.Name = "groupLat";
+            this.groupLat.Size = new System.Drawing.Size(238, 55);
+            this.groupLat.TabIndex = 60;
+            this.groupLat.TabStop = false;
+            this.groupLat.Text = "Latitude";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(178, 21);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(12, 13);
+            this.label48.TabIndex = 61;
+            this.label48.Text = "s";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(113, 21);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(15, 13);
+            this.label47.TabIndex = 69;
+            this.label47.Text = "m";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(59, 21);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(13, 13);
+            this.label46.TabIndex = 68;
+            this.label46.Text = "d";
+            // 
+            // radioButtonSouth
+            // 
+            this.radioButtonSouth.AutoSize = true;
+            this.radioButtonSouth.Checked = true;
+            this.radioButtonSouth.Location = new System.Drawing.Point(201, 28);
+            this.radioButtonSouth.Name = "radioButtonSouth";
+            this.radioButtonSouth.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSouth.TabIndex = 67;
+            this.radioButtonSouth.TabStop = true;
+            this.radioButtonSouth.Text = "S";
+            this.radioButtonSouth.UseVisualStyleBackColor = true;
+            // 
+            // textLatDeg
+            // 
+            this.textLatDeg.Location = new System.Drawing.Point(18, 20);
+            this.textLatDeg.Name = "textLatDeg";
+            this.textLatDeg.Size = new System.Drawing.Size(37, 20);
+            this.textLatDeg.TabIndex = 63;
+            this.textLatDeg.Text = "0";
+            this.textLatDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // radioButtonNorth
+            // 
+            this.radioButtonNorth.AutoSize = true;
+            this.radioButtonNorth.Location = new System.Drawing.Point(201, 10);
+            this.radioButtonNorth.Name = "radioButtonNorth";
+            this.radioButtonNorth.Size = new System.Drawing.Size(33, 17);
+            this.radioButtonNorth.TabIndex = 66;
+            this.radioButtonNorth.Text = "N";
+            this.radioButtonNorth.UseVisualStyleBackColor = true;
+            // 
+            // textLatSec
+            // 
+            this.textLatSec.Location = new System.Drawing.Point(129, 19);
+            this.textLatSec.Name = "textLatSec";
+            this.textLatSec.Size = new System.Drawing.Size(48, 20);
+            this.textLatSec.TabIndex = 65;
+            this.textLatSec.Text = "10";
+            this.textLatSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textLatMin
+            // 
+            this.textLatMin.Location = new System.Drawing.Point(76, 19);
+            this.textLatMin.Name = "textLatMin";
+            this.textLatMin.Size = new System.Drawing.Size(37, 20);
+            this.textLatMin.TabIndex = 64;
+            this.textLatMin.Text = "6";
+            this.textLatMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(321, 15);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(136, 15);
+            this.label44.TabIndex = 51;
+            this.label44.Text = "Launchpad coordinates";
             // 
             // labelNoTransfer
             // 
@@ -474,10 +672,7 @@
             // 
             // panelHomanRes
             // 
-            this.panelHomanRes.Controls.Add(this.labelAzimuth);
-            this.panelHomanRes.Controls.Add(this.label53);
-            this.panelHomanRes.Controls.Add(this.labelStartDate);
-            this.panelHomanRes.Controls.Add(this.label45);
+            this.panelHomanRes.Controls.Add(this.groupBox2);
             this.panelHomanRes.Controls.Add(this.labelTransTime);
             this.panelHomanRes.Controls.Add(this.label43);
             this.panelHomanRes.Controls.Add(this.labelStartLAN);
@@ -506,29 +701,9 @@
             this.panelHomanRes.Controls.Add(this.label24);
             this.panelHomanRes.Location = new System.Drawing.Point(6, 25);
             this.panelHomanRes.Name = "panelHomanRes";
-            this.panelHomanRes.Size = new System.Drawing.Size(330, 461);
+            this.panelHomanRes.Size = new System.Drawing.Size(330, 495);
             this.panelHomanRes.TabIndex = 0;
             this.panelHomanRes.Visible = false;
-            // 
-            // labelStartDate
-            // 
-            this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(182, 336);
-            this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(14, 15);
-            this.labelStartDate.TabIndex = 54;
-            this.labelStartDate.Text = "0";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(20, 336);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(91, 15);
-            this.label45.TabIndex = 53;
-            this.label45.Text = "launch date:";
             // 
             // labelTransTime
             // 
@@ -1259,221 +1434,58 @@
             this.labelCelBody.TabIndex = 0;
             this.labelCelBody.Text = "Celestial Body";
             // 
-            // label44
+            // groupBox2
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label44.Location = new System.Drawing.Point(321, 15);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(136, 15);
-            this.label44.TabIndex = 51;
-            this.label44.Text = "Launchpad coordinates";
-            // 
-            // groupLat
-            // 
-            this.groupLat.Controls.Add(this.label48);
-            this.groupLat.Controls.Add(this.label47);
-            this.groupLat.Controls.Add(this.label46);
-            this.groupLat.Controls.Add(this.radioButtonSouth);
-            this.groupLat.Controls.Add(this.textLatDeg);
-            this.groupLat.Controls.Add(this.radioButtonNorth);
-            this.groupLat.Controls.Add(this.textLatSec);
-            this.groupLat.Controls.Add(this.textLatMin);
-            this.groupLat.Location = new System.Drawing.Point(280, 33);
-            this.groupLat.Name = "groupLat";
-            this.groupLat.Size = new System.Drawing.Size(238, 55);
-            this.groupLat.TabIndex = 60;
-            this.groupLat.TabStop = false;
-            this.groupLat.Text = "Latitude";
-            // 
-            // radioButtonSouth
-            // 
-            this.radioButtonSouth.AutoSize = true;
-            this.radioButtonSouth.Checked = true;
-            this.radioButtonSouth.Location = new System.Drawing.Point(201, 28);
-            this.radioButtonSouth.Name = "radioButtonSouth";
-            this.radioButtonSouth.Size = new System.Drawing.Size(32, 17);
-            this.radioButtonSouth.TabIndex = 67;
-            this.radioButtonSouth.TabStop = true;
-            this.radioButtonSouth.Text = "S";
-            this.radioButtonSouth.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNorth
-            // 
-            this.radioButtonNorth.AutoSize = true;
-            this.radioButtonNorth.Location = new System.Drawing.Point(201, 10);
-            this.radioButtonNorth.Name = "radioButtonNorth";
-            this.radioButtonNorth.Size = new System.Drawing.Size(33, 17);
-            this.radioButtonNorth.TabIndex = 66;
-            this.radioButtonNorth.Text = "N";
-            this.radioButtonNorth.UseVisualStyleBackColor = true;
-            // 
-            // textLatSec
-            // 
-            this.textLatSec.Location = new System.Drawing.Point(129, 19);
-            this.textLatSec.Name = "textLatSec";
-            this.textLatSec.Size = new System.Drawing.Size(48, 20);
-            this.textLatSec.TabIndex = 65;
-            this.textLatSec.Text = "10";
-            this.textLatSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textLatMin
-            // 
-            this.textLatMin.Location = new System.Drawing.Point(76, 19);
-            this.textLatMin.Name = "textLatMin";
-            this.textLatMin.Size = new System.Drawing.Size(37, 20);
-            this.textLatMin.TabIndex = 64;
-            this.textLatMin.Text = "6";
-            this.textLatMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textLatDeg
-            // 
-            this.textLatDeg.Location = new System.Drawing.Point(18, 20);
-            this.textLatDeg.Name = "textLatDeg";
-            this.textLatDeg.Size = new System.Drawing.Size(37, 20);
-            this.textLatDeg.TabIndex = 63;
-            this.textLatDeg.Text = "0";
-            this.textLatDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(59, 21);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(13, 13);
-            this.label46.TabIndex = 68;
-            this.label46.Text = "d";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(113, 21);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(15, 13);
-            this.label47.TabIndex = 69;
-            this.label47.Text = "m";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(178, 21);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(12, 13);
-            this.label48.TabIndex = 61;
-            this.label48.Text = "s";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label49);
-            this.groupBox1.Controls.Add(this.label50);
-            this.groupBox1.Controls.Add(this.label51);
-            this.groupBox1.Controls.Add(this.radioButtonWest);
-            this.groupBox1.Controls.Add(this.textLonDeg);
-            this.groupBox1.Controls.Add(this.radioButtonEast);
-            this.groupBox1.Controls.Add(this.textLonSec);
-            this.groupBox1.Controls.Add(this.textLonMin);
-            this.groupBox1.Location = new System.Drawing.Point(280, 94);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 55);
-            this.groupBox1.TabIndex = 61;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Longtitude";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(178, 21);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(12, 13);
-            this.label49.TabIndex = 61;
-            this.label49.Text = "s";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(113, 21);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(15, 13);
-            this.label50.TabIndex = 69;
-            this.label50.Text = "m";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(59, 21);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(13, 13);
-            this.label51.TabIndex = 68;
-            this.label51.Text = "d";
-            // 
-            // radioButtonWest
-            // 
-            this.radioButtonWest.AutoSize = true;
-            this.radioButtonWest.Checked = true;
-            this.radioButtonWest.Location = new System.Drawing.Point(201, 28);
-            this.radioButtonWest.Name = "radioButtonWest";
-            this.radioButtonWest.Size = new System.Drawing.Size(36, 17);
-            this.radioButtonWest.TabIndex = 67;
-            this.radioButtonWest.TabStop = true;
-            this.radioButtonWest.Text = "W";
-            this.radioButtonWest.UseVisualStyleBackColor = true;
-            // 
-            // textLonDeg
-            // 
-            this.textLonDeg.Location = new System.Drawing.Point(18, 20);
-            this.textLonDeg.Name = "textLonDeg";
-            this.textLonDeg.Size = new System.Drawing.Size(37, 20);
-            this.textLonDeg.TabIndex = 63;
-            this.textLonDeg.Text = "74";
-            this.textLonDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // radioButtonEast
-            // 
-            this.radioButtonEast.AutoSize = true;
-            this.radioButtonEast.Location = new System.Drawing.Point(201, 10);
-            this.radioButtonEast.Name = "radioButtonEast";
-            this.radioButtonEast.Size = new System.Drawing.Size(32, 17);
-            this.radioButtonEast.TabIndex = 66;
-            this.radioButtonEast.Text = "E";
-            this.radioButtonEast.UseVisualStyleBackColor = true;
-            // 
-            // textLonSec
-            // 
-            this.textLonSec.Location = new System.Drawing.Point(129, 19);
-            this.textLonSec.Name = "textLonSec";
-            this.textLonSec.Size = new System.Drawing.Size(48, 20);
-            this.textLonSec.TabIndex = 65;
-            this.textLonSec.Text = "31";
-            this.textLonSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textLonMin
-            // 
-            this.textLonMin.Location = new System.Drawing.Point(76, 19);
-            this.textLonMin.Name = "textLonMin";
-            this.textLonMin.Size = new System.Drawing.Size(37, 20);
-            this.textLonMin.TabIndex = 64;
-            this.textLonMin.Text = "34";
-            this.textLonMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.groupBox2.Controls.Add(this.labelAzimuth);
+            this.groupBox2.Controls.Add(this.label53);
+            this.groupBox2.Controls.Add(this.labelStartDate);
+            this.groupBox2.Controls.Add(this.label45);
+            this.groupBox2.Location = new System.Drawing.Point(5, 325);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(320, 164);
+            this.groupBox2.TabIndex = 53;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Launch parameters";
             // 
             // labelAzimuth
             // 
             this.labelAzimuth.AutoSize = true;
-            this.labelAzimuth.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAzimuth.Location = new System.Drawing.Point(182, 360);
+            this.labelAzimuth.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAzimuth.Location = new System.Drawing.Point(147, 57);
             this.labelAzimuth.Name = "labelAzimuth";
-            this.labelAzimuth.Size = new System.Drawing.Size(14, 15);
-            this.labelAzimuth.TabIndex = 56;
+            this.labelAzimuth.Size = new System.Drawing.Size(15, 16);
+            this.labelAzimuth.TabIndex = 60;
             this.labelAzimuth.Text = "0";
             // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(20, 360);
+            this.label53.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label53.Location = new System.Drawing.Point(14, 57);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(147, 15);
-            this.label53.TabIndex = 55;
-            this.label53.Text = "launch azimuth, deg:";
+            this.label53.Size = new System.Drawing.Size(99, 16);
+            this.label53.TabIndex = 59;
+            this.label53.Text = "azimuth, deg:";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label45.Location = new System.Drawing.Point(14, 33);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(43, 16);
+            this.label45.TabIndex = 57;
+            this.label45.Text = "date:";
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStartDate.Location = new System.Drawing.Point(147, 33);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(15, 16);
+            this.labelStartDate.TabIndex = 58;
+            this.labelStartDate.Text = "0";
             // 
             // MainForm
             // 
@@ -1494,6 +1506,10 @@
             this.panelEphemeride.PerformLayout();
             this.panelHomanTrans.ResumeLayout(false);
             this.panelHomanTrans.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupLat.ResumeLayout(false);
+            this.groupLat.PerformLayout();
             this.groupHomanResults.ResumeLayout(false);
             this.panelHomanRes.ResumeLayout(false);
             this.panelHomanRes.PerformLayout();
@@ -1501,10 +1517,8 @@
             this.panelBodyPos.PerformLayout();
             this.groupCalcResults.ResumeLayout(false);
             this.groupCalcResults.PerformLayout();
-            this.groupLat.ResumeLayout(false);
-            this.groupLat.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1615,8 +1629,6 @@
         private System.Windows.Forms.TextBox textWaitTurns;
         private System.Windows.Forms.Label labelTransTime;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label labelStartDate;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label labelNoTransfer;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.GroupBox groupLat;
@@ -1637,8 +1649,11 @@
         private System.Windows.Forms.RadioButton radioButtonEast;
         private System.Windows.Forms.TextBox textLonSec;
         private System.Windows.Forms.TextBox textLonMin;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelAzimuth;
         private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.Label label45;
 
     }
 }
