@@ -432,9 +432,10 @@ namespace stargazer
 
             graph.DrawString(title, font, brush, delta, delta);            
 
-            graph.DrawString("Lat. " + Math.Round(epos.beta / RAD, 4).ToString(), font, brush, delta, delta + font.Height);
-            graph.DrawString("Lon. " + Math.Round(epos.lambda / RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height);
-            graph.DrawString("Kerbin phase: " + Math.Round(phi, 4).ToString(), font, brush, delta, height - delta - font.Height); 
+            graph.DrawString("\u03b2 = " + Math.Round(epos.beta / RAD, 4).ToString(), font, brush, delta, delta + font.Height);
+            graph.DrawString("\u03bb = " + Math.Round(epos.lambda / RAD, 4).ToString(), font, brush, delta, delta + 2*font.Height);
+            graph.DrawString("Kerbin phase: " + Math.Round(phi, 4).ToString(), font, brush, delta, height - delta - font.Height);
+            graph.DrawString("\u03b8 = " + Math.Round(Bodies[body_idx].get_rotation_angle(t), 4).ToString(), font, brush, delta, delta + 3 * font.Height);
             
             // Draw Ref Body
             myPen.Color = Color.Yellow;
@@ -465,6 +466,11 @@ namespace stargazer
             graph.DrawLine(myPen, x0, y0, x, y);
         }
 
+
+
+        //---------------------------------------------------------------------
+        //
+        //---------------------------------------------------------------------
         private void buttonHomanSearch_Click(object sender, EventArgs e)
         {
             double t0 = KCalendar.date_to_sec(int.Parse(textBeginYear.Text.ToString()),
