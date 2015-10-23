@@ -481,6 +481,15 @@ namespace Astronomy
 
             get_transfer_orientation(x1, Vro, ref manuever.orbit.i, ref manuever.orbit.Omega, ref u);
 
+            if (manuever.orbit.i > 90.0)
+            {
+                manuever.orbit.i = 180.0 - manuever.orbit.i;
+                manuever.orbit.Omega += 180.0;
+
+                if (manuever.orbit.Omega > 360)
+                    manuever.orbit.Omega -= 360;
+            }
+
             // Eject dV calculation
             BodyData depData = new BodyData();
 
